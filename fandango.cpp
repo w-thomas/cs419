@@ -38,37 +38,68 @@ void printIntro() {
 
 int checkWord(int level, string word, string parentWord) {
     int result = 0;
+    int i;
+    int j;
     const string l1[] = {"look", "go"}; 
-    const string l2Look[] = {"at"}; 
-    const string l2Go[] = {"n", "s", "e", "w"}; 
-    const string l3Go[] = {"run", "walk"}; 
+    const string l10[] = {"at"}; 
+    const string l11[] = {"n", "s", "e", "w"}; 
+    //const string l2[] = {"at", "n", "s", "e", "w"}; 
+    const string l20[] = {"me", "you"}; 
+    const string l21[] = {"run", "walk"}; 
+    //const string l3[] = {"me", "you", "run", "walk"}; 
     int s1 = sizeof(l1) / sizeof(string);
-    int s2Look = sizeof(l2Look) / sizeof(string);
-    int s2Go = sizeof(l2Go) / sizeof(string);
-    int s3Go = sizeof(l3Go) / sizeof(string);
+    int s10 = sizeof(l10) / sizeof(string);
+    int s11 = sizeof(l11) / sizeof(string);
+    //int s2 = sizeof(l2) / sizeof(string);
+    int s20 = sizeof(l20) / sizeof(string);
+    int s21 = sizeof(l21) / sizeof(string);
+    //int s3 = sizeof(l3) / sizeof(string);
     switch(level) {
         case 1:
-            for(int i = 0; i < s1; ++i) {
+            for(i = 0; i < s1; ++i) {
                 if(l1[i].compare(word) == 0) {
                     result = 1;
                 }
             }
             break;
         case 2:
-            if(parentWord.compare("look") == 0)
-            {
-            for(int i = 0; i < s2Look; ++i) {
-                if(l2Look[i].compare(word) == 0) { return 1; }
+            if(parentWord.compare("look") == 0) {
+                for(i = 0; i < s10; ++i) {
+                    if(l10[i].compare(word) == 0) {
+                        result = 1;
                     }
+                }
             }
-            else if(parentWord.compare("go") == 0) {
-            for(int i = 0; i < s2Go; ++i) {
-                if(l2Go[i].compare(word) == 0) { return 1; }
+            if(parentWord.compare("go") == 0) {
+                for(i = 0; i < s11; ++i) {
+                    if(l11[i].compare(word) == 0) {
+                        result = 1;
                     }
+                }
             }
             break;
         case 3:
-            cout << "Level 3" << endl;
+            for(i = 0; i < s10; ++i) {
+                if(l10[i].compare(parentWord) == 0) {
+                    for(j = 0; j < s20; ++j) {
+                        if(l20[j].compare(word) == 0) {
+                            result = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            for(i = 0; i < s11; ++i) {
+                if(l11[i].compare(parentWord) == 0) {
+                    for(j = 0; j < s21; ++j) {
+                        if(l21[j].compare(word) == 0) {
+                            result = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            break;
     }
     return result;
 }
