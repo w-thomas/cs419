@@ -36,6 +36,10 @@ void printIntro() {
     cout << "\n\n\nWe are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.\n\n\n";
 }
 
+void executeCmd(string cmd) {
+    cout << "calling executeCmd()" << endl;
+}
+
 int checkWord(int level, string word, string parentWord) {
     int result = 0;
     int i;
@@ -104,7 +108,7 @@ int checkWord(int level, string word, string parentWord) {
     return result;
 }
 
-void parseCmd(string cmd) {
+int parseCmd(string cmd) {
     int level = 1;
     istringstream iss(cmd); 
     string word;
@@ -117,12 +121,12 @@ void parseCmd(string cmd) {
         int result = checkWord(level, word, parentWord);
         if(result == 0) {
             cout << "Invalid command: " << cmd << endl;
-            break;
+            return 0;
         }
         ++level;
         parentWord = word;
     }
-    return;
+    return 1; 
 }
 
 void printHelp() {
@@ -135,6 +139,7 @@ void printHelp() {
 }
 
 int main(int argc, char** argv) {
+    int result;
     printIntro();
     string cmd; 
     do {
@@ -143,7 +148,8 @@ int main(int argc, char** argv) {
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
-            parseCmd(cmd);
+            result = parseCmd(cmd);
+            if(result == 1) { executeCmd(cmd); }
         }
     }
     while((cmd != "q") && (cmd != "quit"));
