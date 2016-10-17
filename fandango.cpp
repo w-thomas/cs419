@@ -110,14 +110,15 @@ int checkWord(int level, string word, string parentWord) {
 
 int parseCmd(string cmd) {
     int level = 1;
+    //check if this is a single word command
+    bool singleOK  = true;
+    if(cmd.compare("go") == 0) {
+        singleOK = false;
+    }
     istringstream iss(cmd); 
     string word;
     string parentWord ;
     while(iss >> word) {
-        //debug 
-        //cout << "Level: " << level << endl;
-        //cout << "Calling check word on word: " << word << endl;
-        //cout << "Passing parent word: " << parentWord << endl;
         int result = checkWord(level, word, parentWord);
         if(result == 0) {
             cout << "Invalid command: " << cmd << endl;
@@ -125,6 +126,11 @@ int parseCmd(string cmd) {
         }
         ++level;
         parentWord = word;
+    }
+    //check to see if it single command
+    if(level != 1 && singleOK == false) {
+        cout << "Invalid command: " << cmd << endl;
+        return 0;
     }
     return 1; 
 }
