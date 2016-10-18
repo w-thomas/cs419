@@ -8,6 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "interface.hpp"
 
 using std::cout;
 using std::cin;
@@ -146,11 +147,17 @@ void printHelp() {
 
 int main(int argc, char** argv) {
     int result;
-    printIntro();
+
+    start_interface();
+
+    printString("We are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.");
+
+    //printIntro();
     string cmd; 
     do {
-        cout << "> ";
-        getline(cin, cmd);
+        //cout << "> ";
+        //getline(cin, cmd);
+        cmd = getInput();
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
@@ -159,4 +166,6 @@ int main(int argc, char** argv) {
         }
     }
     while((cmd != "q") && (cmd != "quit"));
+
+    end_interface();
 }
