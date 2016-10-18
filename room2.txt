@@ -1,0 +1,9 @@
+Name: Prison Cell B
+LDesc: Longdesc
+SDesc: ShortDesc
+Feature1: Backpack
+Feature2: 
+North: False
+South: True
+East: False
+West: False
