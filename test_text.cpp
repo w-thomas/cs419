@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "rooms.h"
+#include "rooms.hpp"
 using namespace std;
 
 
@@ -36,6 +36,7 @@ int main () {
 					string s=line;
 					int pos = s.find(":");
 					string token = s.substr (pos+1);
+					token.erase(token.length()-1);
 					roomArr[atLine-1]=token;
 				}      
 				line_number++;
@@ -54,5 +55,12 @@ int main () {
 	}
 	//retrieves object information in vector
 	cout<<roomList[1].getName()<<endl;
+	if (roomList[1].getNorth()==true)
+	{
+		cout<<"this is true"<<endl;
+	}
+	else{
+		cout<<"fix this"<<endl;
+	}
 	return 0;
 }
