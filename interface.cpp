@@ -43,7 +43,8 @@ WINDOW *create_newwin(int height, int width, int starty, int startx, bool border
 	local_win = newwin(height, width, starty, startx);
 
 	if(border){
-	box(local_win, 0 , 0);
+	//box(local_win, 0 , 0);
+	wborder(local_win, '|', '|', '-', '-', '+', '+', '+', '+');	
 	}
 
 	return local_win;
@@ -51,6 +52,8 @@ WINDOW *create_newwin(int height, int width, int starty, int startx, bool border
 
 std::string getInput() {
 	char * input = new char[80];
+
+	mvprintw(LINES - 2, 0, "Your input:                                                       ");
 
 	mvprintw(LINES - 2, 0, "Your input: ");
 
@@ -85,7 +88,20 @@ void destroy_win(WINDOW *local_win) {
 }
 
 void printDescLong(){
+	//TODO:
 	//Print room desc object
+}
+
+void printHelp() {
+	//TODO:
+	//convert and print help text
+	   //  cout << "\n" << "Help\n\n";
+    // cout << "look : blah, blah, blah\n";
+    // cout << "look at <feature || object> : blah, blah, blah\n";
+    // cout << "go <direction> : blah, blah, blah\n";
+    // cout << "quit or q : blah, blah, blah\n";
+    // cout << "help or h : blah, blah, blah\n\n";
+    printString("Help text goes here");
 }
 
 

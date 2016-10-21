@@ -136,14 +136,14 @@ int parseCmd(string cmd) {
     return 1; 
 }
 
-void printHelp() {
-    cout << "\n" << "Help\n\n";
-    cout << "look : blah, blah, blah\n";
-    cout << "look at <feature || object> : blah, blah, blah\n";
-    cout << "go <direction> : blah, blah, blah\n";
-    cout << "quit or q : blah, blah, blah\n";
-    cout << "help or h : blah, blah, blah\n\n";
-}
+// void printHelp() {
+//     cout << "\n" << "Help\n\n";
+//     cout << "look : blah, blah, blah\n";
+//     cout << "look at <feature || object> : blah, blah, blah\n";
+//     cout << "go <direction> : blah, blah, blah\n";
+//     cout << "quit or q : blah, blah, blah\n";
+//     cout << "help or h : blah, blah, blah\n\n";
+// }
 
 int main(int argc, char** argv) {
     int result;

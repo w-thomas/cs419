@@ -46,6 +46,7 @@ void destroy_win(WINDOW *local_win);
 **/
 std::string getInput();
 
-
+//TODO: Documentation
+void printHelp();
 
 #endif
