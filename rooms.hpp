@@ -3,6 +3,7 @@
 #define ROOMS_HPP
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -43,5 +44,5 @@ class Rooms
 		bool west;
 
 };
-
+void createRoomObjects(vector<Rooms>& roomObjects1);
 #endif
