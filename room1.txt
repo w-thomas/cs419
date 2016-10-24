@@ -1,9 +1,9 @@
-Name: Prison Cell A
-LDesc: You awake in your cell to shouting. You hear Carl running in the hallway telling people to wake up. He comes to you to let you know that Rick needs your help. The walkers have increased and is starting to rattle the fences. Carl leaves your cell. Your cell door is south of you.  To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers" (this is the hints/tutorial)
-SDesc: Rick needs your help! Explore the prison. To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers". Your cell door is south of you.
-Feature1: Backpack
+Name:Prison Cell A
+LDesc:You awake in your cell to shouting. You hear Carl running in the hallway telling people to wake up. He comes to you to let you know that Rick needs your help. The walkers have increased and is starting to rattle the fences. Carl leaves your cell. Your cell door is south of you.  To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers" (this is the hints/tutorial)
+SDesc:Rick needs your help! Explore the prison. To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers". Your cell door is south of you.
+Feature1:Backpack
 Feature2: 
-North: False
-South: True
-East: False
-West: False
+North:True
+South:True
+East:False
+West:False
