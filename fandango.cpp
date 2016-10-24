@@ -8,6 +8,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
+#include "rooms.hpp"
 
 using std::cout;
 using std::cin;
@@ -15,25 +17,7 @@ using std::endl;
 using std::string;
 using std::getline;
 using std::istringstream;
-
-class Rooms 
-{
-    private:
-        string roomName;
-        string Ldesc;
-        bool n, s, e, w;
-
-    public: 
-        //getters
-        Rooms(string array[9]);
-        void setName(string name);
-        void getName();
-        void printIsDir(string direction);
-};
-
-//arr[5], arr[6], arr[7], arr[8]
-//north true, south false, east true, west false
-string r[9] = {"","","","","","True","False","True","False"};
+using std::vector;
 
 void printIntro() {
     cout << "\n\n\nWe are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.\n\n\n";
@@ -41,6 +25,7 @@ void printIntro() {
 
 int checkDir(string direction) {
     int pos = 0;
+    /*
     if(direction.compare("n") == 0) { pos = 5; }
     else if(direction.compare("s") == 0) { pos = 6; }
     else if(direction.compare("e") == 0) { pos = 7; }
@@ -51,6 +36,8 @@ int checkDir(string direction) {
     }
     cout << "There is no door to the " << direction << endl;
     return 0;
+    */
+    return 1;
 }
 
 void executeCmd(string cmd) {
@@ -158,9 +145,27 @@ void printHelp() {
 }
 
 int main(int argc, char** argv) {
+    //instantiate 
+    vector<Rooms> r;
+    createRoomObjects(r);
+    //test start
+    vector<Rooms>:: iterator i;
+    for(i = r.begin(); i != r.end(); ++i) {
+        cout << (*i).getName() << endl;
+        cout << (*i).getNorth() << endl;
+        cout << (*i).getSouth() << endl;
+        cout << (*i).getEast() << endl;
+        cout << (*i).getWest() << endl;
+        cout << (*i).getLdesc() << endl;
+    }
+    cout << r[0].getName() << endl;
+    cout << r[1].getName() << endl;
+    cout << r[1].getSouth() << endl;
+    //test end
     int result;
-    printIntro();
+    //printIntro();
     string cmd; 
+    /*
     do {
         cout << "> ";
         getline(cin, cmd);
@@ -172,4 +177,5 @@ int main(int argc, char** argv) {
         }
     }
     while((cmd != "q") && (cmd != "quit"));
+    */
 }
