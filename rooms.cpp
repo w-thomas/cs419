@@ -43,7 +43,6 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 					string s=line;
 					int pos = s.find(":");
 					string token = s.substr (pos+1);
-					token.erase(token.length()-1);
 					roomArr[atLine-1]=token;
 				}
 				line_number++;
