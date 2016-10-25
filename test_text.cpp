@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "rooms.hpp"
+#include "player.hpp"
 
 using namespace std;
 
@@ -20,12 +21,11 @@ void moveRoom(Rooms *arrayGrid[][3], int &x,int &y, string dir);
 int main () {
 
 	Rooms *roomGrid[3][3];
-	int x=0;
-	int y=0;
+	Player player1;
 	string direction;
 	string end;
 	//keeps track of the player's current position
-	Rooms *currentRoom[x][y];
+	player1.setStartLocation();
 
 	//creates array of objects
 	createRoomObjects(roomGrid);
@@ -33,12 +33,11 @@ int main () {
 	//test program for player movement
 	while(end.compare("y") != 0)
 	{	
-		currentRoom[x][y]=roomGrid[x][y];
-
-		cout<<"You are in: "<<currentRoom[x][y]->getName()<<endl;
+		
+		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
 		cout<<"Which direction?"<<endl;
 		cin>>direction;
-		moveRoom(roomGrid, x, y, direction);
+		moveRoom(roomGrid, player1.currentX, player1.currentY, direction);
 		
 		cout<<"End test?"<<endl;
 		cin>>end;
