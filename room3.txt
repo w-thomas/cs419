@@ -1,4 +1,4 @@
-Name:Prison Cell B
+Name:Room 3
 LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
@@ -6,4 +6,4 @@ Feature2:
 North:False
 South:True
 East:True
-West:False
+West:True

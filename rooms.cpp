@@ -1,12 +1,18 @@
+/*Author: Jennifer Mendoza
+* Description: function definitions
+* Group: Fandango
+* Last Modified: 10/24/2016
+*/
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include "rooms.hpp"
+
 using namespace std;
 
-void createRoomObjects(vector<Rooms>& roomObjects1)
+void createRoomObjects(Rooms *arrayGrid[][3])
 {
 	string line;
 	string roomArr[9];
@@ -14,16 +20,21 @@ void createRoomObjects(vector<Rooms>& roomObjects1)
 	//vector contains all Rooms objects
 	//http://stackoverflow.com/questions/32766817/go-to-a-specific-line-in-file-and-read-it
 	//read files in 1 at a time
-	for (int a=1; a<3;a++)
-	{	
-		stringstream ss;
-		ss<<a;
-		string str=ss.str();
-		string filename="room"+str+".txt";
-
-		ifstream file(filename.c_str());
-		unsigned int line_number(1);
+	int a=1;
+	
+	for (int y=0;y<3;y++)
+	{
+		for (int x=0;x<3;x++)
+		{
+			int line_number(1);
 			int atLine=1;
+			string str;
+			ostringstream convert;
+			convert << a;
+			str = convert.str();
+			string filename="room"+str+".txt";
+			ifstream file(filename.c_str());
+			
 			while (std::getline(file, line))
 			{
 				//saves each line in an array
@@ -34,25 +45,16 @@ void createRoomObjects(vector<Rooms>& roomObjects1)
 					string token = s.substr (pos+1);
 					token.erase(token.length()-1);
 					roomArr[atLine-1]=token;
-				}      
+				}
 				line_number++;
 				atLine++;
 			}
-			//display's array contents for testing
-/*			cout<<"file "<<a<<endl;
-			for (int i=0; i<atLine-1;i++)
-			{
-				cout<<"room "<<i<<" array:"<<roomArr[i]<<endl;
-			}
-			cout<<"check1"<<endl;
-		Insert call to constructor to create objects here. Objects are created as files are read
-*/		Rooms temp(roomArr);
-		roomObjects1.push_back(temp);
+			arrayGrid[x][y]= new Rooms(roomArr);
+			a++;
+		}
 	}
-	//retrieves object information in vector
-//	cout<<roomList[1].getName()<<endl;
-
 }
+
 
 Rooms::Rooms(string array[9])
 {
@@ -91,11 +93,9 @@ void Rooms::setNorth(string doorN)
 	if(doorN=="True")
 	{
 		north=true;
-		cout<<"set true"<<endl;
 	}
 	else
 	{
-		cout<<"set false"<<endl;
 		north=false;
 		
 	}

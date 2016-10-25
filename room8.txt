@@ -1,9 +1,9 @@
-Name:Prison Cell B
+Name:Room 8
 LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
 Feature2: 
-North:False
-South:True
+North:True
+South:False
 East:True
-West:False
+West:True

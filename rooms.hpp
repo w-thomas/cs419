@@ -1,4 +1,8 @@
-//Rooms header file
+/*Author: Jennifer Mendoza
+* Description: rooms.cpp header file
+* Group: Fandango
+* Last Modified: 10/24/2016
+*/
 #ifndef ROOMS_HPP
 #define ROOMS_HPP
 #include <iostream>
@@ -44,5 +48,6 @@ class Rooms
 		bool west;
 
 };
-void createRoomObjects(vector<Rooms>& roomObjects1);
+
+void createRoomObjects(Rooms *arrayGrid[][3]);
 #endif
