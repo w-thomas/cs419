@@ -10,6 +10,10 @@
 #include <string>
 #include <vector>
 #include "rooms.hpp"
+#include "player.hpp"
+
+#define MAX_X 3
+#define MAX_Y 3
 
 using std::cout;
 using std::cin;
@@ -19,12 +23,42 @@ using std::getline;
 using std::istringstream;
 using std::vector;
 
+//void moveRoom(Rooms *arrayGrid[][3], int &x,int &y, string dir);
+
+//checks direction and if valid, updates player's current position
+//set up to be a 3x3 grid
+void moveRoom(Rooms *arrayGrid[][3], Player *player, int &x,int &y, string dir)
+{
+	if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))
+	{
+		y--;
+	}
+	else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
+	{
+		y++;
+	}
+	else if ((dir.compare("e") == 0)&&(arrayGrid[x][y]->getEast()==true))
+	{
+		x++;
+	}
+	else if ((dir.compare("w") == 0)&&(arrayGrid[x][y]->getWest()==true))
+	{
+		x--;
+	}
+	else
+	{
+		cout<<"There is no door in that direction."<<endl;
+        return;
+	}
+    cout << "Location: " << arrayGrid[player->currentX][player->currentY]->getName() << endl;
+}
+
 void printIntro() {
     cout << "\n\n\nWe are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.\n\n\n";
 }
 
 int checkDir(string direction) {
-    int pos = 0;
+    //int pos = 0;
     /*
     if(direction.compare("n") == 0) { pos = 5; }
     else if(direction.compare("s") == 0) { pos = 6; }
@@ -40,8 +74,27 @@ int checkDir(string direction) {
     return 1;
 }
 
-void executeCmd(string cmd) {
-    cout << "calling executeCmd()" << endl;
+void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
+    if(cmd.compare("go n") == 0) {
+        cout << "in executeCmd() --> move north" <<  endl;
+        moveRoom(arrayGrid, player, player->currentX, player->currentY, "n");
+    }
+    else if(cmd.compare("go s") == 0) {
+        cout << "in executeCmd() --> move south" <<  endl;
+        moveRoom(arrayGrid, player, player->currentX, player->currentY, "s");
+    }
+    else if(cmd.compare("go e") == 0) {
+        cout << "in executeCmd() --> move east" <<  endl;
+        moveRoom(arrayGrid, player, player->currentX, player->currentY, "e");
+    }
+    else if(cmd.compare("go w") == 0) {
+        cout << "in executeCmd() --> move west" <<  endl;
+        moveRoom(arrayGrid, player, player->currentX, player->currentY, "w");
+    }
+    else {
+        cout << "command not found!!" << endl; //should never get here
+        return;
+    }
 }
 
 int checkWord(int level, string word, string parentWord) {
@@ -127,7 +180,7 @@ int parseCmd(string cmd) {
         ++level;
         parentWord = word;
     }
-    //check to see if it single command
+    //check to see if it is a single word command
     if(level != 1 && singleOK == false) {
         cout << "Invalid command: " << cmd << endl;
         return 0;
@@ -145,27 +198,16 @@ void printHelp() {
 }
 
 int main(int argc, char** argv) {
-    //instantiate 
-    vector<Rooms> r;
-    createRoomObjects(r);
-    //test start
-    vector<Rooms>:: iterator i;
-    for(i = r.begin(); i != r.end(); ++i) {
-        cout << (*i).getName() << endl;
-        cout << (*i).getNorth() << endl;
-        cout << (*i).getSouth() << endl;
-        cout << (*i).getEast() << endl;
-        cout << (*i).getWest() << endl;
-        cout << (*i).getLdesc() << endl;
-    }
-    cout << r[0].getName() << endl;
-    cout << r[1].getName() << endl;
-    cout << r[1].getSouth() << endl;
-    //test end
-    int result;
-    //printIntro();
+    //instantiate game state
+    Rooms *board[MAX_X][MAX_Y]; //create a playing surface
+    createRoomObjects(board);   //setup the board
+    Player *rick = new Player();//put a player on the board
+    rick->setStartLocation();   //maybe we should call a constructor for this
+   
+    //start game
+    printIntro();
+    int result;                 //return value of parse (is entire cmd valid?)
     string cmd; 
-    /*
     do {
         cout << "> ";
         getline(cin, cmd);
@@ -173,9 +215,8 @@ int main(int argc, char** argv) {
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
             result = parseCmd(cmd);
-            if(result == 1) { executeCmd(cmd); }
+            if(result == 1) { executeCmd(board, rick, cmd); }
         }
     }
     while((cmd != "q") && (cmd != "quit"));
-    */
 }
