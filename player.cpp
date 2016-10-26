@@ -11,3 +11,4 @@ void Player::setStartLocation()
 	currentX=0;
 	currentY=0;
 }
+
