@@ -1,6 +1,6 @@
 #makefile for CMD1
 
-all: test_text
+all: test
 
 CXX = g++
 CXXFLAGS = -Wall
