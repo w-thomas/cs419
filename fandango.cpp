@@ -1,8 +1,8 @@
 /*
  * fandango.cpp -- base engine for Fandango Group's project (CMD1)
- * Last Modified -- 10/12/2016
+ * Last Modified -- 10/26/2016
  * Last Modified By -- Josh Gonzalez
- * Now Bugs --
+ * Known Issues  --
  */
 
 #include <iostream>
@@ -27,7 +27,7 @@ using std::vector;
 
 //checks direction and if valid, updates player's current position
 //set up to be a 3x3 grid
-void moveRoom(Rooms *arrayGrid[][3], Player *player, int &x,int &y, string dir)
+void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string dir)
 {
 	if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))
 	{
@@ -50,7 +50,8 @@ void moveRoom(Rooms *arrayGrid[][3], Player *player, int &x,int &y, string dir)
 		cout<<"There is no door in that direction."<<endl;
         return;
 	}
-    cout << "Location: " << arrayGrid[player->currentX][player->currentY]->getName() << endl;
+    //debug...after move room, validate room name...replaced by look() functioning
+    //cout << "Location: " << arrayGrid[player->currentX][player->currentY]->getName() << endl;
 }
 
 void printIntro() {
@@ -76,25 +77,31 @@ int checkDir(string direction) {
 
 void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     if(cmd.compare("go n") == 0) {
-        cout << "in executeCmd() --> move north" <<  endl;
+        //cout << "in executeCmd() --> move north" <<  endl;
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "n");
     }
     else if(cmd.compare("go s") == 0) {
-        cout << "in executeCmd() --> move south" <<  endl;
+        //cout << "in executeCmd() --> move south" <<  endl;
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "s");
     }
     else if(cmd.compare("go e") == 0) {
-        cout << "in executeCmd() --> move east" <<  endl;
+        //cout << "in executeCmd() --> move east" <<  endl;
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "e");
     }
     else if(cmd.compare("go w") == 0) {
-        cout << "in executeCmd() --> move west" <<  endl;
+        //cout << "in executeCmd() --> move west" <<  endl;
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "w");
     }
+    else if(cmd.compare("look") == 0) {
+        cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+    }
     else {
-        cout << "command not found!!" << endl; //should never get here
+        cout << "command not found in command library!!" << endl; //should never get here
         return;
     }
+    /*
+     * should I hard code all commands, set up an array to iterate, or re-use some of the parse code maybe?
+    */
 }
 
 int checkWord(int level, string word, string parentWord) {
