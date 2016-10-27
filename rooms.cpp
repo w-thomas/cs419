@@ -24,7 +24,7 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 	
 	for (int y=0;y<3;y++)
 	{
-		for (int x=0;x<3;x++)
+		for (int x=0;x<5;x++)
 		{
 			int line_number(1);
 			int atLine=1;
@@ -52,6 +52,8 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 				atLine++;
 			}
 			arrayGrid[x][y]= new Rooms(roomArr);
+			cout<<"array:(x,y) "<<x<<","<<y<<endl;
+			cout<<arrayGrid[x][y]->getName()<<endl;
 			a++;
 		}
 	}

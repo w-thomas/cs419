@@ -4,6 +4,6 @@ SDesc:ShortDesc
 Feature1:Backpack
 Feature2: 
 North:True
-South:False
+South:True
 East:True
 West:True

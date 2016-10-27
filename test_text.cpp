@@ -20,7 +20,7 @@ void moveRoom(Rooms *arrayGrid[][3], int &x,int &y, string dir);
 
 int main () {
 
-	Rooms *roomGrid[3][3];
+	Rooms *roomGrid[5][3];
 	Player player1;
 	string direction;
 	string end;

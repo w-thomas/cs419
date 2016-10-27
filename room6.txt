@@ -5,5 +5,5 @@ Feature1:Backpack
 Feature2: 
 North:True
 South:True
-East:False
-West:True
+East:True
+West:False

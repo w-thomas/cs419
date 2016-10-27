@@ -1,0 +1,9 @@
+Name:Room 10
+LDesc:Longdesc
+SDesc:ShortDesc
+Feature1:Backpack
+Feature2: 
+North:True
+South:True
+East:False
+West:True
