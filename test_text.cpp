@@ -10,6 +10,7 @@
 #include <vector>
 #include "rooms.hpp"
 #include "player.hpp"
+#include "item.hpp"
 
 using namespace std;
 
@@ -29,9 +30,10 @@ int main () {
 
 	//creates array of objects
 	createRoomObjects(roomGrid);
-
+//	player1.pickUpItem(roomGrid[0][0]->roomItem[0]);
+	player1.getBackpackContents();
 	//test program for player movement
-	while(end.compare("y") != 0)
+/*	while(end.compare("y") != 0)
 	{	
 		
 		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
@@ -42,7 +44,7 @@ int main () {
 		cout<<"End test?"<<endl;
 		cin>>end;
 	}
-	return 0;
+*/	return 0;
 }
 
 //checks direction and if valid, updates player's current position
