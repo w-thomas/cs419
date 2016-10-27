@@ -29,29 +29,37 @@ using std::vector;
 //set up to be a 3x3 grid
 void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string dir)
 {
-	if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))
-	{
-		y--;
-	}
-	else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
-	{
-		y++;
-	}
-	else if ((dir.compare("e") == 0)&&(arrayGrid[x][y]->getEast()==true))
-	{
-		x++;
-	}
-	else if ((dir.compare("w") == 0)&&(arrayGrid[x][y]->getWest()==true))
-	{
-		x--;
-	}
-	else
-	{
-		cout<<"There is no door in that direction."<<endl;
+    if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))
+    {
+        y--;
+    }
+    else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
+    {
+        y++;
+    }
+    else if ((dir.compare("e") == 0)&&(arrayGrid[x][y]->getEast()==true))
+    {
+        x++;
+    }
+    else if ((dir.compare("w") == 0)&&(arrayGrid[x][y]->getWest()==true))
+    {
+        x--;
+    }
+    else
+    {
+        cout<<"There is no door in that direction."<<endl;
         return;
-	}
-    //debug...after move room, validate room name...replaced by look() functioning
-    //cout << "Location: " << arrayGrid[player->currentX][player->currentY]->getName() << endl;
+    }
+    //if !(arrayGrid[player->currentX][player->currentY]->getVisited()) {need code for printing long desc if player has not already been in that room } 
+    cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+
+    cout << "The following features are in the room: " << endl;
+    if(arrayGrid[player->currentX][player->currentY]->getFeature1().compare("") != 0) {
+        cout << arrayGrid[player->currentX][player->currentY]->getFeature1() << endl;
+    }
+    if(arrayGrid[player->currentX][player->currentY]->getFeature2().compare("") != 0) {
+        cout << arrayGrid[player->currentX][player->currentY]->getFeature2() << endl;
+    }
 }
 
 void printIntro() {
@@ -61,17 +69,17 @@ void printIntro() {
 int checkDir(string direction) {
     //int pos = 0;
     /*
-    if(direction.compare("n") == 0) { pos = 5; }
-    else if(direction.compare("s") == 0) { pos = 6; }
-    else if(direction.compare("e") == 0) { pos = 7; }
-    else if(direction.compare("w") == 0) { pos = 8; }
+       if(direction.compare("n") == 0) { pos = 5; }
+       else if(direction.compare("s") == 0) { pos = 6; }
+       else if(direction.compare("e") == 0) { pos = 7; }
+       else if(direction.compare("w") == 0) { pos = 8; }
 
-    if(r[pos].compare("True") == 0) {
-        return 1;
-    }
-    cout << "There is no door to the " << direction << endl;
-    return 0;
-    */
+       if(r[pos].compare("True") == 0) {
+       return 1;
+       }
+       cout << "There is no door to the " << direction << endl;
+       return 0;
+       */
     return 1;
 }
 
@@ -93,7 +101,7 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "w");
     }
     else if(cmd.compare("look") == 0) {
-        cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+        cout << arrayGrid[player->currentX][player->currentY]->getLdesc() << endl;
     }
     else {
         cout << "command not found in command library!!" << endl; //should never get here
@@ -101,7 +109,7 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     }
     /*
      * should I hard code all commands, set up an array to iterate, or re-use some of the parse code maybe?
-    */
+     */
 }
 
 int checkWord(int level, string word, string parentWord) {
@@ -197,11 +205,11 @@ int parseCmd(string cmd) {
 
 void printHelp() {
     cout << "\n" << "Help\n\n";
-    cout << "look : blah, blah, blah\n";
-    cout << "look at <feature || object> : blah, blah, blah\n";
-    cout << "go <direction> : blah, blah, blah\n";
-    cout << "quit or q : blah, blah, blah\n";
-    cout << "help or h : blah, blah, blah\n\n";
+    cout << "look : verbose description of current location\n";
+    cout << "look at <feature || object> : description of feature of object\n";
+    cout << "go <direction> : navigate with directions n, s, e, and w\n";
+    cout << "quit or q : quit the game\n";
+    cout << "help or h : print this menu\n\n";
 }
 
 int main(int argc, char** argv) {
@@ -210,7 +218,7 @@ int main(int argc, char** argv) {
     createRoomObjects(board);   //setup the board
     Player *rick = new Player();//put a player on the board
     rick->setStartLocation();   //maybe we should call a constructor for this
-   
+
     //start game
     printIntro();
     int result;                 //return value of parse (is entire cmd valid?)
