@@ -3,7 +3,7 @@ LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
 Feature2: 
-North:True
+North:False
 South:True
-East:True
+East:False
 West:True

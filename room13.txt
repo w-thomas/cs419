@@ -1,0 +1,9 @@
+Name:Room 13
+LDesc:Longdesc
+SDesc:ShortDesc
+Feature1:Backpack
+Feature2: 
+North:True
+South:False
+East:True
+West:True

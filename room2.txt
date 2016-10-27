@@ -6,4 +6,4 @@ Feature2:
 North:False
 South:True
 East:True
-West:False
+West:True
