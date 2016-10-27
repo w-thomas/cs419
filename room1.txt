@@ -7,3 +7,4 @@ North:False
 South:True
 East:True
 West:False
+Item:gun
