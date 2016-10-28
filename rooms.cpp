@@ -71,7 +71,10 @@ Rooms::Rooms(string array[10])
 	setEast(array[7]);
 	setWest(array[8]);
 	setItem(array[9]);
+
 	hasVisited=false;
+=======
+
 }
 void Rooms::setName(string name)
 {
