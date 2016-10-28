@@ -51,6 +51,7 @@ class Rooms
 		bool south;
 		bool east;
 		bool west;
+		bool hasVisited;
 		
 
 };
