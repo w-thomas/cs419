@@ -8,6 +8,7 @@
 #include "item.hpp"
 #include "rooms.hpp"
 #include <algorithm>
+#include <vector>
 
 void Player::setStartLocation()
 {
@@ -15,11 +16,44 @@ void Player::setStartLocation()
 	currentY=0;
 }
 
-void Player::pickUpItem(Item pickup)
+//save item object to backpack vector and delete from room vector
+void Player::pickUpItem(string pickup, vector<Item> &roomItem)
 {
-	backpack.push_back(pickup);
-	cout<<"Picked up "<<pickup.getItemName()<<endl;
-//	roomPickUp->roomItem.erase(std::remove(roomPickUp->roomItem.begin(), roomPickUp->roomItem.end(), 8), roomPickUp->roomItem.end());
+	int vecSize;
+
+	cout<<"Picked up "<<pickup<<endl;
+	vecSize=roomItem.size();
+	
+	for (int i=0;i<vecSize;i++)
+	{
+		if (roomItem[i].getItemName()==pickup)
+		{
+			backpack.push_back(roomItem[i]);
+			swap(roomItem[i],roomItem.back());
+			roomItem.pop_back();
+			break;
+		}
+	}	
+}
+
+//save item object to room vector and delete from backpack vector
+void Player::dropItem(string drop, vector<Item> &roomItem)
+{
+	int vecSize;
+	
+	vecSize=backpack.size();
+	cout<<"Dropped "<<drop<<endl;
+	
+	for (int i=0;i<vecSize;i++)
+	{
+		if (backpack[i].getItemName()==drop)
+		{
+			roomItem.push_back(backpack[i]);
+			swap(backpack[i],backpack.back());
+			backpack.pop_back();
+			break;
+		}
+	}	
 }
 
 void Player::getBackpackContents()

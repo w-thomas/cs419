@@ -46,9 +46,7 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 					string token = s.substr (pos+1);
 					token.erase(token.length()-1);
 					roomArr[atLine-1]=token;
-
 				}
-			
 				line_number++;
 				atLine++;
 			}
@@ -145,7 +143,6 @@ void Rooms::setItem(string roomItemName)
 	{
 		Item itemObj(roomItemName);
 		roomItem.push_back(itemObj);
-		cout<<roomItem[0].getItemName();
 	}
 }
 string Rooms::getName()
