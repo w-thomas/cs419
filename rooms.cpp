@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 10/24/2016
+* Last Modified: 10/26/2016
 */
 #include <iostream>
 #include <fstream>
@@ -9,13 +9,14 @@
 #include <string>
 #include <vector>
 #include "rooms.hpp"
+#include "item.hpp"
 
 using namespace std;
 
 void createRoomObjects(Rooms *arrayGrid[][3])
 {
 	string line;
-	string roomArr[9];
+	string roomArr[10];
 	string delimiter =":";
 	//vector contains all Rooms objects
 	//http://stackoverflow.com/questions/32766817/go-to-a-specific-line-in-file-and-read-it
@@ -58,7 +59,7 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 }
 
 
-Rooms::Rooms(string array[9])
+Rooms::Rooms(string array[10])
 {
 	setName(array[0]);
 	setLdesc(array[1]);
@@ -69,6 +70,9 @@ Rooms::Rooms(string array[9])
 	setSouth(array[6]);
 	setEast(array[7]);
 	setWest(array[8]);
+	setItem(array[9]);
+	hasVisited=false;
+
 }
 void Rooms::setName(string name)
 {
@@ -135,6 +139,15 @@ void Rooms::setWest(string doorW)
 		west=false;
 	}
 }
+void Rooms::setItem(string roomItemName)
+{
+	if (roomItemName!="")
+	{
+		Item itemObj(roomItemName);
+		roomItem.push_back(itemObj);
+		cout<<roomItem[0].getItemName();
+	}
+}
 string Rooms::getName()
 {
 	return roomName;
@@ -171,4 +184,22 @@ bool Rooms::getEast()
 {
 	return east;
 }
-
+void Rooms::getItem()
+{
+	if (roomItem.size()!=0)
+	{
+		cout<<"Items in this room"<<endl;
+		for (size_t n=0; n<roomItem.size();n++)
+		{
+			cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
+		}
+	}
+	else
+	{
+		cout<<"There are no items here."<<endl;
+	}
+}
+bool Rooms::gethasVisited()
+{
+	return hasVisited;
+}

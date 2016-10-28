@@ -10,6 +10,7 @@
 #include <vector>
 #include "rooms.hpp"
 #include "player.hpp"
+#include "item.hpp"
 
 using namespace std;
 
@@ -30,11 +31,29 @@ int main () {
 	//creates array of objects
 	createRoomObjects(roomGrid);
 
-	//test program for player movement
+	//test display items in room
+	roomGrid[0][0]->getItem();
+
+	//test pick up item
+	player1.pickUpItem(roomGrid[0][0]->roomItem[0]);
+
+	//test display backpack contents
+	player1.getBackpackContents();
+	
+	//test program for player movement & hasVisited boolean
 	while(end.compare("y") != 0)
 	{	
 		
 		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
+		if (roomGrid[player1.currentX][player1.currentY]->gethasVisited()==false)
+		{
+			cout<<roomGrid[player1.currentX][player1.currentY]->getLdesc()<<endl;
+		}
+		else
+		{
+			cout<<roomGrid[player1.currentX][player1.currentY]->getSdesc()<<endl;
+		}
+		roomGrid[player1.currentX][player1.currentY]->hasVisited=true;
 		cout<<"Which direction?"<<endl;
 		cin>>direction;
 		moveRoom(roomGrid, player1.currentX, player1.currentY, direction);
@@ -46,7 +65,7 @@ int main () {
 }
 
 //checks direction and if valid, updates player's current position
-//set up to be a 3x3 grid
+//set up to be a 5x3 grid
 void moveRoom(Rooms *arrayGrid[][3], int &x,int &y, string dir)
 {
 	if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))

@@ -1,13 +1,14 @@
 /*Author: Jennifer Mendoza
 * Description: rooms.cpp header file
 * Group: Fandango
-* Last Modified: 10/24/2016
+* Last Modified: 10/26/2016
 */
 #ifndef ROOMS_HPP
 #define ROOMS_HPP
 #include <iostream>
 #include <string>
 #include <vector>
+#include "item.hpp"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Rooms
 {
 	public:
 		//constructor
-		Rooms(string array[9]);
+		Rooms(string array[10]);
 		//functions to get object information
 		void setName(string);
 		void setLdesc(string);
@@ -26,6 +27,7 @@ class Rooms
 		void setSouth(string);
 		void setEast(string);
 		void setWest(string);
+		void setItem(string);
 		string getName();
 		string getLdesc();
 		string getSdesc();
@@ -35,10 +37,15 @@ class Rooms
 		bool getSouth();
 		bool getEast();
 		bool getWest();
+		void getItem();
+		bool gethasVisited();
+		vector<Item> roomItem;
+		bool hasVisited;
+
 
 	private:
 		string roomName;
-		string Ldesc;
+		string Ldesc;		
 		string Sdesc;
 		string feature1;
 		string feature2;
@@ -46,6 +53,11 @@ class Rooms
 		bool south;
 		bool east;
 		bool west;
+
+
+
+
+		
 
 };
 
