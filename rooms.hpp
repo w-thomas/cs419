@@ -39,6 +39,7 @@ class Rooms
 		bool getWest();
 		void getItem();
 		vector<Item> roomItem;
+		bool hasVisited;
 
 
 	private:
@@ -52,7 +53,7 @@ class Rooms
 		bool east;
 		bool west;
 
-		bool hasVisited;
+
 
 
 		

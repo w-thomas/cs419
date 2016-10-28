@@ -37,6 +37,15 @@ int main () {
 	{	
 		
 		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
+		if (roomGrid[player1.currentX][player1.currentY]->hasVisited==false)
+		{
+			cout<<roomGrid[player1.currentX][player1.currentY]->getLdesc()<<endl;
+		}
+		else
+		{
+			cout<<roomGrid[player1.currentX][player1.currentY]->getSdesc()<<endl;
+		}
+		roomGrid[player1.currentX][player1.currentY]->hasVisited=true;
 		cout<<"Which direction?"<<endl;
 		cin>>direction;
 		moveRoom(roomGrid, player1.currentX, player1.currentY, direction);
