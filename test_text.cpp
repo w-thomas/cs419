@@ -37,7 +37,7 @@ int main () {
 	{	
 		
 		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
-		if (roomGrid[player1.currentX][player1.currentY]->hasVisited==false)
+		if (roomGrid[player1.currentX][player1.currentY]->gethasVisited()==false)
 		{
 			cout<<roomGrid[player1.currentX][player1.currentY]->getLdesc()<<endl;
 		}

@@ -192,3 +192,7 @@ void Rooms::getItem()
 		cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
 	}
 }
+bool Rooms::gethasVisited()
+{
+	return hasVisited;
+}
