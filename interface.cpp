@@ -4,7 +4,7 @@ void start_interface() {
 	initscr();
 	raw();
 
-Testing for color Capabilities
+//Testing for color Capabilities
 	if(has_colors() == FALSE)
 	{	endwin();
 		printf("Your terminal does not support color\n");
