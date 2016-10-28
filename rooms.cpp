@@ -186,10 +186,17 @@ bool Rooms::getEast()
 }
 void Rooms::getItem()
 {
-	for (size_t n=0; n<roomItem.size();n++)
+	if (roomItem.size()!=0)
 	{
-		cout<<"check2"<<endl;
-		cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
+		cout<<"Items in this room"<<endl;
+		for (size_t n=0; n<roomItem.size();n++)
+		{
+			cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
+		}
+	}
+	else
+	{
+		cout<<"There are no items here."<<endl;
 	}
 }
 bool Rooms::gethasVisited()

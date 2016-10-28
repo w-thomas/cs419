@@ -30,9 +30,17 @@ int main () {
 
 	//creates array of objects
 	createRoomObjects(roomGrid);
+
+	//test display items in room
+	roomGrid[0][0]->getItem();
+
+	//test pick up item
 	player1.pickUpItem(roomGrid[0][0]->roomItem[0]);
+
+	//test display backpack contents
 	player1.getBackpackContents();
-	//test program for player movement
+	
+	//test program for player movement & hasVisited boolean
 	while(end.compare("y") != 0)
 	{	
 		

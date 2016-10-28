@@ -18,7 +18,7 @@ void Player::setStartLocation()
 void Player::pickUpItem(Item pickup)
 {
 	backpack.push_back(pickup);
-	cout<<"in pickup: "<<backpack[0].getItemName()<<endl;
+	cout<<"Picked up "<<pickup.getItemName()<<endl;
 //	roomPickUp->roomItem.erase(std::remove(roomPickUp->roomItem.begin(), roomPickUp->roomItem.end(), 8), roomPickUp->roomItem.end());
 }
 
