@@ -87,13 +87,20 @@ void printDescLong(){
 void printHelp() {
 	//TODO:
 	//convert and print help text
+	WINDOW *local_win;
+
+	local_win = create_newwin(LINES/2, 68, 2, 2, false);
+	mvwprintw(local_win, 2, 30, "Help");
+	mvwprintw(local_win, 4, 4, "Look: blah blah blah");
+	mvwprintw(local_win, 6, 4, "Look at <featur || object>: blah blah blah");
+	wrefresh(local_win);
 	   //  cout << "\n" << "Help\n\n";
     // cout << "look : blah, blah, blah\n";
     // cout << "look at <feature || object> : blah, blah, blah\n";
     // cout << "go <direction> : blah, blah, blah\n";
     // cout << "quit or q : blah, blah, blah\n";
     // cout << "help or h : blah, blah, blah\n\n";
-    printString("Help text goes here");
+	destroy_win(local_win);
 }
 
 
