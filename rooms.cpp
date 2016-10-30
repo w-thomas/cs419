@@ -145,7 +145,7 @@ void Rooms::setItem(string roomItemName)
 	{
 		Item itemObj(roomItemName);
 		roomItem.push_back(itemObj);
-		cout<<roomItem[0].getItemName();
+		//cout<<roomItem[0].getItemName();
 	}
 }
 string Rooms::getName()
@@ -203,3 +203,22 @@ bool Rooms::gethasVisited()
 {
 	return hasVisited;
 }
+
+int Rooms::checkItems(string item)
+{
+	if (roomItem.size()!=0)
+	{
+		for (size_t n=0; n<roomItem.size();n++)
+		{
+            if(roomItem[n].getItemName().compare(item) == 0) {
+                return 1;
+            }
+		}
+	}
+	else
+	{
+		return 0;;
+	}
+    return 0;
+}
+
