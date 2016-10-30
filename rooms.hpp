@@ -39,6 +39,7 @@ class Rooms
 		bool getWest();
 		void getItem();
 		bool gethasVisited();
+        int checkItems(string item);
 		vector<Item> roomItem;
 		bool hasVisited;
 
