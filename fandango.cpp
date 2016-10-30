@@ -11,6 +11,7 @@
 #include <vector>
 #include "rooms.hpp"
 #include "player.hpp"
+#include "interface.hpp"
 
 #define MAX_X 3
 #define MAX_Y 3
@@ -212,17 +213,6 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         return 0;
     }
     return 1; 
-}
-
-void printHelp() {
-    cout << "\n" << "Help\n\n";
-    cout << "look : verbose description of current location\n";
-    cout << "look at <feature || item> : description of feature or item\n";
-    cout << "show pack : show contents of player's backpack\n";
-    cout << "grab <item> : grab a room item and put it in backpack\n";
-    cout << "go <direction> : navigate with directions n, s, e, and w\n";
-    cout << "quit or q : quit the game\n";
-    cout << "help or h : print this menu\n\n";
 }
 
 int main(int argc, char** argv) {

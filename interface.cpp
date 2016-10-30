@@ -25,6 +25,7 @@ void start_interface() {
 
 	refresh();
 	createDialogueWin();
+	createDetailsWin();
 	//noecho();
 }
 
@@ -36,6 +37,16 @@ void createDialogueWin(){
 	WINDOW *local_win;
 
 	local_win = create_newwin((LINES/2)+2, (COLS * 80)/100, 1, 1, true);
+
+	wbkgd(local_win, COLOR_PAIR(4));
+
+	wrefresh(local_win);
+}
+
+void  createDetailsWin(){
+	WINDOW *local_win;
+
+	local_win = create_newwin((LINES/4), (COLS * 80)/100, (LINES/2)+4, 1, true);
 
 	wbkgd(local_win, COLOR_PAIR(4));
 
@@ -61,6 +72,10 @@ void printString(std::string message) {
 	delete(cstr);
 }
 
+// void printDetails(){
+
+// }
+
 WINDOW *create_newwin(int height, int width, int starty, int startx, bool border) {	
 	WINDOW *local_win;
 
@@ -74,12 +89,21 @@ WINDOW *create_newwin(int height, int width, int starty, int startx, bool border
 	return local_win;
 }
 
+void print_feedback(std::string feedback){
+	char * cstr = new char[feedback.length()+1];
+	strcpy (cstr, feedback.c_str());
+
+	mvprintw(LINES - 4, 0, "                                                                     ");
+	mvprintw(LINES - 4, 0, cstr);
+	refresh();
+}
+
 std::string getInput() {
 	char * input = new char[80];
 
 	//This is hacky, but it "clears" the input line of last input by writing over
 	//it with empty space.
-	mvprintw(LINES - 2, 0, "Your input:                                                       ");
+	mvprintw(LINES - 2, 0, "Your input:                                                          ");
 
 	mvprintw(LINES - 2, 0, "Your input: ");
 
@@ -119,11 +143,13 @@ void printHelp() {
 	wbkgd(local_win, COLOR_PAIR(5));
 
 	mvwprintw(local_win, 2, 30, "Help");
-	mvwprintw(local_win, 4, 4, "Look: blah blah blah");
-	mvwprintw(local_win, 6, 4, "Look at <featur || object>: blah blah blah");
-	mvwprintw(local_win, 8, 4, "go <direction> : Lorem Ipsum blah");
-	mvwprintw(local_win, 10, 4, "quit or q : Quit and exit the game");
-	mvwprintw(local_win, 12, 4, "help or h : View this help dialogue again.");
+	mvwprintw(local_win, 4, 4, "look : verbose description of current location");
+	mvwprintw(local_win, 6, 4, "look at <feature || item> : description of feature or item");
+	mvwprintw(local_win, 8, 4, "show pack : show contents of player's backpack");
+	mvwprintw(local_win, 10, 4, "grab <item> : grab a room item and put it in backpack");
+	mvwprintw(local_win, 12, 4, "go <direction> : navigate with directions n, s, e, and w");
+	mvwprintw(local_win, 14, 4, "quit or q : quit the game");
+	mvwprintw(local_win, 16, 4, "help or h : print this menu");
 	wrefresh(local_win);
 
 
