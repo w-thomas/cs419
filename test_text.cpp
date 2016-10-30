@@ -25,23 +25,37 @@ int main () {
 	Player player1;
 	string direction;
 	string end;
+	string item;
+	string choose;
 	//keeps track of the player's current position
 	player1.setStartLocation();
 
 	//creates array of objects
 	createRoomObjects(roomGrid);
 
-	//test display items in room
+/*	//test display items in room
 	roomGrid[0][0]->getItem();
 
 	//test pick up item
-	player1.pickUpItem(roomGrid[0][0]->roomItem[0]);
+	player1.pickUpItem(end, roomGrid[0][0]->roomItem);
 
+	//test if room deleted item
+	roomGrid[0][0]->getItem();
+	
 	//test display backpack contents
 	player1.getBackpackContents();
 	
-	//test program for player movement & hasVisited boolean
-	while(end.compare("y") != 0)
+	//test drop item
+	player1.dropItem(end, roomGrid[0][0]->roomItem);
+	
+	//test display backpack contents
+	player1.getBackpackContents();
+	
+	//test display items in room
+	roomGrid[0][0]->getItem();
+	
+	//test program for player movement, hasVisited boolean, and item interaction
+*/	while(end.compare("y") != 0)
 	{	
 		
 		cout<<"You are in: "<<roomGrid[player1.currentX][player1.currentY]->getName()<<endl;
@@ -54,12 +68,32 @@ int main () {
 			cout<<roomGrid[player1.currentX][player1.currentY]->getSdesc()<<endl;
 		}
 		roomGrid[player1.currentX][player1.currentY]->hasVisited=true;
+
+		//item test
+		roomGrid[player1.currentX][player1.currentY]->getItem();
+		cout<<"Would you like to pick or drop an item (type pick or drop)?"<<endl;
+		cin>>choose;
+		if (choose.compare("pick")==0)
+		{
+			cout<<"which item do you want to pickup?"<<endl;
+			cin>>item;
+			player1.pickUpItem(item, roomGrid[player1.currentX][player1.currentY]->roomItem);
+		}
+		if (choose.compare("drop")==0)
+		{
+			cout<<"which item do you want to drop?"<<endl;
+			cin>>item;
+			player1.dropItem(item, roomGrid[player1.currentX][player1.currentY]->roomItem);
+		}
+		
 		cout<<"Which direction?"<<endl;
 		cin>>direction;
 		moveRoom(roomGrid, player1.currentX, player1.currentY, direction);
 		
 		cout<<"End test?"<<endl;
 		cin>>end;
+		cout<<endl;
+		cout<<endl;
 	}
 	return 0;
 }

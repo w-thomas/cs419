@@ -7,4 +7,4 @@ North:False
 South:True
 East:True
 West:True
-Item:
+Item:sword
