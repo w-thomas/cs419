@@ -17,9 +17,9 @@ class Player
 {
 	public:
 		void setStartLocation();
-		void pickUpItem(Item);
+		void pickUpItem(string pickup, vector<Item> &roomItem);
 		void getBackpackContents();
-		void dropItem();
+		void dropItem(string drop, vector<Item> &roomItem);
 		int currentX;
 		int currentY;
 		vector<Item> backpack;
