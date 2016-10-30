@@ -143,7 +143,6 @@ void Rooms::setItem(string roomItemName)
 	{
 		Item itemObj(roomItemName);
 		roomItem.push_back(itemObj);
-		cout<<roomItem[0].getItemName();
 	}
 }
 string Rooms::getName()
