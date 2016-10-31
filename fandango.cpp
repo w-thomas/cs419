@@ -11,6 +11,7 @@
 #include <vector>
 #include "rooms.hpp"
 #include "player.hpp"
+#include "interface.hpp"
 
 #define MAX_X 3
 #define MAX_Y 3
@@ -97,10 +98,12 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("show pack") == 0) {
         player->getBackpackContents();
     }
+    //dynamic commands
     else if(word.compare("grab") == 0) {
         //get next word
         iss >> word;
-        cout << word <<  endl;
+        //cout << word <<  endl;
+        player->pickUpItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
     }
     else {
         cout << "command not found in command library!!" << endl; //should never get here
