@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 10/26/2016
+* Last Modified: 10/30/2016
 */
 #include <iostream>
 #include <fstream>
@@ -10,15 +10,15 @@
 #include <vector>
 #include "rooms.hpp"
 #include "item.hpp"
+#include "feature.hpp"
 
 using namespace std;
 
 void createRoomObjects(Rooms *arrayGrid[][3])
 {
 	string line;
-	string roomArr[10];
+	string roomArr[16];
 	string delimiter =":";
-	//vector contains all Rooms objects
 	//http://stackoverflow.com/questions/32766817/go-to-a-specific-line-in-file-and-read-it
 	//read files in 1 at a time
 	int a=1;
@@ -57,18 +57,18 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 }
 
 
-Rooms::Rooms(string array[10])
+Rooms::Rooms(string array[16])
 {
 	setName(array[0]);
 	setLdesc(array[1]);
 	setSdesc(array[2]);
-	setFeature1(array[3]);
-	setFeature2(array[4]);
-	setNorth(array[5]);
-	setSouth(array[6]);
-	setEast(array[7]);
-	setWest(array[8]);
-	setItem(array[9]);
+	setFeature1(array[3],array[4],array[5],array[6]);
+	setFeature2(array[7], array[8], array[9], array[10]);
+	setNorth(array[11]);
+	setSouth(array[12]);
+	setEast(array[13]);
+	setWest(array[14]);
+	setItem(array[15]);
 	hasVisited=false;
 
 }
@@ -84,13 +84,15 @@ void Rooms::setSdesc(string shortDesc)
 {
 	Sdesc=shortDesc;
 }
-void Rooms::setFeature1(string f1)
+void Rooms::setFeature1(string f1, string fdesc, string req, string haveReq)
 {
-	feature1=f1;
+	Feature setroomFeature(f1, fdesc, req, haveReq);
+	roomFeature.push_back(setroomFeature);
 }
-void Rooms::setFeature2(string f2)
+void Rooms::setFeature2(string f2, string fdesc2, string req2, string haveReq2)
 {
-	feature2=f2;
+	Feature setroomFeature2(f2, fdesc2, req2, haveReq2);
+	roomFeature.push_back(setroomFeature2);
 }
 void Rooms::setNorth(string doorN)
 {
@@ -157,14 +159,38 @@ string Rooms::getSdesc()
 {
 	return Sdesc;
 }
-string Rooms::getFeature1()
+
+//displays room features to the user
+void Rooms::getFeatures()
 {
-	return feature1;
+	vector<Feature>::iterator Iter;
+	
+	cout<<"Hmmm. Look at these!"<<endl;
+	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
+	{
+		cout <<Iter->name<<endl; 
+	}
 }
-string Rooms::getFeature2()
+
+//takes in the feature string and backpack. Checks to see if required item is in 
+//backpack and returns appropriate feature description
+//Calls class Feature function getDesc
+string Rooms::getFeatureDesc(string lookFeature, vector<Item> &checkBackpack)
 {
-	return feature2;
+	string featureDesc; 
+	
+	vector<Feature>::iterator Iter;
+	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
+	{
+		if(Iter->name.compare(lookFeature)==0)
+		{
+			featureDesc= Iter->getDesc(checkBackpack);
+		}			
+	}
+	
+	return featureDesc;
 }
+
 bool Rooms::getNorth()
 {
 	return north;
@@ -201,21 +227,36 @@ bool Rooms::gethasVisited()
 	return hasVisited;
 }
 
+//checks to see if item or feature user picks is valid
 int Rooms::checkItems(string item)
 {
 	if (roomItem.size()!=0)
 	{
 		for (size_t n=0; n<roomItem.size();n++)
 		{
-            if(roomItem[n].getItemName().compare(item) == 0) {
+            if(roomItem[n].getItemName().compare(item) == 0) 
+			{
                 return 1;
             }
 		}
 	}
 	else
 	{
-		return 0;;
+		return 0;
 	}
     return 0;
 }
+
+int Rooms::checkFeature(string feature)
+{
+	for (size_t n=0; n<2;n++)
+	{
+		if(roomFeature[n].getFeatureName().compare(feature) == 0) 
+		{
+			return 1;
+		}
+		
+	}
+	return 0;
+}	
 

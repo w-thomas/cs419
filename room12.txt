@@ -2,7 +2,13 @@ Name:Room 12
 LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
 Feature2: 
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
 North:True
 South:False
 East:True

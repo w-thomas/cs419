@@ -2,7 +2,13 @@ Name:Room 5
 LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
 Feature2: 
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
 North:False
 South:True
 East:False
