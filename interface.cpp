@@ -138,7 +138,7 @@ void printHelp() {
 	//convert and print help text
 	WINDOW *local_win;
 
-	local_win = create_newwin(LINES/2, (COLS*77)/100, 2, 2, false);
+	local_win = create_newwin(LINES/2, (COLS*78)/100, 2, 2, false);
 
 	wbkgd(local_win, COLOR_PAIR(5));
 

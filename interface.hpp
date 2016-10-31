@@ -23,6 +23,8 @@ void createDialogueWin();
 
 void createDetailsWin();
 
+void print_feedback(std::string feedback);
+
 /**
 * printString(string) - accepts a std::string variable and prints it to the screen
 * handles all conversion to c-string and refreshes the ncurses display.
