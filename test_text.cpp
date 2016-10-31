@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: testing program
 * Group: Fandango
-* Last Modified: 10/24/2016
+* Last Modified: 10/30/2016
 */
 #include <iostream>
 #include <fstream>
@@ -11,6 +11,7 @@
 #include "rooms.hpp"
 #include "player.hpp"
 #include "item.hpp"
+#include "feature.hpp"
 
 using namespace std;
 
@@ -27,13 +28,23 @@ int main () {
 	string end;
 	string item;
 	string choose;
+	string feature;
+	int goodFeature;
+	
 	//keeps track of the player's current position
 	player1.setStartLocation();
 
 	//creates array of objects
 	createRoomObjects(roomGrid);
-
-/*	//test display items in room
+	
+/*	//test get features in a room
+	cout<<roomGrid[0][0]->getFeatureDesc("door", player1.backpack)<<endl;
+	player1.pickUpItem("gun",roomGrid[player1.currentX][player1.currentY]->roomItem);
+	cout<<roomGrid[0][0]->getFeatureDesc("door", player1.backpack)<<endl;
+	cout<<roomGrid[0][0]->getFeatureDesc("walker", player1.backpack)<<endl;
+	cout<<roomGrid[1][0]->getFeatureDesc("blood", player1.backpack)<<endl;
+	
+	//test display items in room
 	roomGrid[0][0]->getItem();
 
 	//test pick up item
@@ -68,7 +79,28 @@ int main () {
 			cout<<roomGrid[player1.currentX][player1.currentY]->getSdesc()<<endl;
 		}
 		roomGrid[player1.currentX][player1.currentY]->hasVisited=true;
-
+		
+		//feature test
+		roomGrid[player1.currentX][player1.currentY]->getFeatures();
+		cout<<"Would you like to interact with a feature(y/n)?"<<endl;
+		cin>>choose;
+		
+		if (choose=="y")
+		{
+			cout<<"which feature?"<<endl;
+			cin>>feature;
+			goodFeature=roomGrid[player1.currentX][player1.currentY]->checkFeature(feature);
+			cout<<"gF"<<goodFeature<<endl;
+			if (goodFeature==1)
+			{
+				cout<<roomGrid[player1.currentX][player1.currentY]->getFeatureDesc(feature, player1.backpack)<<endl;
+			}
+			else
+			{
+				cout<<"You cannot interact with that in here."<<endl;
+			}
+		}
+		
 		//item test
 		roomGrid[player1.currentX][player1.currentY]->getItem();
 		cout<<"Would you like to pick or drop an item (type pick or drop)?"<<endl;

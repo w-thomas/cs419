@@ -2,7 +2,13 @@ Name:Room 3
 LDesc:Longdesc
 SDesc:ShortDesc
 Feature1:Backpack
-Feature2: 
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
+Feature2:
+FeatureDesc:
+Requirement:
+Requirement Satisfied: 
 North:False
 South:True
 East:True

@@ -7,9 +7,9 @@ CXXFLAGS = -Wall
 CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 
-OBJS = test_text.o rooms.o player.o item.o
-SRCS = test_text.cpp rooms.cpp player.cpp item.cpp
-HEADERS = rooms.hpp player.hpp item.hpp
+OBJS = test_text.o rooms.o player.o item.o feature.o
+SRCS = test_text.cpp rooms.cpp player.cpp item.cpp feature.cpp
+HEADERS = rooms.hpp player.hpp item.hpp feature.hpp
 
 test: ${OBJS} ${HEADERS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o test_text
