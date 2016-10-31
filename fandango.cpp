@@ -1,6 +1,6 @@
 /*
  * fandango.cpp -- base engine for Fandango Group's project (CMD1)
- * Last Modified -- 10/26/2016
+ * Last Modified -- 10/31/2016
  * Last Modified By -- Josh Gonzalez
  * Known Issues  --
  */
@@ -24,8 +24,14 @@ using std::getline;
 using std::istringstream;
 using std::vector;
 
-int checkItems(Rooms *arrayGrid[][MAX_Y], Player *player, string item) {
+int checkRoomItems(Rooms *arrayGrid[][MAX_Y], Player *player, string item) {
     int result = arrayGrid[player->currentX][player->currentY]->checkItems(item);
+    return result;
+}
+
+//int checkPlayerPack(Rooms *arrayGrid[][MAX_Y], Player *player, string item) {
+int checkPlayerPack(Player *player, string item) {
+    int result = player->checkPack(item);
     return result;
 }
 
@@ -105,8 +111,14 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         //cout << word <<  endl;
         player->pickUpItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
     }
+    else if(word.compare("drop") == 0) {
+        //get next word
+        iss >> word;
+        //cout << word <<  endl;
+        player->dropItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
+    }
     else {
-        cout << "command not found in command library!!" << endl; //should never get here
+        cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here
         return;
     }
     /*
@@ -118,7 +130,7 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
     int result = 0;
     int i;
     int j;
-    const string l1[] = {"look", "go", "show", "grab"}; 
+    const string l1[] = {"look", "go", "show", "grab", "drop"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
@@ -161,7 +173,16 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
                 }
             }
             if(parentWord.compare("grab") == 0) {
-                result = checkItems(arrayGrid, player, word);
+                result = checkRoomItems(arrayGrid, player, word);
+                if(result != 1) {
+                    cout << word << " not in the room... ";
+                }
+            }
+            if(parentWord.compare("drop") == 0) {
+                result = checkPlayerPack(player, word);
+                if(result != 1) {
+                    cout << word << " not in the backpack... ";
+                }
             }
             break;
         case 3:
