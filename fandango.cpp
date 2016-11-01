@@ -62,15 +62,11 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     //if !(arrayGrid[player->currentX][player->currentY]->getVisited()) {need code for printing long desc if player has not already been in that room } 
     cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
 
+    //print features in the room
     cout << "The following features are in the room: " << endl;
-    if(arrayGrid[player->currentX][player->currentY]->getFeature1().compare("") != 0) {
-        cout << arrayGrid[player->currentX][player->currentY]->getFeature1() << endl;
-    }
-    if(arrayGrid[player->currentX][player->currentY]->getFeature2().compare("") != 0) {
-        cout << arrayGrid[player->currentX][player->currentY]->getFeature2() << endl;
-    }
+    arrayGrid[player->currentX][player->currentY]->getFeatures();
+
     //print items in the room
-    cout << "The following items are in the room: " << endl;
     arrayGrid[player->currentX][player->currentY]->getItem();
 }
 
@@ -117,31 +113,38 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         //cout << word <<  endl;
         player->dropItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
     }
+    else if(word.compare("look") == 0) {
+        //get next word
+        iss >> word;
+        if(word.compare("at") == 0) {
+            //get next word
+            iss >> word;
+            string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word, arrayGrid[player->currentX][player->currentY]->roomItem);
+            cout << str << endl;
+        }
+    }
     else {
-        cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here
+        cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
         return;
     }
-    /*
-     * should I hard code all commands, set up an array to iterate, or re-use some of the parse code maybe?
-     */
 }
 
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
     int i;
-    int j;
+    //int j;
     const string l1[] = {"look", "go", "show", "grab", "drop"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
-    const string l20[] = {"me", "you"}; 
-    const string l21[] = {"run", "walk"}; 
+    //const string l20[] = {"me", "you"}; 
+    //const string l21[] = {"run", "walk"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
     int s12 = sizeof(l12) / sizeof(string);
-    int s20 = sizeof(l20) / sizeof(string);
-    int s21 = sizeof(l21) / sizeof(string);
+    //int s20 = sizeof(l20) / sizeof(string);
+    //int s21 = sizeof(l21) / sizeof(string);
     switch(level) {
         case 1:
             for(i = 0; i < s1; ++i) {
@@ -175,35 +178,21 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("grab") == 0) {
                 result = checkRoomItems(arrayGrid, player, word);
                 if(result != 1) {
-                    cout << word << " not in the room... ";
+                    cout << word << " is not in the room... ";
                 }
             }
             if(parentWord.compare("drop") == 0) {
                 result = checkPlayerPack(player, word);
                 if(result != 1) {
-                    cout << word << " not in the backpack... ";
+                    cout << word << " is not in the backpack... ";
                 }
             }
             break;
         case 3:
-            for(i = 0; i < s10; ++i) {
-                if(l10[i].compare(parentWord) == 0) {
-                    for(j = 0; j < s20; ++j) {
-                        if(l20[j].compare(word) == 0) {
-                            result = 1;
-                            break;
-                        }
-                    }
-                }
-            }
-            for(i = 0; i < s11; ++i) {
-                if(l11[i].compare(parentWord) == 0) {
-                    for(j = 0; j < s21; ++j) {
-                        if(l21[j].compare(word) == 0) {
-                            result = 1;
-                            break;
-                        }
-                    }
+            if(parentWord.compare("at") == 0) {
+                result = arrayGrid[player->currentX][player->currentY]->checkFeature(word);
+                if(result != 1) {
+                    cout << word << " is not a feature here... ";
                 }
             }
             break;
@@ -243,7 +232,8 @@ void printHelp() {
     cout << "look : verbose description of current location\n";
     cout << "look at <feature || item> : description of feature or item\n";
     cout << "show pack : show contents of player's backpack\n";
-    cout << "grab <item> : grab a room item and put it in backpack\n";
+    cout << "grab <item> : grab a room item and put it in the backpack\n";
+    cout << "drop <item> : take item from the backback and leave it in the room\n";
     cout << "go <direction> : navigate with directions n, s, e, and w\n";
     cout << "quit or q : quit the game\n";
     cout << "help or h : print this menu\n\n";
