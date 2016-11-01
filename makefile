@@ -7,8 +7,8 @@ CXXFLAGS = -Wall
 CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 
-OBJS = fandango.o rooms.o player.o item.o
-SRCS = fandango.cpp rooms.cpp player.cpp item.cpp
+OBJS = fandango.o rooms.o player.o item.o feature.o
+SRCS = fandango.cpp rooms.cpp player.cpp item.cpp feature.cpp
 HEADERS = rooms.hpp player.hpp
 
 fandango: ${OBJS} ${HEADERS}
