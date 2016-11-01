@@ -13,7 +13,7 @@
 #include "player.hpp"
 #include "interface.hpp"
 
-#define MAX_X 3
+#define MAX_X 5
 #define MAX_Y 3
 
 using std::cout;
