@@ -1,8 +1,14 @@
 Name:Prison Cell B
 LDesc:Longdesc
 SDesc:ShortDesc
-Feature1:Backpack
+Feature1:blood
+FeatureDesc:Blood stains everywhere. When will things go back to normal?
+Requirement:
+Requirement Satisfied:
 Feature2: 
+FeatureDesc:
+Requirement:
+Requirement Satisfied:
 North:False
 South:True
 East:True
