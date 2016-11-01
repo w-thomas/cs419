@@ -59,8 +59,14 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
         cout<<"There is no door in that direction."<<endl;
         return;
     }
-    //if !(arrayGrid[player->currentX][player->currentY]->getVisited()) {need code for printing long desc if player has not already been in that room } 
-    cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+    //if hasVisited give short description else give long and set hasVisited true
+    if(arrayGrid[player->currentX][player->currentY]->gethasVisited()) {
+        cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+    } 
+    else {
+        arrayGrid[player->currentX][player->currentY]->hasVisited = true;
+    cout << arrayGrid[player->currentX][player->currentY]->getLdesc() << endl;
+    }
 
     //print features in the room
     cout << "The following features are in the room: " << endl;
