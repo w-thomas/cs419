@@ -90,7 +90,7 @@ int main () {
 			cout<<"which feature?"<<endl;
 			cin>>feature;
 			goodFeature=roomGrid[player1.currentX][player1.currentY]->checkFeature(feature);
-			cout<<"gF"<<goodFeature<<endl;
+			cout<<"gF: "<<goodFeature<<endl;
 			if (goodFeature==1)
 			{
 				cout<<roomGrid[player1.currentX][player1.currentY]->getFeatureDesc(feature, player1.backpack)<<endl;

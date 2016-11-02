@@ -1,16 +1,16 @@
-Name:Room 10
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
-Requirement:
-Requirement Satisfied:
-Feature2: 
-FeatureDesc:
-Requirement:
-Requirement Satisfied:
+Name:Open Field 10
+LDesc:Glenn, Maggie, and Michonne are fighting walkers!
+SDesc:I'm in this fight!
+Feature1:walkers
+FeatureDesc:A group of walkers are walking towards me!
+Requirement:gun
+Requirement Satisfied:Got em! I need to get going!
+Feature2:walker2 
+FeatureDesc:AHHH! A walker is behind me!
+Requirement:sword
+Requirement Satisfied:Whew. Thank goodness. That would not have been good.
 North:True
 South:True
 East:False
-West:True
+West:False
 Item:

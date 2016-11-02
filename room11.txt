@@ -1,16 +1,16 @@
 Name:Room 11
 LDesc:Longdesc
 SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+Feature1:feature1
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2:feature2
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
 North:True
 South:False
-East:True
+East:False
 West:False
 Item:

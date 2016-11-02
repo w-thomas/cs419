@@ -1,16 +1,16 @@
-Name:Room 14
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+Name:Outside14
+LDesc:Daryl! Let me help you! You're surrounded!
+SDesc:I'm continuing my mission!
+Feature1:daryl
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2:walker4 
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
 North:True
 South:False
 East:True
-West:True
+West:False
 Item:

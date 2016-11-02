@@ -1,16 +1,16 @@
 Name:Room 4
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+LDesc:Axel and Oscar are here preparing. Did they not hear that Rick needs help? I guess we need to get them to trust us a bit more.
+SDesc:Axel and Oscar preparing for something.
+Feature1:photo
+FeatureDesc:A photo of Oscar's family. I think he's trying to find them.
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2: cabinet
+FeatureDesc:Maybe they have something I can take! ... Nope. Nothing in here.
 Requirement:
 Requirement Satisfied:
 North:False
 South:True
-East:True
-West:True
+East:False
+West:False
 Item:

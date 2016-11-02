@@ -1,12 +1,12 @@
-Name:Room 7
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+Name:Hallway 7
+LDesc:I can hear the walkers outside. I need to hurry.
+SDesc:I can still hear them. Need to hurry!
+Feature1:chair
+FeatureDesc:Not the time to rest!
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2:jar
+FeatureDesc:Nice to know there's still some food left for us.
 Requirement:
 Requirement Satisfied:
 North:True

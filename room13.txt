@@ -1,16 +1,16 @@
 Name:Room 13
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+LDesc:A walker is in here! How?!
+SDesc:Do I need to tell someone about this walker?
+Feature1:walker3
+FeatureDesc:It's chained. I wonder who did this?
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2:chain 
+FeatureDesc:The chain seems strong enough. Is someone examining this?
 Requirement:
 Requirement Satisfied:
 North:True
 South:False
-East:True
-West:True
+East:False
+West:False
 Item:
