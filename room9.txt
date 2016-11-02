@@ -1,16 +1,16 @@
-Name:Room 9
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
-Requirement:
-Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Name:Hallway9
+LDesc:Hershel is helping Carol. I hope he has some supplies I can take with me.
+SDesc:Hershel is getting Carol all patched up.
+Feature1:medkit
+FeatureDesc:Hey! Do you need a medkit? Here! Take this.
+Requirement:medkit
+Requirement Satisfied:Hershel, you are a lifesaver!
+Feature2:carol 
+FeatureDesc:"I'm ready to take on those walkers. Hurry up, Hershel!"
 Requirement:
 Requirement Satisfied:
 North:True
 South:True
-East:True
+East:False
 West:True
-Item:
+Item:medkit
