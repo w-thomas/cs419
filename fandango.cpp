@@ -56,16 +56,16 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
     else
     {
-        cout<<"There is no door in that direction."<<endl;
+        print_feedback("There is no door in that direction.");
         return;
     }
     //if hasVisited give short description else give long and set hasVisited true
     if(arrayGrid[player->currentX][player->currentY]->gethasVisited()) {
-        cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
+        printString(arrayGrid[player->currentX][player->currentY]->getSdesc());
     } 
     else {
         arrayGrid[player->currentX][player->currentY]->hasVisited = true;
-    cout << arrayGrid[player->currentX][player->currentY]->getLdesc() << endl;
+        printString(arrayGrid[player->currentX][player->currentY]->getLdesc());
     }
 
     //print features in the room
@@ -77,7 +77,7 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
 }
 
 void printIntro() {
-    cout << "\n\n\nWe are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.\n\n\n";
+    printString("We are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.");
 }
 
 void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
@@ -101,7 +101,7 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "w");
     }
     else if(cmd.compare("look") == 0) {
-        cout << arrayGrid[player->currentX][player->currentY]->getLdesc() << endl;
+        printString(arrayGrid[player->currentX][player->currentY]->getLdesc());
     }
     else if(cmd.compare("show pack") == 0) {
         player->getBackpackContents();
@@ -130,7 +130,7 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         }
     }
     else {
-        cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
+        print_feedback("debug: command not found in command library, parsed but not executed!!");
         return;
     }
 }
@@ -219,7 +219,7 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     while(iss >> word) {
         int result = checkWord(arrayGrid, player, level, word, parentWord);
         if(result == 0) {
-            cout << "Invalid command: " << cmd << endl;
+            print_feedback("Invalid command: " + cmd);
             return 0;
         }
         ++level;
@@ -227,22 +227,10 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     }
     //single word command was not allowed
     if(level != 1 && singleOK == false) {
-        cout << "Invalid command: " << cmd << endl;
+        print_feedback("Invalid command: " + cmd);
         return 0;
     }
     return 1; 
-}
-
-void printHelp() {
-    cout << "\n" << "Help\n\n";
-    cout << "look : verbose description of current location\n";
-    cout << "look at <feature || item> : description of feature or item\n";
-    cout << "show pack : show contents of player's backpack\n";
-    cout << "grab <item> : grab a room item and put it in the backpack\n";
-    cout << "drop <item> : take item from the backback and leave it in the room\n";
-    cout << "go <direction> : navigate with directions n, s, e, and w\n";
-    cout << "quit or q : quit the game\n";
-    cout << "help or h : print this menu\n\n";
 }
 
 int main(int argc, char** argv) {
@@ -252,13 +240,14 @@ int main(int argc, char** argv) {
     Player *rick = new Player();//put a player on the board
     rick->setStartLocation();   //maybe we should call a constructor for this
 
+    start_interface();
+
     //start game
     printIntro();
     int result;                 //return value of parse (is entire cmd valid?)
     string cmd; 
     do {
-        cout << "> ";
-        getline(cin, cmd);
+        cmd = getInput();
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
@@ -267,4 +256,8 @@ int main(int argc, char** argv) {
         }
     }
     while((cmd != "q") && (cmd != "quit"));
+
+    end_interface();
+
+    return 0;
 }

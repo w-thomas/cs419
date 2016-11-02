@@ -1,3 +1,8 @@
+/*
+ * Interface.cpp -- ncurses based screen layout for Fandango's CMD1
+ * Created by Will Thomas
+ */
+
 #include "interface.hpp"
 
 void start_interface() {
@@ -72,9 +77,31 @@ void printString(std::string message) {
 	delete(cstr);
 }
 
-// void printDetails(){
+void printItems(std::string item) {
 
-// }
+	char * cstr = new char[item.length()+1];
+	strcpy (cstr, item.c_str());
+
+	printw(cstr);
+
+	delete(cstr);
+}
+
+void print_feedback(std::string feedback){
+	char * cstr = new char[feedback.length()+1];
+	strcpy (cstr, feedback.c_str());
+
+	mvprintw(LINES - 4, 0, "                                                                     ");
+	mvprintw(LINES - 4, 0, cstr);
+	refresh();
+
+	delete(cstr);
+}
+
+void clearFeedback(){
+	mvprintw(LINES-4, 0, "                                                                         ");
+	refresh();
+}
 
 WINDOW *create_newwin(int height, int width, int starty, int startx, bool border) {	
 	WINDOW *local_win;
@@ -89,14 +116,7 @@ WINDOW *create_newwin(int height, int width, int starty, int startx, bool border
 	return local_win;
 }
 
-void print_feedback(std::string feedback){
-	char * cstr = new char[feedback.length()+1];
-	strcpy (cstr, feedback.c_str());
 
-	mvprintw(LINES - 4, 0, "                                                                     ");
-	mvprintw(LINES - 4, 0, cstr);
-	refresh();
-}
 
 std::string getInput() {
 	char * input = new char[80];
@@ -148,8 +168,9 @@ void printHelp() {
 	mvwprintw(local_win, 8, 4, "show pack : show contents of player's backpack");
 	mvwprintw(local_win, 10, 4, "grab <item> : grab a room item and put it in backpack");
 	mvwprintw(local_win, 12, 4, "go <direction> : navigate with directions n, s, e, and w");
-	mvwprintw(local_win, 14, 4, "quit or q : quit the game");
-	mvwprintw(local_win, 16, 4, "help or h : print this menu");
+	mvwprintw(local_win, 14, 4, "drop <item> : take item from the backback and leave it in the room");
+	mvwprintw(local_win, 16, 4, "quit or q : quit the game");
+	mvwprintw(local_win, 18, 4, "help or h : print this menu");
 	wrefresh(local_win);
 
 

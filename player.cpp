@@ -9,6 +9,7 @@
 #include "rooms.hpp"
 #include <algorithm>
 #include <vector>
+#include "interface.hpp"
 
 void Player::setStartLocation()
 {
@@ -21,7 +22,7 @@ void Player::pickUpItem(string pickup, vector<Item> &roomItem)
 {
     int vecSize;
 
-    cout<<"Picked up "<<pickup<<endl;
+    print_feedback("Picked up " + pickup);
     vecSize=roomItem.size();
 
     for (int i=0;i<vecSize;i++)
@@ -42,7 +43,7 @@ void Player::dropItem(string drop, vector<Item> &roomItem)
     int vecSize;
 
     vecSize=backpack.size();
-    cout<<"Dropped "<<drop<<endl;
+    print_feedback("Dropped " + drop);
 
     for (int i=0;i<vecSize;i++)
     {
@@ -60,14 +61,23 @@ void Player::getBackpackContents()
 {
     if (backpack.size()!=0)
     {
-        cout<<"Your backpack contains: "<<endl;
+    	//Hacky but gets around text not going away. Temp fix for now
+    	print_feedback("                                                                      ");
+
+    	mvprintw(LINES-5, 0, "Your backpack contains:");
+    	//Move cursor to output position
+    	move(LINES-4, 0);
+
         for (size_t n=0; n<backpack.size();n++)
         {
-            cout<<n+1<<": "<<backpack[n].getItemName()<<endl;
+        	printItems("[");
+        	printItems(backpack[n].getItemName());
+        	printItems("] ");
         }
+        	refresh();
     }
     else{
-        cout<<"Your backpack is empty."<<endl;
+    	print_feedback("Your backpack is empty");
     }
 
 }
