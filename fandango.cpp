@@ -248,6 +248,7 @@ int main(int argc, char** argv) {
     string cmd; 
     do {
         cmd = getInput();
+        print_feedback("                                                                      ");
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
