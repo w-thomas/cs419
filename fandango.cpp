@@ -29,7 +29,6 @@ int checkRoomItems(Rooms *arrayGrid[][MAX_Y], Player *player, string item) {
     return result;
 }
 
-//int checkPlayerPack(Rooms *arrayGrid[][MAX_Y], Player *player, string item) {
 int checkPlayerPack(Player *player, string item) {
     int result = player->checkPack(item);
     return result;
@@ -64,6 +63,7 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
         cout << arrayGrid[player->currentX][player->currentY]->getSdesc() << endl;
     } 
     else {
+        //set hasVisited to true and print long form desc
         arrayGrid[player->currentX][player->currentY]->hasVisited = true;
     cout << arrayGrid[player->currentX][player->currentY]->getLdesc() << endl;
     }
@@ -80,13 +80,16 @@ void printIntro() {
     cout << "\n\n\nWe are in the midst of a worldwide zombie apocalypse.  I have managed to survive for almost one year.  I've lost many friends and family but have also gained a new family.  I trust them all with my life and they trust me with theirs.  I will need each one of them to help me continue on and make a life for ourselves in this new world.  We have managed to take over a state prison. It has all we need for survival: strong gates, access to a well, and a large yard for raising livestock and growing crops.  We now have a new enemy.  It is not the hoards of zombies.  It is a living man.  He wants to take what is ours but we have worked too hard for too long to let him take it from us.\n\n\n";
 }
 
+//takes the game board instance, player instance, and valid (parsed) command
+//executes dynamic commands using class functions, static commands hard-coded using local functions
+//library of commmands are static in some cases and dynamic in others
 void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
+    
     //strip first word for dynamic commands
     istringstream iss(cmd);
     string word;
     iss >> word;
-    //cout << word;
-
+    
     //static commands
     if(cmd.compare("go n") == 0) {
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "n");
@@ -106,17 +109,16 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("show pack") == 0) {
         player->getBackpackContents();
     }
+    
     //dynamic commands
     else if(word.compare("grab") == 0) {
         //get next word
         iss >> word;
-        //cout << word <<  endl;
         player->pickUpItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
     }
     else if(word.compare("drop") == 0) {
         //get next word
         iss >> word;
-        //cout << word <<  endl;
         player->dropItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
     }
     else if(word.compare("look") == 0) {
@@ -130,27 +132,27 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         }
     }
     else {
-        cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
+        //cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
         return;
     }
 }
 
+//takes the game board instance, player instance, level in the command tree, current word and parent word
+//checks arrays for each level and acceptable parents to those words 
+//checks class object vectors to see if items, features are in the room or possesion of the player
+//returns int to parseCmd().  Returns 0 if word at level is allowed, else returns 1
+//prints message to user if items, features are not in the room or in possesion of the player
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
     int i;
-    //int j;
     const string l1[] = {"look", "go", "show", "grab", "drop"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
-    //const string l20[] = {"me", "you"}; 
-    //const string l21[] = {"run", "walk"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
     int s12 = sizeof(l12) / sizeof(string);
-    //int s20 = sizeof(l20) / sizeof(string);
-    //int s21 = sizeof(l21) / sizeof(string);
     switch(level) {
         case 1:
             for(i = 0; i < s1; ++i) {
@@ -206,6 +208,11 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
     return result;
 }
 
+//takes the game board instance, player instance, and command string from user
+//strips off words and sends them to checkWord
+//returns int to main().  Returns 0 if any word fails checkWord, else returns 1
+//prints to console a message if the command is invalid
+//continues until the entire command string has been parsed or a word is invalid
 int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     int level = 1;
     //check if this is an allowed single word command
@@ -251,11 +258,20 @@ int main(int argc, char** argv) {
     createRoomObjects(board);   //setup the board
     Player *rick = new Player();//put a player on the board
     rick->setStartLocation();   //maybe we should call a constructor for this
-
+    
     //start game
     printIntro();
+    //print out long from desc of starting room
+    cout << board[rick->currentX][rick->currentY]->getLdesc() << endl;
+    //print features in the starting room
+    cout << "The following features are in the room: " << endl;
+    board[rick->currentX][rick->currentY]->getFeatures();
+    //print items in the starting room
+    board[rick->currentX][rick->currentY]->getItem();
+    //set starting room to hasVisited
+    board[rick->currentX][rick->currentY]->hasVisited = true;
     int result;                 //return value of parse (is entire cmd valid?)
-    string cmd; 
+    string cmd;                 //entire command that the user supplies 
     do {
         cout << "> ";
         getline(cin, cmd);
