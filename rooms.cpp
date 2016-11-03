@@ -165,7 +165,6 @@ void Rooms::getFeatures()
 {
 	vector<Feature>::iterator Iter;
 	
-	cout<<"Hmmm. Look at these!"<<endl;
 	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
 	{
 		cout <<Iter->name<<endl; 
