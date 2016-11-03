@@ -1,8 +1,7 @@
-/*Author: Jennifer Mendoza
-* Description: feature.cpp header file
+/*Description: feature.cpp header file
 * Group: Fandango
-* Last Modified: 10/30/2016
-*/
+* * Last Modified: 10/30/2016
+* */
 #ifndef FEATURE_HPP
 #define FEATURE_HPP
 #include <iostream>
@@ -28,4 +27,3 @@ class Feature
 };
 
 #endif
-

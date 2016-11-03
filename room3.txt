@@ -1,16 +1,16 @@
 Name:Room 3
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
-Requirement:
-Requirement Satisfied:
-Feature2:
-FeatureDesc:
+LDesc:Hi Beth! Where is your dad? I am in need of some medical supplies.
+SDesc:Beth is still here.
+Feature1:beth
+FeatureDesc:"Hershel is in the hallway somewhere. He's caring for Carol's wounds."
+Requirement:medkit
+Requirement Satisfied:Thanks Beth. I got the medkit from Hershel.
+Feature2:carl
+FeatureDesc:Carl seems busy with Judith. Ill let him be.
 Requirement:
 Requirement Satisfied: 
 North:False
 South:True
-East:True
-West:True
+East:False
+West:False
 Item:

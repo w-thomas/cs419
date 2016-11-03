@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 10/30/2016
+* Last Modified: 11/02/2016
 */
 #include <iostream>
 #include <fstream>
@@ -165,7 +165,6 @@ void Rooms::getFeatures()
 {
 	vector<Feature>::iterator Iter;
 	
-	cout<<"Hmmm. Look at these!"<<endl;
 	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
 	{
 		cout <<Iter->name<<endl; 
@@ -249,7 +248,7 @@ int Rooms::checkItems(string item)
 
 int Rooms::checkFeature(string feature)
 {
-	for (size_t n=0; n<2;n++)
+	for (size_t n=0; n<roomFeature.size();n++)
 	{
 		if(roomFeature[n].getFeatureName().compare(feature) == 0) 
 		{

@@ -1,12 +1,12 @@
-Name:Room 8
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:Backpack
-FeatureDesc:
+Name:Hallway 8
+LDesc:So many people are being treated by Hershel. He looks so busy.
+SDesc:People are injured. I need to help quick!
+Feature1:feature1
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
-Feature2: 
-FeatureDesc:
+Feature2:feature2 
+FeatureDesc:Description here
 Requirement:
 Requirement Satisfied:
 North:True
