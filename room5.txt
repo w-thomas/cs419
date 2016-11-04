@@ -1,8 +1,8 @@
 Name:Room 5
 LDesc:Rick! I'm here to help. There's walkers everywhere! We need to find gas and light the car on fire to drive them away! 
 SDesc:I need to find the gas and get to the car! Rick is struggling to keep the perimeter from collapsing!
-Feature1:rick
-FeatureDesc:Description here
+Feature1:Rick
+FeatureDesc:"Hey. Did you find the gas?"
 Requirement:
 Requirement Satisfied:
 Feature2:fence

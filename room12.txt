@@ -1,12 +1,12 @@
 Name:Room 12
-LDesc:Longdesc
-SDesc:ShortDesc
-Feature1:feature1
-FeatureDesc:Description here
+LDesc:I really hope there are items in here! Rick needs my help!
+SDesc:I'm ready to take them all on.
+Feature1:hat
+FeatureDesc:What is Carl's hat doing here? He never takes this off.
 Requirement:
 Requirement Satisfied:
-Feature2:feature2
-FeatureDesc:Description here
+Feature2:clothes
+FeatureDesc:These clothes are from the prisoners that were here. 
 Requirement:
 Requirement Satisfied:
 North:True

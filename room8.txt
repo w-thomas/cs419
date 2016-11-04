@@ -1,14 +1,14 @@
-Name:Hallway 8
-LDesc:So many people are being treated by Hershel. He looks so busy.
+Name:Hallway 
+LDesc:I can see so many people are being treated by Hershel. He looks so busy.
 SDesc:People are injured. I need to help quick!
-Feature1:feature1
-FeatureDesc:Description here
+Feature1:gauze
+FeatureDesc:I'll hand these to Hershel over there. He can use this while treating Carol.
 Requirement:
 Requirement Satisfied:
-Feature2:feature2 
-FeatureDesc:Description here
-Requirement:
-Requirement Satisfied:
+Feature2:bullets
+FeatureDesc:I don't have a gun. How can I even use these?
+Requirement:gun
+Requirement Satisfied:These bullets will come in handy!
 North:True
 South:True
 East:True

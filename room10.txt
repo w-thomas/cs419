@@ -1,14 +1,14 @@
-Name:Open Field 10
+Name:Open Field 
 LDesc:Glenn, Maggie, and Michonne are fighting walkers!
 SDesc:I'm in this fight!
 Feature1:walkers
 FeatureDesc:A group of walkers are walking towards me!
 Requirement:gun
 Requirement Satisfied:Got em! I need to get going!
-Feature2:walker2 
+Feature2:walker 
 FeatureDesc:AHHH! A walker is behind me!
 Requirement:sword
-Requirement Satisfied:Whew. Thank goodness. That would not have been good.
+Requirement Satisfied:4...5...6...walkers! Got 'em!
 North:True
 South:True
 East:False

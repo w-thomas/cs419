@@ -2,7 +2,7 @@ Name:Room 4
 LDesc:Axel and Oscar are here preparing. Did they not hear that Rick needs help? I guess we need to get them to trust us a bit more.
 SDesc:Axel and Oscar preparing for something.
 Feature1:photo
-FeatureDesc:A photo of Oscar's family. I think he's trying to find them.
+FeatureDesc:A photo of Oscar's family. I think he's still trying to find them.
 Requirement:
 Requirement Satisfied:
 Feature2: cabinet

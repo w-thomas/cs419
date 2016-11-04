@@ -1,12 +1,12 @@
-Name:Car15
+Name:Car
 LDesc:I need to light this car on fire to create an explosion!
 SDesc:Can I light this on fire now?
 Feature1:car
-FeatureDesc:Description here
+FeatureDesc:I can definitely light this on fire.
 Requirement:
 Requirement Satisfied:
 Feature2:lock 
-FeatureDesc:Description here
+FeatureDesc:I'll need to unlock this fence once I have the gas and match.
 Requirement:
 Requirement Satisfied:
 North:True
