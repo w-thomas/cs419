@@ -11,23 +11,23 @@
 #include <vector>
 #include "item.hpp"
 
-Item::Item(string itemName)
+Item::Item(std::string itemName)
 {
 	int pos=1;
 	int line_number(1);
 	int atLine=1;
-	string line;
-	string filename=itemName+".txt";
-	ifstream file(filename.c_str());
+	std::string line;
+	std::string filename=itemName+".txt";
+	std::ifstream file(filename.c_str());
 	
 	while (std::getline(file, line))
 	{
 		//saves each line in an array
 		if (line_number == atLine)
 		{
-			string s=line;
+			std::string s=line;
 			int delimiter = s.find(":");
-			string token = s.substr (delimiter+1);
+			std::string token = s.substr (delimiter+1);
 			token.erase(token.length()-1);
 			if (pos==1)
 			{
@@ -40,7 +40,7 @@ Item::Item(string itemName)
 			if (pos==3)
 			{
 				int w;
-				stringstream convert(token);
+				std::stringstream convert(token);
 				convert >> w;
 				weight=w;
 			}
@@ -52,11 +52,11 @@ Item::Item(string itemName)
 	
 }
 
-string Item::getItemName()
+std::string Item::getItemName()
 {
 	return name;
 }
-string Item::getItemDesc()
+std::string Item::getItemDesc()
 {
 	return desc;
 }

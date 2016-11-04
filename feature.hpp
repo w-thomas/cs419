@@ -9,20 +9,20 @@
 #include <vector>
 #include "item.hpp"
 
-using namespace std;
+
 
 class Feature
 {
 	public:
-		Feature (string f1, string fdesc, string req, string haveReq);
-		string name;
-		string getDesc(vector<Item> &checkBackpack);
-		string getFeatureName();
+		Feature (std::string f1, std::string fdesc, std::string req, std::string haveReq);
+		std::string name;
+		std::string getDesc(std::vector<Item> &checkBackpack);
+		std::string getFeatureName();
 		
 	private:
-		string desc;
-		string dependency;
-		string reqDesc;
+		std::string desc;
+		std::string dependency;
+		std::string reqDesc;
 		
 };
 

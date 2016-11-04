@@ -8,17 +8,16 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 class Item
 {
 	public:
-		Item (string itemName);
-		string getItemName();
-		string getItemDesc();
+		Item (std::string itemName);
+		std::string getItemName();
+		std::string getItemDesc();
 		int getItemWeight();
-		string name;
-		string desc;
+		std::string name;
+		std::string desc;
 		int weight;
 };
 

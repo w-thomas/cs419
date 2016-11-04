@@ -12,7 +12,7 @@
 #include "feature.hpp"
 #include "item.hpp"
 
-Feature::Feature(string f1, string fdesc, string req, string haveReq)
+Feature::Feature(std::string f1, std::string fdesc, std::string req, std::string haveReq)
 {
 	name=f1;
 	desc=fdesc;
@@ -22,9 +22,9 @@ Feature::Feature(string f1, string fdesc, string req, string haveReq)
 
 //checks to see if the required item is in backpack
 //returns either main description or unique description
-string Feature::getDesc(vector<Item> &checkBackpack)
+std::string Feature::getDesc(std::vector<Item> &checkBackpack)
 {
-	vector<Item>::iterator Iter;
+	std::vector<Item>::iterator Iter;
 	for (Iter = checkBackpack.begin(); Iter != checkBackpack.end(); ++Iter)
 	{
 		if(Iter->name.compare(dependency)==0)
@@ -35,7 +35,7 @@ string Feature::getDesc(vector<Item> &checkBackpack)
 	return desc;
 }
 
-string Feature::getFeatureName()
+std::string Feature::getFeatureName()
 {
 	return name;
 }

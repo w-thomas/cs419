@@ -17,42 +17,42 @@ class Rooms
 {
 	public:
 		//constructor
-		Rooms(string array[16]);
+		Rooms(std::string array[16]);
 		//functions to set object information
-		void setName(string);
-		void setLdesc(string);
-		void setSdesc(string);
-		void setFeature1(string, string, string, string);
-		void setFeature2(string, string, string, string);
-		void setNorth(string);
-		void setSouth(string);
-		void setEast(string);
-		void setWest(string);
-		void setItem(string);
-		vector<Feature> roomFeature;
+		void setName(std::string);
+		void setLdesc(std::string);
+		void setSdesc(std::string);
+		void setFeature1(std::string, std::string, std::string, std::string);
+		void setFeature2(std::string, std::string, std::string, std::string);
+		void setNorth(std::string);
+		void setSouth(std::string);
+		void setEast(std::string);
+		void setWest(std::string);
+		void setItem(std::string);
+		std::vector<Feature> roomFeature;
 		
 		//get object information
-		string getName();
-		string getLdesc();
-		string getSdesc();
+		std::string getName();
+		std::string getLdesc();
+		std::string getSdesc();
 		void getFeatures();
-		string getFeatureDesc(string lookFeature, vector<Item> &checkBackpack);
+		std::string getFeatureDesc(std::string lookFeature, std::vector<Item> &checkBackpack);
 		bool getNorth();
 		bool getSouth();
 		bool getEast();
 		bool getWest();
 		void getItem();
 		bool gethasVisited();
-		int checkFeature(string feature);
-        int checkItems(string item);
-		vector<Item> roomItem;
+		int checkFeature(std::string feature);
+        int checkItems(std::string item);
+		std::vector<Item> roomItem;
 		bool hasVisited;
 
 
 	private:
-		string roomName;
-		string Ldesc;		
-		string Sdesc;
+		std::string roomName;
+		std::string Ldesc;		
+		std::string Sdesc;
 		bool north;
 		bool south;
 		bool east;
