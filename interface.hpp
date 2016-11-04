@@ -21,6 +21,12 @@ void end_interface();
 //TODO: Documentation
 void createDialogueWin();
 
+void createDetailsWin();
+
+void print_feedback(std::string feedback);
+
+void clearFeedback();
+
 /**
 * printString(string) - accepts a std::string variable and prints it to the screen
 * handles all conversion to c-string and refreshes the ncurses display.
@@ -28,6 +34,8 @@ void createDialogueWin();
 * RETURN: nothing
 **/
 void printString(std::string message);
+
+void printItems(std::string item);
 
 /**
 * Creates an ncurses window at specified location and size

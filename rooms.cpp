@@ -11,6 +11,7 @@
 #include "rooms.hpp"
 #include "item.hpp"
 #include "feature.hpp"
+#include "interface.hpp"
 
 using namespace std;
 
@@ -164,11 +165,26 @@ string Rooms::getSdesc()
 void Rooms::getFeatures()
 {
 	vector<Feature>::iterator Iter;
+
+	//Create ncurses window to print dialogue to:
+    WINDOW *item_win;
+
+    item_win = create_newwin(3, ((COLS * 80)/100)-2, (LINES/2)+5, 2, false);
+    wbkgd(item_win, COLOR_PAIR(6));
+    wprintw(item_win, "The following features are in the room: ");
 	
 	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
 	{
-		cout <<Iter->name<<endl; 
+		char * cstr = new char[Iter->name.length()+1];
+		strcpy (cstr, Iter->name.c_str());
+		// cout <<Iter->name<<endl;
+		wprintw(item_win, cstr);
+		wprintw(item_win, " "); 
+		delete(cstr);
 	}
+
+	wrefresh(item_win);
+	destroy_win(item_win);
 }
 
 //takes in the feature string and backpack. Checks to see if required item is in 
@@ -208,19 +224,38 @@ bool Rooms::getEast()
 }
 void Rooms::getItem()
 {
+
+	//Create ncurses window to print dialogue to:
+    WINDOW *item_win;
+
+    item_win = create_newwin(3, ((COLS * 80)/100)-2, (LINES/2)+8, 2, false);
+    wbkgd(item_win, COLOR_PAIR(6));
+
 	if (roomItem.size()!=0)
-	{
-		cout<<"Items in this room"<<endl;
+	{	
+		wprintw(item_win, "The following items are in the room: ");
+		// cout<<"Items in this room"<<endl;
 		for (size_t n=0; n<roomItem.size();n++)
 		{
-			cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
+			char * cstr = new char[roomItem[n].getItemName().length()+1];
+			strcpy (cstr, roomItem[n].getItemName().c_str());
+			// cout <<Iter->name<<endl;
+			wprintw(item_win, cstr);
+			wprintw(item_win, " "); 
+			delete(cstr);
+			// cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
 		}
 	}
 	else
 	{
-		cout<<"There are no items here."<<endl;
+		wprintw(item_win, "There are no items here.");
+		// cout<<"There are no items here."<<endl;
 	}
+
+	wrefresh(item_win);
+	destroy_win(item_win);
 }
+
 bool Rooms::gethasVisited()
 {
 	return hasVisited;
