@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 11/02/2016
+* Last Modified: 11/4/2016
 */
 #include <iostream>
 #include <fstream>

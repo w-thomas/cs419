@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: player.cpp header file
 * Group: Fandango
-* Last Modified: 10/26/2016
+* Last Modified: 11/4/2016
 */
 #ifndef PLAYER_HPP
 #define PLAYER_HPP

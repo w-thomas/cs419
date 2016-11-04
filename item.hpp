@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: item.cpp header file
 * Group: Fandango
-* Last Modified: 10/24/2016
+* Last Modified: 11/4/2016
 */
 #ifndef ITEM_HPP
 #define ITEM_HPP
