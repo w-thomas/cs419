@@ -1,24 +1,23 @@
 /*Author: Jennifer Mendoza
 * Description: item.cpp header file
 * Group: Fandango
-* Last Modified: 10/24/2016
+* Last Modified: 11/4/2016
 */
 #ifndef ITEM_HPP
 #define ITEM_HPP
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 class Item
 {
 	public:
-		Item (string itemName);
-		string getItemName();
-		string getItemDesc();
+		Item (std::string itemName);
+		std::string getItemName();
+		std::string getItemDesc();
 		int getItemWeight();
-		string name;
-		string desc;
+		std::string name;
+		std::string desc;
 		int weight;
 };
 

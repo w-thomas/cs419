@@ -1,12 +1,12 @@
-Name:Room 13
+Name:Prison Cell
 LDesc:A walker is in here! How?!
 SDesc:Do I need to tell someone about this walker?
-Feature1:walker3
+Feature1:walker
 FeatureDesc:It's chained. I wonder who did this?
 Requirement:
 Requirement Satisfied:
 Feature2:chain 
-FeatureDesc:The chain seems strong enough. Is someone examining this?
+FeatureDesc:The chain seems strong enough. Is someone examining this thing?
 Requirement:
 Requirement Satisfied:
 North:True

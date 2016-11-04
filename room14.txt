@@ -1,12 +1,12 @@
-Name:Outside14
+Name:Outside
 LDesc:Daryl! Let me help you! You're surrounded!
 SDesc:I'm continuing my mission!
-Feature1:daryl
-FeatureDesc:Description here
-Requirement:
-Requirement Satisfied:
-Feature2:walker4 
-FeatureDesc:Description here
+Feature1:Daryl
+FeatureDesc:"Why are you talking to me? Fight them off!"
+Requirement:sword
+Requirement Satisfied:"Watch out!"
+Feature2:walker 
+FeatureDesc:They never stop.
 Requirement:
 Requirement Satisfied:
 North:True

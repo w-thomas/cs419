@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: player.cpp header file
 * Group: Fandango
-* Last Modified: 10/26/2016
+* Last Modified: 11/4/2016
 */
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
@@ -11,16 +11,15 @@
 #include "item.hpp"
 #include "rooms.hpp"
 
-using namespace std;
 
 class Player
 {
 	public:
 		void setStartLocation();
-		void pickUpItem(string pickup, vector<Item> &roomItem);
+		void pickUpItem(std::string pickup, std::vector<Item> &roomItem);
 		void getBackpackContents();
-		int checkPack(string item);
-		void dropItem(string drop, vector<Item> &roomItem);
+		int checkPack(std::string item);
+		void dropItem(std::string drop, std::vector<Item> &roomItem);
 		int currentX;
 		int currentY;
 		vector<Item> backpack;

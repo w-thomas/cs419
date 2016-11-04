@@ -1,4 +1,4 @@
-Name:Hallway 7
+Name:Hallway 
 LDesc:I can hear the walkers outside. I need to hurry.
 SDesc:I can still hear them. Need to hurry!
 Feature1:chair

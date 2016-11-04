@@ -1,7 +1,7 @@
 /*
  * fandango.cpp -- base engine for Fandango Group's project (CMD1)
- * Last Modified -- 11/02/2016
- * Last Modified By -- Josh Gonzalez
+ * Last Modified -- 11/04/2016
+ * Last Modified By -- Jen Mendoza - changed line 132 
  * Known Issues  --
  */
 
@@ -128,7 +128,8 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         if(word.compare("at") == 0) {
             //get next word
             iss >> word;
-            string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word, arrayGrid[player->currentX][player->currentY]->roomItem);
+			//changed- instead of searching item in pack, searches item in room
+            string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word, player->backpack);
             // cout << str << endl;
             print_feedback(str);
         }

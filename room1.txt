@@ -5,7 +5,7 @@ Feature1:door
 FeatureDesc:I need to be ready with a weapon once I leave the cell.
 Requirement:gun
 Requirement Satisfied:This gun will come in handy once I get out this door.
-Feature2:walker1
+Feature2:walker
 FeatureDesc:This walker has been here for a while. Maybe I should move it...or not.
 Requirement:
 Requirement Satisfied:

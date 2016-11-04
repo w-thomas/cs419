@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
  * Description: function definitions
  * Group: Fandango
- * Last Modified: 10/26/2016
+ * Last Modified: 11/4/2016
  */
 #include <iostream>
 #include "player.hpp"
@@ -38,7 +38,7 @@ void Player::pickUpItem(string pickup, vector<Item> &roomItem)
 }
 
 //save item object to room vector and delete from backpack vector
-void Player::dropItem(string drop, vector<Item> &roomItem)
+void Player::dropItem(std::string drop, std::vector<Item> &roomItem)
 {
     int vecSize;
 
@@ -82,7 +82,7 @@ void Player::getBackpackContents()
 
 }
 
-int Player::checkPack(string item)
+int Player::checkPack(std::string item)
 {
     if(backpack.size()!=0)
     {

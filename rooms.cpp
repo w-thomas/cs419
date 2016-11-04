@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 11/02/2016
+* Last Modified: 11/4/2016
 */
 #include <iostream>
 #include <fstream>
@@ -13,13 +13,12 @@
 #include "feature.hpp"
 #include "interface.hpp"
 
-using namespace std;
 
 void createRoomObjects(Rooms *arrayGrid[][3])
 {
-	string line;
-	string roomArr[16];
-	string delimiter =":";
+	std::string line;
+	std::string roomArr[16];
+	std::string delimiter =":";
 	//http://stackoverflow.com/questions/32766817/go-to-a-specific-line-in-file-and-read-it
 	//read files in 1 at a time
 	int a=1;
@@ -30,11 +29,11 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 		{
 			int line_number(1);
 			int atLine=1;
-			string str;
+			std::string str;
 			ostringstream convert;
 			convert << a;
 			str = convert.str();
-			string filename="room"+str+".txt";
+			std::string filename="room"+str+".txt";
 			ifstream file(filename.c_str());
 			
 			while (std::getline(file, line))
@@ -42,9 +41,9 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 				//saves each line in an array
 				if (line_number == atLine)
 				{
-					string s=line;
+					std::string s=line;
 					int pos = s.find(":");
-					string token = s.substr (pos+1);
+					std::string token = s.substr (pos+1);
 					token.erase(token.length()-1);
 					roomArr[atLine-1]=token;
 				}
@@ -58,7 +57,7 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 }
 
 
-Rooms::Rooms(string array[16])
+Rooms::Rooms(std::string array[16])
 {
 	setName(array[0]);
 	setLdesc(array[1]);
@@ -73,29 +72,29 @@ Rooms::Rooms(string array[16])
 	hasVisited=false;
 
 }
-void Rooms::setName(string name)
+void Rooms::setName(std::string name)
 {
 	roomName=name;
 }
-void Rooms::setLdesc(string longDesc)
+void Rooms::setLdesc(std::string longDesc)
 {
 	Ldesc=longDesc;
 }
-void Rooms::setSdesc(string shortDesc)
+void Rooms::setSdesc(std::string shortDesc)
 {
 	Sdesc=shortDesc;
 }
-void Rooms::setFeature1(string f1, string fdesc, string req, string haveReq)
+void Rooms::setFeature1(std::string f1, std::string fdesc, std::string req, std::string haveReq)
 {
 	Feature setroomFeature(f1, fdesc, req, haveReq);
 	roomFeature.push_back(setroomFeature);
 }
-void Rooms::setFeature2(string f2, string fdesc2, string req2, string haveReq2)
+void Rooms::setFeature2(std::string f2, std::string fdesc2, std::string req2, std::string haveReq2)
 {
 	Feature setroomFeature2(f2, fdesc2, req2, haveReq2);
 	roomFeature.push_back(setroomFeature2);
 }
-void Rooms::setNorth(string doorN)
+void Rooms::setNorth(std::string doorN)
 {
 	if(doorN=="True")
 	{
@@ -107,7 +106,7 @@ void Rooms::setNorth(string doorN)
 		
 	}
 }
-void Rooms::setSouth(string doorS)
+void Rooms::setSouth(std::string doorS)
 {
 	if (doorS=="True")
 	{
@@ -118,7 +117,7 @@ void Rooms::setSouth(string doorS)
 		south=false;
 	}
 }
-void Rooms::setEast(string doorE)
+void Rooms::setEast(std::string doorE)
 {
 	if (doorE=="True")
 	{
@@ -129,7 +128,7 @@ void Rooms::setEast(string doorE)
 		east=false;
 	}
 }
-void Rooms::setWest(string doorW)
+void Rooms::setWest(std::string doorW)
 {
 	if (doorW=="True")
 	{
@@ -140,7 +139,7 @@ void Rooms::setWest(string doorW)
 		west=false;
 	}
 }
-void Rooms::setItem(string roomItemName)
+void Rooms::setItem(std::string roomItemName)
 {
 	if (roomItemName!="")
 	{
@@ -190,7 +189,7 @@ void Rooms::getFeatures()
 //takes in the feature string and backpack. Checks to see if required item is in 
 //backpack and returns appropriate feature description
 //Calls class Feature function getDesc
-string Rooms::getFeatureDesc(string lookFeature, vector<Item> &checkBackpack)
+std::string Rooms::getFeatureDesc(std::string lookFeature, vector<Item> &checkBackpack)
 {
 	string featureDesc; 
 	
@@ -262,7 +261,7 @@ bool Rooms::gethasVisited()
 }
 
 //checks to see if item or feature user picks is valid
-int Rooms::checkItems(string item)
+int Rooms::checkItems(std::string item)
 {
 	if (roomItem.size()!=0)
 	{
@@ -281,7 +280,7 @@ int Rooms::checkItems(string item)
     return 0;
 }
 
-int Rooms::checkFeature(string feature)
+int Rooms::checkFeature(std::string feature)
 {
 	for (size_t n=0; n<roomFeature.size();n++)
 	{
