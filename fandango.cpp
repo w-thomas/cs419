@@ -69,7 +69,8 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
 
     //print features in the room
-    cout << "The following features are in the room: " << endl;
+    //I'm moving this message to inside the getFeatures function - Will T.
+    //cout << "The following features are in the room: " << endl;
     arrayGrid[player->currentX][player->currentY]->getFeatures();
 
     //print items in the room
@@ -128,15 +129,16 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
             //get next word
             iss >> word;
             string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word, arrayGrid[player->currentX][player->currentY]->roomItem);
-            cout << str << endl;
+            // cout << str << endl;
+            print_feedback(str);
         }
     }
     else {
-<<<<<<< HEAD
+
         print_feedback("debug: command not found in command library, parsed but not executed!!");
-=======
+
         //cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
->>>>>>> master
+
         return;
     }
 }
@@ -190,13 +192,15 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("grab") == 0) {
                 result = checkRoomItems(arrayGrid, player, word);
                 if(result != 1) {
-                    cout << word << " is not in the room... ";
+                    print_feedback(word + " is not in the room");
+                    //cout << word << " is not in the room... ";
                 }
             }
             if(parentWord.compare("drop") == 0) {
                 result = checkPlayerPack(player, word);
                 if(result != 1) {
-                    cout << word << " is not in the backpack... ";
+                    print_feedback(word + " is not in the backpack...");
+                    // cout << word << " is not in the backpack... ";
                 }
             }
             break;
@@ -204,7 +208,8 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("at") == 0) {
                 result = arrayGrid[player->currentX][player->currentY]->checkFeature(word);
                 if(result != 1) {
-                    cout << word << " is not a feature here... ";
+                    print_feedback(word + " is not a feature here... ");
+                    // cout << word << " is not a feature here... ";
                 }
             }
             break;
@@ -250,19 +255,21 @@ int main(int argc, char** argv) {
     createRoomObjects(board);   //setup the board
     Player *rick = new Player();//put a player on the board
     rick->setStartLocation();   //maybe we should call a constructor for this
-<<<<<<< HEAD
 
     start_interface();
 
-=======
-    
->>>>>>> master
     //start game
     printIntro();
+    print_feedback("Press any key to continue.");
+    noecho();
+    getch();
+    echo();
+    clearFeedback();
     //print out long from desc of starting room
-    cout << board[rick->currentX][rick->currentY]->getLdesc() << endl;
+    printString(board[rick->currentX][rick->currentY]->getLdesc());
+
     //print features in the starting room
-    cout << "The following features are in the room: " << endl;
+    //cout << "The following features are in the room: " << endl;
     board[rick->currentX][rick->currentY]->getFeatures();
     //print items in the starting room
     board[rick->currentX][rick->currentY]->getItem();

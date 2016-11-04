@@ -62,7 +62,7 @@ void printString(std::string message) {
 
 	WINDOW *local_win;
 
-	local_win = create_newwin(LINES/2, (COLS*78)/100, 2, 2, false);
+	local_win = create_newwin(LINES/2, ((COLS * 80)/100)-2, 2, 2, false);
 
 	wbkgd(local_win, COLOR_PAIR(6));
 
@@ -91,6 +91,7 @@ void print_feedback(std::string feedback){
 	char * cstr = new char[feedback.length()+1];
 	strcpy (cstr, feedback.c_str());
 
+	mvprintw(LINES - 5, 0, "                                                                     ");
 	mvprintw(LINES - 4, 0, "                                                                     ");
 	mvprintw(LINES - 4, 0, cstr);
 	refresh();
