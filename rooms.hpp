@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: rooms.cpp header file
 * Group: Fandango
-* Last Modified: 11/4/2016
+* Last Modified: 11/11/2016
 */
 #ifndef ROOMS_HPP
 #define ROOMS_HPP
@@ -11,7 +11,7 @@
 #include "item.hpp"
 #include "feature.hpp"
 
-using namespace std;
+
 
 class Rooms
 {
@@ -22,8 +22,7 @@ class Rooms
 		void setName(std::string);
 		void setLdesc(std::string);
 		void setSdesc(std::string);
-		void setFeature1(std::string, std::string, std::string, std::string);
-		void setFeature2(std::string, std::string, std::string, std::string);
+		void setFeature(std::string f1, std::string fdesc, std::string req, std::string haveReq);
 		void setNorth(std::string);
 		void setSouth(std::string);
 		void setEast(std::string);
@@ -36,7 +35,7 @@ class Rooms
 		std::string getLdesc();
 		std::string getSdesc();
 		void getFeatures();
-		std::string getFeatureDesc(std::string lookFeature, std::vector<Item> &checkBackpack);
+		std::string getFeatureDesc(std::string lookFeature);
 		bool getNorth();
 		bool getSouth();
 		bool getEast();
@@ -47,6 +46,7 @@ class Rooms
         int checkItems(std::string item);
 		std::vector<Item> roomItem;
 		bool hasVisited;
+		std::string talkTo(std:: string person);
 
 
 	private:

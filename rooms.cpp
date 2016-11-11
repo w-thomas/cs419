@@ -30,11 +30,11 @@ void createRoomObjects(Rooms *arrayGrid[][3])
 			int line_number(1);
 			int atLine=1;
 			std::string str;
-			ostringstream convert;
+			std::ostringstream convert;
 			convert << a;
 			str = convert.str();
 			std::string filename="room"+str+".txt";
-			ifstream file(filename.c_str());
+			std::ifstream file(filename.c_str());
 			
 			while (std::getline(file, line))
 			{
@@ -62,8 +62,8 @@ Rooms::Rooms(std::string array[16])
 	setName(array[0]);
 	setLdesc(array[1]);
 	setSdesc(array[2]);
-	setFeature1(array[3],array[4],array[5],array[6]);
-	setFeature2(array[7], array[8], array[9], array[10]);
+	setFeature(array[3],array[4],array[5],array[6]);
+	setFeature(array[7], array[8], array[9], array[10]);
 	setNorth(array[11]);
 	setSouth(array[12]);
 	setEast(array[13]);
@@ -84,16 +84,12 @@ void Rooms::setSdesc(std::string shortDesc)
 {
 	Sdesc=shortDesc;
 }
-void Rooms::setFeature1(std::string f1, std::string fdesc, std::string req, std::string haveReq)
+void Rooms::setFeature(std::string f1, std::string fdesc, std::string req, std::string haveReq)
 {
 	Feature setroomFeature(f1, fdesc, req, haveReq);
 	roomFeature.push_back(setroomFeature);
 }
-void Rooms::setFeature2(std::string f2, std::string fdesc2, std::string req2, std::string haveReq2)
-{
-	Feature setroomFeature2(f2, fdesc2, req2, haveReq2);
-	roomFeature.push_back(setroomFeature2);
-}
+
 void Rooms::setNorth(std::string doorN)
 {
 	if(doorN=="True")
@@ -147,15 +143,15 @@ void Rooms::setItem(std::string roomItemName)
 		roomItem.push_back(itemObj);
 	}
 }
-string Rooms::getName()
+std::string Rooms::getName()
 {
 	return roomName;
 }
-string Rooms::getLdesc()
+std::string Rooms::getLdesc()
 {
 	return Ldesc;
 }
-string Rooms::getSdesc()
+std::string Rooms::getSdesc()
 {
 	return Sdesc;
 }
@@ -163,7 +159,7 @@ string Rooms::getSdesc()
 //displays room features to the user
 void Rooms::getFeatures()
 {
-	vector<Feature>::iterator Iter;
+	std::vector<Feature>::iterator Iter;
 
 	//Create ncurses window to print dialogue to:
     WINDOW *item_win;
@@ -189,16 +185,16 @@ void Rooms::getFeatures()
 //takes in the feature string and backpack. Checks to see if required item is in 
 //backpack and returns appropriate feature description
 //Calls class Feature function getDesc
-std::string Rooms::getFeatureDesc(std::string lookFeature, vector<Item> &checkBackpack)
+std::string Rooms::getFeatureDesc(std::string lookFeature)
 {
-	string featureDesc; 
+	std::string featureDesc; 
 	
-	vector<Feature>::iterator Iter;
+	std::vector<Feature>::iterator Iter;
 	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
 	{
 		if(Iter->name.compare(lookFeature)==0)
 		{
-			featureDesc= Iter->getDesc(checkBackpack);
+			featureDesc= Iter->getDesc();
 		}			
 	}
 	
@@ -292,4 +288,26 @@ int Rooms::checkFeature(std::string feature)
 	}
 	return 0;
 }	
+
+std::string Rooms::talkTo(std:: string person)
+{
+	std::string interactionDesc;
+	std::string notPerson=person+" is not a person.";
+	//checks if the feature is in the room
+	std::vector<Feature>::iterator Iter;
+	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
+	{
+		if(Iter->name.compare(person)==0)
+		{
+			//if in the room, checks to see if the person is a person
+			if (Iter->checkPerson()==1)
+			{
+				//if a person, returns the interactionDesc
+				interactionDesc=Iter->getInteractDesc();
+				return interactionDesc;
+			}
+		}			
+	}
+	return notPerson;
+}
 

@@ -1,13 +1,13 @@
 Name:Prison Cell B
 LDesc:Empty cell. I'll have a look around. I might find something that can help me.
 SDesc:Not much in here.
-Feature1:blood
+Feature1:Jen
 FeatureDesc:Blood stains everywhere. When will things go back to normal?
-Requirement:
+Person:True
 Requirement Satisfied:
-Feature2:handle
+Feature2:Rick
 FeatureDesc:I see a handle sticking out from a pile of clothes.
-Requirement:sword
+Person:True
 Requirement Satisfied:This sword is definitely going to help me.
 North:False
 South:True
