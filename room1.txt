@@ -3,12 +3,12 @@ LDesc:You awake in your cell to shouting. You hear Carl running in the hallway t
 SDesc:Rick needs your help! Explore the prison. To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers". Your cell door is south of you.
 Feature1:door
 FeatureDesc:I need to be ready with a weapon once I leave the cell.
-Requirement:gun
+Person:False
 Requirement Satisfied:This gun will come in handy once I get out this door.
-Feature2:walker
-FeatureDesc:This walker has been here for a while. Maybe I should move it...or not.
-Requirement:
-Requirement Satisfied:
+Feature2:Rick
+FeatureDesc:A male with a hat and gun.
+Person:True
+Requirement Satisfied:"Hey you. You need to start your adventure."
 North:False
 South:True
 East:False

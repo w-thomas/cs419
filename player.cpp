@@ -18,7 +18,7 @@ void Player::setStartLocation()
 }
 
 //save item object to backpack vector and delete from room vector
-void Player::pickUpItem(string pickup, vector<Item> &roomItem)
+void Player::pickUpItem(std::string pickup, std::vector<Item> &roomItem)
 {
     int vecSize;
 
@@ -30,7 +30,7 @@ void Player::pickUpItem(string pickup, vector<Item> &roomItem)
         if (roomItem[i].getItemName()==pickup)
         {
             backpack.push_back(roomItem[i]);
-            swap(roomItem[i],roomItem.back());
+            std::swap(roomItem[i],roomItem.back());
             roomItem.pop_back();
             break;
         }
@@ -50,7 +50,7 @@ void Player::dropItem(std::string drop, std::vector<Item> &roomItem)
         if (backpack[i].getItemName()==drop)
         {
             roomItem.push_back(backpack[i]);
-            swap(backpack[i],backpack.back());
+            std::swap(backpack[i],backpack.back());
             backpack.pop_back();
             break;
         }

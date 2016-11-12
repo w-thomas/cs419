@@ -22,7 +22,7 @@ class Player
 		void dropItem(std::string drop, std::vector<Item> &roomItem);
 		int currentX;
 		int currentY;
-		vector<Item> backpack;
+		std::vector<Item> backpack;
 };
 
 #endif
