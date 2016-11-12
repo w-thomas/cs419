@@ -1,14 +1,14 @@
 Name:Prison Cell B
 LDesc:Empty cell. I'll have a look around. I might find something that can help me.
 SDesc:Not much in here.
-Feature1:Jen
-FeatureDesc:Blood stains everywhere. When will things go back to normal?
+Feature1:Michonne
+FeatureDesc: A strong female holding a samaurai sword.
 Person:True
-Requirement Satisfied:
-Feature2:Rick
+Requirement Satisfied:"Hey you! How are you"
+Feature2:handle
 FeatureDesc:I see a handle sticking out from a pile of clothes.
-Person:True
-Requirement Satisfied:This sword is definitely going to help me.
+Person:False
+Requirement Satisfied:This text should not pop up when calling talkto()
 North:False
 South:True
 East:False
