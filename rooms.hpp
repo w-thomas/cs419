@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: rooms.cpp header file
 * Group: Fandango
-* Last Modified: 11/11/2016
+* Last Modified: 11/13/2016
 */
 #ifndef ROOMS_HPP
 #define ROOMS_HPP
@@ -19,15 +19,16 @@ class Rooms
 		//constructor
 		Rooms(std::string array[16]);
 		//functions to set object information
-		void setName(std::string);
-		void setLdesc(std::string);
-		void setSdesc(std::string);
+		void setName(std::string name);
+		void setLdesc(std::string longDesc);
+		void setSdesc(std::string shortDesc);
 		void setFeature(std::string f1, std::string fdesc, std::string req, std::string haveReq);
-		void setNorth(std::string);
-		void setSouth(std::string);
-		void setEast(std::string);
-		void setWest(std::string);
-		void setItem(std::string);
+		void setNorth(std::string doorN);
+		void setSouth(std::string doorS);
+		void setEast(std::string doorE);
+		void setWest(std::string doorW);
+		void setItem(std::string roomItemName);
+		void setrsDesc(std:: string reqDesc);
 		std::vector<Feature> roomFeature;
 		
 		//get object information
@@ -47,6 +48,7 @@ class Rooms
 		std::vector<Item> roomItem;
 		bool hasVisited;
 		std::string talkTo(std:: string person);
+		std::string getrsDesc();
 
 
 	private:
@@ -57,10 +59,7 @@ class Rooms
 		bool south;
 		bool east;
 		bool west;
-
-
-
-
+		std::string rsDesc;
 		
 
 };

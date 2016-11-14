@@ -1,16 +1,17 @@
-Name:Car
+Name:Storage Facility
 LDesc:I need to light this car on fire to create an explosion!
 SDesc:Can I light this on fire now?
 Feature1:car
 FeatureDesc:I can definitely light this on fire.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 Feature2:lock 
 FeatureDesc:I'll need to unlock this fence once I have the gas and match.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:False
 East:False
 West:True
 Item:
+Requirement Satisfied:

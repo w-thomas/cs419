@@ -1,16 +1,17 @@
 Name:Hallway 
 LDesc:I can hear the walkers outside. I need to hurry.
 SDesc:I can still hear them. Need to hurry!
-Feature1:chair
-FeatureDesc:Not the time to rest!
-Requirement:
-Requirement Satisfied:
+Feature1:Michonne
+FeatureDesc:A brave woman holding a samaurai sword.
+Person:True
+Interaction:"Hey Rick. You need this?"
 Feature2:jar
 FeatureDesc:Nice to know there's still some food left for us.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:True
 East:True
 West:True
-Item:
+Item:sword
+Requirement Satisfied:

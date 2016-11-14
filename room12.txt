@@ -3,14 +3,15 @@ LDesc:I really hope there are items in here! Rick needs my help!
 SDesc:I'm ready to take them all on.
 Feature1:hat
 FeatureDesc:What is Carl's hat doing here? He never takes this off.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 Feature2:clothes
 FeatureDesc:These clothes are from the prisoners that were here. 
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:False
 East:False
 West:False
 Item:
+Requirement Satisfied:

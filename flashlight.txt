@@ -1,0 +1,2 @@
+Name:flashlight
+Description:A flashlight that emits a strong light and enables vision in dark locations.

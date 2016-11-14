@@ -3,14 +3,15 @@ LDesc:I can see so many people are being treated by Hershel. He looks so busy.
 SDesc:People are injured. I need to help quick!
 Feature1:gauze
 FeatureDesc:I'll hand these to Hershel over there. He can use this while treating Carol.
-Requirement:
-Requirement Satisfied:
-Feature2:bullets
-FeatureDesc:I don't have a gun. How can I even use these?
-Requirement:gun
-Requirement Satisfied:These bullets will come in handy!
+Person:
+Interaction:
+Feature2:feature2
+FeatureDesc:feature2 desc
+Person:False
+Interaction:
 North:True
 South:True
 East:True
 West:True
 Item:
+Requirement Satisfied:

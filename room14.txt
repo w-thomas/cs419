@@ -2,15 +2,16 @@ Name:Outside
 LDesc:Daryl! Let me help you! You're surrounded!
 SDesc:I'm continuing my mission!
 Feature1:Daryl
-FeatureDesc:"Why are you talking to me? Fight them off!"
-Requirement:sword
-Requirement Satisfied:"Watch out!"
+FeatureDesc:A man on the floor. Looks wounded.
+Person:True
+Interaction:"It's not that bad. I just need a medkit."
 Feature2:walker 
 FeatureDesc:They never stop.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:False
 East:True
 West:False
 Item:
+Requirement Satisfied:

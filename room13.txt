@@ -3,14 +3,15 @@ LDesc:A walker is in here! How?!
 SDesc:Do I need to tell someone about this walker?
 Feature1:walker
 FeatureDesc:It's chained. I wonder who did this?
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 Feature2:chain 
 FeatureDesc:The chain seems strong enough. Is someone examining this thing?
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:False
 East:False
 West:False
-Item:
+Item:bullets
+Requirement Satisfied:
