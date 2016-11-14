@@ -1,5 +1,6 @@
 Name:Room 4
 LDesc:A walker with no legs is dragging itself on the floor!
+SDesc:Short Desc
 Feature1:walker
 FeatureDesc:The walker has no legs. There is something shiny in its pocket.
 Person:False
