@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 11/4/2016
+* Last Modified: 11/13/2016
 */
 #include <iostream>
 #include <fstream>
@@ -17,7 +17,7 @@
 void createRoomObjects(Rooms *arrayGrid[][3])
 {
 	std::string line;
-	std::string roomArr[16];
+	std::string roomArr[17];
 	std::string delimiter =":";
 	//http://stackoverflow.com/questions/32766817/go-to-a-specific-line-in-file-and-read-it
 	//read files in 1 at a time
@@ -69,6 +69,7 @@ Rooms::Rooms(std::string array[16])
 	setEast(array[13]);
 	setWest(array[14]);
 	setItem(array[15]);
+	setrsDesc(array[16]);
 	hasVisited=false;
 
 }
@@ -143,6 +144,13 @@ void Rooms::setItem(std::string roomItemName)
 		roomItem.push_back(itemObj);
 	}
 }
+
+void Rooms::setrsDesc(std::string reqDesc)
+{
+	rsDesc=reqDesc;
+}
+
+//gets information
 std::string Rooms::getName()
 {
 	return roomName;
@@ -310,4 +318,9 @@ std::string Rooms::talkTo(std:: string person)
 	}
 	return notPerson;
 }
+std::string Rooms::getrsDesc()
+{
+	return rsDesc;
+}
+
 

@@ -1,3 +1,2 @@
 Name:sword
 Description:A sharp sword that can cut through anything.
-weight:1

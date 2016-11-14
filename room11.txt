@@ -1,16 +1,17 @@
 Name:Room 11
 LDesc:"Glenn: We need to hurry! I'll be in the open field if you need me."
 SDesc:Glenn is gone. I should go to the open field and help them.
-Feature1:photo
-FeatureDesc:Glenn dropped his photo of Maggie. I'll give it to him later. 
-Requirement:
-Requirement Satisfied:
+Feature1:Hershel
+FeatureDesc:An older man with a cane. 
+Person:True
+Interaction:
 Feature2:water
 FeatureDesc:Yum. Water has been so scarce. 
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:True
 South:False
 East:False
 West:False
-Item:
+Item:medkit
+Requirement Satisfied:

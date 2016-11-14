@@ -1,16 +1,17 @@
 Name:Prison Cell B
 LDesc:Empty cell. I'll have a look around. I might find something that can help me.
 SDesc:Not much in here.
-Feature1:Michonne
-FeatureDesc: A strong female holding a samaurai sword.
-Person:True
-Requirement Satisfied:"Hey you! How are you"
-Feature2:handle
-FeatureDesc:I see a handle sticking out from a pile of clothes.
+Feature1:candle
+FeatureDesc: A green candle is lit to light up the dark cell.
 Person:False
-Requirement Satisfied:This text should not pop up when calling talkto()
+Interaction:
+Feature2:handle
+FeatureDesc:I see a handle sticking out from a pile of clothes. Someone must've left this.
+Person:False
+Interaction:
 North:False
 South:True
 East:False
 West:False
-Item:sword
+Item:matches
+Requirement Satisfied:

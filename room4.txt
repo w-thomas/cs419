@@ -1,16 +1,16 @@
 Name:Room 4
-LDesc:Axel and Oscar are here preparing. Did they not hear that Rick needs help? I guess we need to get them to trust us a bit more.
-SDesc:Axel and Oscar preparing for something.
-Feature1:photo
-FeatureDesc:A photo of Oscar's family. I think he's still trying to find them.
-Requirement:
-Requirement Satisfied:
+LDesc:A walker with no legs is dragging itself on the floor!
+Feature1:walker
+FeatureDesc:The walker has no legs. There is something shiny in its pocket.
+Person:False
+Interaction:
 Feature2: cabinet
 FeatureDesc:Maybe they have something I can take! ... Nope. Nothing in here.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 North:False
 South:True
 East:False
 West:False
-Item:
+Item:keys
+Requirement Satisfied:

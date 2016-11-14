@@ -2,15 +2,16 @@ Name:Room 3
 LDesc:Hi Beth! Where is your dad? I am in need of some medical supplies.
 SDesc:Beth is still here.
 Feature1:Beth
-FeatureDesc:"Hershel is in the hallway somewhere. He's caring for Carol's wounds."
-Requirement:medkit
-Requirement Satisfied:Thanks Beth. I got the medkit from Hershel.
+FeatureDesc:A young female with some wounds. She has been in battle recently.
+Person:True
+Interaction:"Hey Rick! Good luck!"
 Feature2:Carl
 FeatureDesc:Carl seems busy with Judith. Ill let him be.
-Requirement:
-Requirement Satisfied: 
+Person:True
+Interaction:"Hey dad. I'm trying to get Judith to sleep." 
 North:False
 South:True
 East:False
 West:False
-Item:
+Item:flashlight
+Requirement Satisfied:

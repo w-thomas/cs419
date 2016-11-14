@@ -1,16 +1,17 @@
 Name:Hallway6
-LDesc:Great. Where should I start? Let's start exploring.
+LDesc:Great. Where should I start? Let's start exploring. The end of the hallway is dark. I'll need a flashlight soon.
 SDesc:Have I explored the prison enough?
 Feature1:bag
 FeatureDesc:I already have a bag.
-Requirement:
-Requirement Satisfied:
+Person:False
+Interaction:
 Feature2:cans
-FeatureDesc:Kids are playing. At least they're happy and safe. 
-Requirement:
-Requirement Satisfied:
+FeatureDesc:Kids are playing with the cans. At least they're happy and safe. 
+Person:False
+Interaction:
 North:True
 South:True
 East:True
 West:False
 Item:
+Requirement Satisfied:
