@@ -13,5 +13,5 @@ North:True
 South:False
 East:False
 West:True
-Item:
+Item:gas
 Requirement Satisfied:
