@@ -10,7 +10,7 @@
 #include <vector>
 #include "item.hpp"
 #include "feature.hpp"
-
+#include "player.hpp"
 
 
 class Rooms
@@ -18,6 +18,10 @@ class Rooms
 	public:
 		//constructor
 		Rooms(std::string array[16]);
+		std::string talkTo(std:: string person, Player& rick);
+		std::string swing(std:: string sword, Player& rick);
+		std::string shoot(std:: string gun, Player& rick);
+		
 		//functions to set object information
 		void setName(std::string name);
 		void setLdesc(std::string longDesc);
@@ -47,7 +51,6 @@ class Rooms
         int checkItems(std::string item);
 		std::vector<Item> roomItem;
 		bool hasVisited;
-		std::string talkTo(std:: string person);
 		std::string getrsDesc();
 
 
