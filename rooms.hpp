@@ -18,9 +18,10 @@ class Rooms
 	public:
 		//constructor
 		Rooms(std::string array[16]);
-		std::string talkTo(std:: string person, Player& rick);
-		std::string swing(std:: string sword, Player& rick);
-		std::string shoot(std:: string gun, Player& rick);
+		std::string talkTo(std::string person, Player& rick);
+		std::string swing(std::string sword, Player& rick);
+		std::string shoot(std::string gun, Player& rick);
+		std::string healDaryl(std::string daryl, Player& rick);
 		
 		//functions to set object information
 		void setName(std::string name);

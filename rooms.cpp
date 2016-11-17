@@ -336,7 +336,7 @@ std::string Rooms::getrsDesc()
 	return rsDesc;
 }
 
-//swing sword
+//Needs a check to see if player is in correct room***
 std::string Rooms::swing(std:: string sword, Player& rick)
 {
 	std::string interactionDesc="Swung sword at walker!";
@@ -361,6 +361,7 @@ std::string Rooms::swing(std:: string sword, Player& rick)
 	return notSword;
 }
 
+//Needs a check to see if player is in correct room***
 std::string Rooms::shoot(std:: string gun, Player& rick)
 {
 	std::string interactionDesc="Shot walker!";
@@ -407,5 +408,39 @@ std::string Rooms::shoot(std:: string gun, Player& rick)
 	
 	return notGun;
 	
+}
+
+
+//Needs a check to see if player is in correct room***
+std::string Rooms::healDaryl(std::string daryl, Player& rick)
+{
+	int haveMedkit=0;
+	std::string interactionDesc;
+	std::vector<Item>::iterator Iter;
+	
+	//check to see if string is daryl
+	if (daryl=="Daryl")
+	{
+		
+		//search bag to see if medkit is in bag 
+		for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+		{
+			if(Iter->name.compare("medkit")==0)
+			{
+				haveMedkit=1;
+				rick.healDaryl=true;
+				interactionDesc="You have healed Daryl.";
+				return interactionDesc;
+			}
+		}
+		if (haveMedkit==0)
+		{
+			interactionDesc="You do not have the medkit in your pack.";
+			return interactionDesc;
+		}
+		
+	}
+	interactionDesc="You cannot heal "+daryl;
+	return interactionDesc;
 }
 

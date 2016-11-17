@@ -23,46 +23,59 @@ void Player::pickUpItem(std::string pickup, std::vector<Item> &roomItem)
 {
     int vecSize;
 	bool canPickUp=true;
-	if(pickup=="keys")
+	//limits the size of backpack to 3 items
+	if (backpack.size()!=3)
 	{
-		if (walker4==false)
+		//player cannot pick up keys if walker is still alive
+		if(pickup=="keys")
 		{
-			canPickUp=false;
-		}
-	}
-	else if(pickup=="medkit")
-	{
-		if (talkToHershel==false)
-		{
-			canPickUp=false;
-		}
-	}
-	else if(pickup=="sword")
-	{
-		if (talkToMichonne==false)
-		{
-			canPickUp=false;
-		}
-	}
-
-	if (canPickUp==true)
-    {
-		print_feedback("Picked up " + pickup);
-		vecSize=roomItem.size();
-
-		for (int i=0;i<vecSize;i++)
-		{
-			if (roomItem[i].getItemName()==pickup)
+			if (walker4==false)
 			{
-				backpack.push_back(roomItem[i]);
-				std::swap(roomItem[i],roomItem.back());
-				roomItem.pop_back();
-				break;
+				canPickUp=false;
 			}
-		}	
+		}
+		//player cannot pickup medkit if hershel was not talked to
+		else if(pickup=="medkit")
+		{
+			if (talkToHershel==false)
+			{
+				canPickUp=false;
+			}
+		}
+		//player cannot pickup sword if michonne was not talked to
+		else if(pickup=="sword")
+		{
+			if (talkToMichonne==false)
+			{
+				canPickUp=false;
+			}
+		}
+		//if conditions are met, player can pick up item
+		if (canPickUp==true)
+		{
+			print_feedback("Picked up " + pickup);
+			vecSize=roomItem.size();
+
+			for (int i=0;i<vecSize;i++)
+			{
+				if (roomItem[i].getItemName()==pickup)
+				{
+					backpack.push_back(roomItem[i]);
+					std::swap(roomItem[i],roomItem.back());
+					roomItem.pop_back();
+					break;
+				}
+			}	
+		}
+		else
+		{
+			print_feedback("Cannot pick up " + pickup);
+		}
 	}
-	else{
-		print_feedback("Cannot pick up " + pickup);
+	//player cannot pick up a 4th item
+	else
+	{
+		print_feedback("Your backpack is full. Cannot grab "+pickup +".");
 	}
 }
 
