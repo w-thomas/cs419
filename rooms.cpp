@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 11/13/2016
+* Last Modified: 11/16/2016
 */
 #include <iostream>
 #include <fstream>
@@ -9,9 +9,11 @@
 #include <string>
 #include <vector>
 #include "rooms.hpp"
+#include "player.hpp"
 #include "item.hpp"
 #include "feature.hpp"
 #include "interface.hpp"
+
 
 
 void createRoomObjects(Rooms *arrayGrid[][3])
@@ -297,7 +299,8 @@ int Rooms::checkFeature(std::string feature)
 	return 0;
 }	
 
-std::string Rooms::talkTo(std:: string person)
+//changed--now takes in player object to manipulate bool values
+std::string Rooms::talkTo(std:: string person, Player& rick)
 {
 	std::string interactionDesc;
 	std::string notPerson=person+" is not a person.";
@@ -312,6 +315,16 @@ std::string Rooms::talkTo(std:: string person)
 			{
 				//if a person, returns the interactionDesc
 				interactionDesc=Iter->getInteractDesc();
+				//sets bool values to true when character is spoken to
+				if (person=="Michonne")
+				{
+					rick.talkToMichonne=true;
+				}
+				else if(person=="Hershel")
+				{
+					rick.talkToHershel=true;
+				}
+				
 				return interactionDesc;
 			}
 		}			
@@ -323,4 +336,111 @@ std::string Rooms::getrsDesc()
 	return rsDesc;
 }
 
+//Needs a check to see if player is in correct room***
+std::string Rooms::swing(std:: string sword, Player& rick)
+{
+	std::string interactionDesc="Swung sword at walker!";
+	std::string notSword=sword+" can't be used with this action.";
+	std::vector<Item>::iterator Iter;
+	
+	//checks if the item is in the pack
+	for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+	{
+		
+		if(Iter->name.compare("sword")==0)
+		{
+			//if in the pack, checks to see if the item is a sword
+			if (sword=="sword")
+			{
+				//sets walker to true when walker has been killed
+				rick.walker4=true;
+				return interactionDesc;
+			}
+		}
+	}
+	return notSword;
+}
+
+//Needs a check to see if player is in correct room***
+std::string Rooms::shoot(std:: string gun, Player& rick)
+{
+	std::string interactionDesc="Shot walker!";
+	std::string notGun= gun +" can't be used with this action.";
+	std::vector<Item>::iterator Iter;
+	std::string missingItem;
+	int haveGun=0;
+	int haveBullets=0;
+	
+	//checks if the item is in the pack
+	for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+	{
+		
+		if(Iter->name.compare("gun")==0)
+		{
+			haveGun=1;
+		}
+		if(Iter->name.compare("bullets")==0)
+		{
+			haveBullets=1;
+			
+		}
+	}
+
+	if (gun=="gun")
+	{
+		//sets walker to true when walker has been killed
+		if (haveGun==1 && haveBullets==0)
+		{
+			missingItem="Need bullets to shoot gun.";
+			return missingItem;
+		}
+		else if(haveGun==0 && haveBullets==1)
+		{
+			missingItem="You have bullets, but you need a gun.";
+			return missingItem;
+		}
+		else
+		{
+			rick.walker10=true;
+			return interactionDesc;
+		}
+	}
+	
+	return notGun;
+	
+}
+
+
+//Needs a check to see if player is in correct room***
+std::string Rooms::healDaryl(std::string daryl, Player& rick)
+{
+	int haveMedkit=0;
+	std::string interactionDesc;
+	std::vector<Item>::iterator Iter;
+	
+	//check to see if string is daryl
+	if (daryl=="Daryl")
+	{
+		
+		//search bag to see if medkit is in bag 
+		for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+		{
+			if(Iter->name.compare("medkit")==0)
+			{
+				haveMedkit=1;
+				rick.healDaryl=true;
+				interactionDesc="You have healed Daryl.";
+				return interactionDesc;
+			}
+		}
+		if (haveMedkit==0)
+		{
+			interactionDesc="You do not have the medkit in your pack.";
+			return interactionDesc;
+		}
+		
+	}
+	interactionDesc="You cannot heal "+daryl;
+	return interactionDesc;
+}
 

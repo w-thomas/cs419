@@ -4,7 +4,7 @@ SDesc:Short Desc
 Feature1:walker
 FeatureDesc:The walker has no legs. There is something shiny in its pocket.
 Person:False
-Interaction:
+Interaction:Walker has been killed! Now I can take the keys.
 Feature2: cabinet
 FeatureDesc:Maybe they have something I can take! ... Nope. Nothing in here.
 Person:False

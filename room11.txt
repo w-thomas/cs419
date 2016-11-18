@@ -4,7 +4,7 @@ SDesc:Glenn is gone. I should go to the open field and help them.
 Feature1:Hershel
 FeatureDesc:An older man with a cane. 
 Person:True
-Interaction:
+Interaction:"I have a medkit here, Rick. You should take it"
 Feature2:water
 FeatureDesc:Yum. Water has been so scarce. 
 Person:False
