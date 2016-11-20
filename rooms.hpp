@@ -42,6 +42,7 @@ class Rooms
 		std::string getSdesc();
 		void getFeatures();
 		std::string getFeatureDesc(std::string lookFeature);
+        std::string getItemDesc(std::string lookItem);
 		bool getNorth();
 		bool getSouth();
 		bool getEast();
@@ -53,6 +54,7 @@ class Rooms
 		std::vector<Item> roomItem;
 		bool hasVisited;
 		std::string getrsDesc();
+        int personCheck(std:: string person, Player& rick);
 
 
 	private:

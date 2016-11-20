@@ -85,12 +85,12 @@ void printIntro() {
 //executes dynamic commands using class functions, static commands hard-coded using local functions
 //library of commmands are static in some cases and dynamic in others
 void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
-    
+
     //strip first word for dynamic commands
     istringstream iss(cmd);
     string word;
     iss >> word;
-    
+
     //static commands
     if(cmd.compare("go n") == 0) {
         moveRoom(arrayGrid, player, player->currentX, player->currentY, "n");
@@ -110,12 +110,18 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("show pack") == 0) {
         player->getBackpackContents();
     }
-    
+
     //dynamic commands
     else if(word.compare("grab") == 0) {
         //get next word
         iss >> word;
         player->pickUpItem(word, arrayGrid[player->currentX][player->currentY]->roomItem); 
+    }
+    else if(word.compare("talk") == 0) {
+        //get next word
+        iss >> word; //word is now "to"
+        iss >> word; //word is now a character's name
+        printString(arrayGrid[player->currentX][player->currentY]->talkTo(word, (*player))); 
     }
     else if(word.compare("drop") == 0) {
         //get next word
@@ -128,18 +134,23 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         if(word.compare("at") == 0) {
             //get next word
             iss >> word;
-			//changed to getFeatureDesc(string)
-            string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word);
-            // cout << str << endl;
-            print_feedback(str);
+            //check to see if it is a feature or item
+            int result;
+            result = arrayGrid[player->currentX][player->currentY]->checkFeature(word);
+            if(result) {
+                string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word);
+                print_feedback(str);
+            }
+            else {
+                //is an item not a feature
+                //string str = "is an item not a feature";
+                string str = arrayGrid[player->currentX][player->currentY]->getItemDesc(word);
+                print_feedback(str);
+            }
         }
     }
     else {
-
         print_feedback("debug: command not found in command library, parsed but not executed!!");
-
-        //cout << "debug: command not found in command library, parsed but not executed!!" << endl; //should never get here once done adding all exe's
-
         return;
     }
 }
@@ -152,14 +163,18 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
     int i;
-    const string l1[] = {"look", "go", "show", "grab", "drop"}; 
+    const string l1[] = {"look", "go", "show", "talk", "swing", "grab", "drop"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
+    const string l13[] = {"to"}; 
+    const string l14[] = {"sword"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
     int s12 = sizeof(l12) / sizeof(string);
+    int s13 = sizeof(l13) / sizeof(string);
+    int s14 = sizeof(l14) / sizeof(string);
     switch(level) {
         case 1:
             for(i = 0; i < s1; ++i) {
@@ -194,24 +209,42 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
                 result = checkRoomItems(arrayGrid, player, word);
                 if(result != 1) {
                     print_feedback(word + " is not in the room");
-                    //cout << word << " is not in the room... ";
                 }
             }
             if(parentWord.compare("drop") == 0) {
                 result = checkPlayerPack(player, word);
                 if(result != 1) {
                     print_feedback(word + " is not in the backpack...");
-                    // cout << word << " is not in the backpack... ";
+                }
+            }
+            if(parentWord.compare("talk") == 0) {
+                for(i = 0; i < s13; ++i) {
+                    if(l13[i].compare(word) == 0) {
+                        result = 1;
+                    }
+                }
+            }
+            if(parentWord.compare("swing") == 0) {
+                for(i = 0; i < s14; ++i) {
+                    if(l14[i].compare(word) == 0) {
+                        //add code here to make sure sword is in backpack
+                        result = 1;
+                    }
                 }
             }
             break;
         case 3:
             if(parentWord.compare("at") == 0) {
                 result = arrayGrid[player->currentX][player->currentY]->checkFeature(word);
-                if(result != 1) {
-                    print_feedback(word + " is not a feature here... ");
-                    // cout << word << " is not a feature here... ";
-                }
+                if(result == 1) { break; }
+                result = arrayGrid[player->currentX][player->currentY]->checkItems(word);
+                if(result == 1) { break; }
+                else { result = 0; }
+            }
+            if(parentWord.compare("to") == 0) {
+                result = arrayGrid[player->currentX][player->currentY]->personCheck(word, (*player));
+                if(result == 1) { break; }
+                else { result = 0; }
             }
             break;
     }

@@ -211,6 +211,22 @@ std::string Rooms::getFeatureDesc(std::string lookFeature)
 	return featureDesc;
 }
 
+//josh added for getting item description
+std::string Rooms::getItemDesc(std::string lookItem)
+{
+	std::string itemDesc; 
+	
+	std::vector<Item>::iterator Iter;
+	for (Iter = roomItem.begin(); Iter != roomItem.end(); ++Iter)
+	{
+		if(Iter->name.compare(lookItem)==0)
+		{
+			itemDesc= Iter->getItemDesc();
+		}			
+	}
+	return itemDesc;
+}
+
 bool Rooms::getNorth()
 {
 	return north;
@@ -331,6 +347,25 @@ std::string Rooms::talkTo(std:: string person, Player& rick)
 	}
 	return notPerson;
 }
+//josh's function to see if a feature is a person -- could be used elsewhere
+int Rooms::personCheck(std:: string person, Player& rick)
+{
+	//checks if the feature is in the room
+    int result = 0;
+	std::vector<Feature>::iterator Iter;
+	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
+	{
+		if(Iter->name.compare(person)==0)
+		{
+			//if in the room, checks to see if the person is a person
+			if (Iter->checkPerson()==1)
+			{
+				result = 1;
+			}
+		}			
+	}
+	return result;
+}
 std::string Rooms::getrsDesc()
 {
 	return rsDesc;
@@ -352,6 +387,7 @@ std::string Rooms::swing(std:: string sword, Player& rick)
 			//if in the pack, checks to see if the item is a sword
 			if (sword=="sword")
 			{
+                //need code here to see if player a walker is in the room
 				//sets walker to true when walker has been killed
 				rick.walker4=true;
 				return interactionDesc;
