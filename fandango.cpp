@@ -110,6 +110,9 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("show pack") == 0) {
         player->getBackpackContents();
     }
+    else if(cmd.compare("swing sword") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->swing("sord", (*player)));
+    }
 
     //dynamic commands
     else if(word.compare("grab") == 0) {
