@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
  * Description: function definitions
  * Group: Fandango
- * Last Modified: 11/16/2016
+ * Last Modified: 11/20/2016
  */
 #include <iostream>
 #include "player.hpp"
@@ -69,7 +69,18 @@ void Player::pickUpItem(std::string pickup, std::vector<Item> &roomItem)
 		}
 		else
 		{
-			print_feedback("Cannot pick up " + pickup);
+			if(pickup=="medkit")
+			{
+				print_feedback("Cannot pick up " + pickup + ". Need to talk to Hershel first.");
+			}
+			else if(pickup=="sword")
+			{
+				print_feedback("Cannot pick up " + pickup + ". Need to talk to Michonne first.");
+			}
+			else if(pickup=="keys")
+			{
+				print_feedback("Cannot pick up " + pickup + ". Need to kill walker first.");
+			}
 		}
 	}
 	//player cannot pick up a 4th item

@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: function definitions
 * Group: Fandango
-* Last Modified: 11/16/2016
+* Last Modified: 11/20/2016
 */
 #include <iostream>
 #include <fstream>
@@ -319,33 +319,27 @@ int Rooms::checkFeature(std::string feature)
 std::string Rooms::talkTo(std:: string person, Player& rick)
 {
 	std::string interactionDesc;
-	std::string notPerson=person+" is not a person.";
 	//checks if the feature is in the room
 	std::vector<Feature>::iterator Iter;
 	for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
 	{
 		if(Iter->name.compare(person)==0)
 		{
-			//if in the room, checks to see if the person is a person
-			if (Iter->checkPerson()==1)
-			{
-				//if a person, returns the interactionDesc
-				interactionDesc=Iter->getInteractDesc();
-				//sets bool values to true when character is spoken to
-				if (person=="Michonne")
-				{
-					rick.talkToMichonne=true;
-				}
-				else if(person=="Hershel")
-				{
-					rick.talkToHershel=true;
-				}
+			interactionDesc=Iter->getInteractDesc();
+			//sets bool values to true when character is spoken to
 				
-				return interactionDesc;
+			if (person=="Michonne")
+			{
+				rick.talkToMichonne=true;
 			}
-		}			
+			else if(person=="Hershel")
+			{
+				rick.talkToHershel=true;
+			}
+		}
+					
 	}
-	return notPerson;
+	return interactionDesc;
 }
 //josh's function to see if a feature is a person -- could be used elsewhere
 int Rooms::personCheck(std:: string person, Player& rick)
