@@ -368,14 +368,14 @@ std::string Rooms::getrsDesc()
 //Needs a check to see if player is in correct room***
 std::string Rooms::swing(std:: string sword, Player& rick)
 {
-	std::string interactionDesc="Swung sword at walker!";
-	std::string notSword=sword+" can't be used with this action.";
+	std::string interactionDesc="Swung sword!";
+	//std::string notSword=sword+" can't be used with this action.";
+	std::string notSword= "You don't have the sword.";
 	std::vector<Item>::iterator Iter;
 	
 	//checks if the item is in the pack
 	for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
 	{
-		
 		if(Iter->name.compare("sword")==0)
 		{
 			//if in the pack, checks to see if the item is a sword
@@ -383,7 +383,10 @@ std::string Rooms::swing(std:: string sword, Player& rick)
 			{
                 //need code here to see if player a walker is in the room
 				//sets walker to true when walker has been killed
-				rick.walker4=true;
+                if(rick.currentX == 3 && rick.currentY == 0) {
+                    interactionDesc = "You swung the sword and killed the walker!"; 
+				    rick.walker4=true;
+                }
 				return interactionDesc;
 			}
 		}
