@@ -113,6 +113,12 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("swing sword") == 0) {
         printString(arrayGrid[player->currentX][player->currentY]->swing("sword", (*player)));
     }
+    else if(cmd.compare("shoot gun") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->shoot("gun", (*player)));
+    }
+    else if(cmd.compare("heal") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->healDaryl("Daryl", (*player)));
+    }
 
     //dynamic commands
     else if(word.compare("grab") == 0) {
@@ -166,18 +172,20 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
     int i;
-    const string l1[] = {"look", "go", "show", "talk", "swing", "grab", "drop"}; 
+    const string l1[] = {"look", "go", "show", "talk", "swing", "shoot", "grab", "drop", "heal"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
     const string l13[] = {"to"}; 
     const string l14[] = {"sword"}; 
+    const string l15[] = {"gun"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
     int s12 = sizeof(l12) / sizeof(string);
     int s13 = sizeof(l13) / sizeof(string);
     int s14 = sizeof(l14) / sizeof(string);
+    int s15 = sizeof(l15) / sizeof(string);
     switch(level) {
         case 1:
             for(i = 0; i < s1; ++i) {
@@ -230,6 +238,14 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("swing") == 0) {
                 for(i = 0; i < s14; ++i) {
                     if(l14[i].compare(word) == 0) {
+                        //add code here to make sure sword is in backpack
+                        result = 1;
+                    }
+                }
+            }
+            if(parentWord.compare("shoot") == 0) {
+                for(i = 0; i < s15; ++i) {
+                    if(l15[i].compare(word) == 0) {
                         //add code here to make sure sword is in backpack
                         result = 1;
                     }
