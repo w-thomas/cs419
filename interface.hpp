@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string>
 #include <string.h>
+#include <unistd.h>
 #include <cstdlib>
 
 
@@ -57,6 +58,8 @@ std::string getInput();
 
 //TODO: Documentation
 void printHelp();
+
+void titleAnimation();
 
 #endif
 
