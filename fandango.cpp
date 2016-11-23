@@ -43,10 +43,41 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
     else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
     {
+        //constraint -- entering room 13 from north -- must have keys
+        if(player->currentX == 2 &&  player->currentY == 1) {
+            int result = player->checkPack("keys");
+            if(result == 0) {
+                print_feedback("This cell is locked. You need the keys.");
+                return;
+            }
+        }
+        //constraint -- entering room 9 from north -- must have flashlight
+        if(player->currentX == 3 &&  player->currentY == 0) {
+            int result = player->checkPack("flashlight");
+            if(result == 0) {
+                print_feedback("It's too dark. You need the flashlight to enter the hallway.");
+                return;
+            }
+        }
         y++;
     }
     else if ((dir.compare("e") == 0)&&(arrayGrid[x][y]->getEast()==true))
     {
+        //constraint -- entering room 9 from west -- must have flashlight
+        if(player->currentX == 2 &&  player->currentY == 1) {
+            int result = player->checkPack("flashlight");
+            if(result == 0) {
+                print_feedback("It's too dark. You need the flashlight to continue down the hallway.");
+                return;
+            }
+        }
+        //constraint -- entering room 15 from west -- must heal Daryl
+        if(player->currentX == 3 &&  player->currentY == 2) {
+            if(!(player->healDaryl)) {
+                print_feedback("Daryl's not gonna make it.  We can't leave him here.  He's needs first aid.");
+                return;
+            }
+        }
         x++;
     }
     else if ((dir.compare("w") == 0)&&(arrayGrid[x][y]->getWest()==true))
