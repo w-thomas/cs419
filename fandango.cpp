@@ -295,6 +295,18 @@ int main(int argc, char** argv) {
 
     start_interface();
 
+    scr_dump("/tmp/virtual.dump");
+    clear();
+    refresh();
+
+    titleAnimation();
+
+
+    scr_restore("/tmp/virtual.dump");
+    doupdate();
+    
+
+
     //start game
     printIntro();
     print_feedback("Press any key to continue.");
@@ -314,8 +326,14 @@ int main(int argc, char** argv) {
     board[rick->currentX][rick->currentY]->hasVisited = true;
     int result;                 //return value of parse (is entire cmd valid?)
     string cmd;                 //entire command that the user supplies 
+
+    
+    
+
     do {
         cmd = getInput();
+
+
         print_feedback("                                                                      ");
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
@@ -330,3 +348,5 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
+

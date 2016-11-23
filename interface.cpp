@@ -124,9 +124,9 @@ std::string getInput() {
 
 	//This is hacky, but it "clears" the input line of last input by writing over
 	//it with empty space.
-	mvprintw(LINES - 2, 0, "Your input:                                                          ");
+	mvprintw(LINES - 2, 2, "Your input:                                                          ");
 
-	mvprintw(LINES - 2, 0, "Your input: ");
+	mvprintw(LINES - 2, 2, "Your input: ");
 
 	getstr(input);
 
@@ -177,5 +177,41 @@ void printHelp() {
 
 	destroy_win(local_win);
 }
+
+void titleAnimation() {
+	int titlesize = 111;
+	// int j = 0;
+
+	//curs_set(0);
+	curs_set(0);
+	attron(COLOR_PAIR(1));
+	mvprintw(LINES - 6, COLS/2 - titlesize/2, "  ___________.__              __      __       .__   __   .__                 ________                    .___ ");
+	mvprintw(LINES - 5, COLS/2 - titlesize/2, "  \\__    ___/|  |__   ____   /  \\    /  \\____  |  | |  | _|__| ____    ____   \\______ \\   ____ _____    __| _/ ");
+	mvprintw(LINES - 4, COLS/2 - titlesize/2, "    |    |   |  |  \\_/ __ \\  \\   \\/ /   |__  \\ |  | |  |/ /  |/    \\  / __ \\   |    |  \\_/ __  \\__  \\  / __ |  ");
+	mvprintw(LINES - 3, COLS/2 - titlesize/2, "    |    |   |   Y  \\  ___/   \\        / / __ \\|  |_|    <|  |   |  \\/ /_/  >  |    `   \\  ___/ / __ \\/ /_/ |  ");
+	mvprintw(LINES - 2, COLS/2 - titlesize/2, "    |____|   |___|  \\___  >    \\__/\\  / (____  /____/__|_ \\__|___|   \\___  /  /_______   \\___  >____  |____ |  ");
+	mvprintw(LINES - 1, COLS/2 - titlesize/2, "                   \\/   \\/          \\/       \\/          \\/       \\ /_____/           \\/     \\/     \\/     \\/    ");
+	attroff(COLOR_PAIR(1));
+	scrollok(stdscr, TRUE);
+	
+	for(int i = 0; i < (LINES-20); i++)
+	{
+		scroll(stdscr);
+		refresh();
+		usleep(175000);
+	}
+	
+	mvprintw(LINES - 20, COLS/2 - 11, "PRESS ANY KEY TO START");
+	getch();
+	curs_set(1);
+	clear();
+	refresh();
+}
+
+
+
+
+
+
 
 
