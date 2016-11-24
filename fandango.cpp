@@ -39,6 +39,13 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
 {
     if ((dir.compare("n") == 0)&&(arrayGrid[x][y]->getNorth()==true))
     {
+        //constraint -- entering room 5 from south -- must have killed the walkers
+        if(player->currentX == 4 &&  player->currentY == 1) {
+            if(!(player->walker10)) {
+                print_feedback("There are too many walkers in front of the gate.  You need to shoot them in the head...don't miss.  There aren't a lot of bullets.");
+                return;
+            }
+        }
         y--;
     }
     else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
@@ -150,6 +157,12 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("heal") == 0) {
         printString(arrayGrid[player->currentX][player->currentY]->healDaryl("Daryl", (*player)));
     }
+    else if(cmd.compare("pour gas") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->pourGas("gas", (*player)));
+    }
+    else if(cmd.compare("light match") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->lightMatch("match", (*player)));
+    }
 
     //dynamic commands
     else if(word.compare("grab") == 0) {
@@ -203,13 +216,15 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
     int i;
-    const string l1[] = {"look", "go", "show", "talk", "swing", "shoot", "grab", "drop", "heal"}; 
+    const string l1[] = {"look", "go", "show", "talk", "swing", "shoot", "pour", "light", "grab", "drop", "heal"}; 
     const string l10[] = {"at"}; 
     const string l11[] = {"n", "s", "e", "w"}; 
     const string l12[] = {"pack"}; 
     const string l13[] = {"to"}; 
     const string l14[] = {"sword"}; 
     const string l15[] = {"gun"}; 
+    const string l16[] = {"gas"}; 
+    const string l17[] = {"match"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
@@ -217,6 +232,8 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
     int s13 = sizeof(l13) / sizeof(string);
     int s14 = sizeof(l14) / sizeof(string);
     int s15 = sizeof(l15) / sizeof(string);
+    int s16 = sizeof(l16) / sizeof(string);
+    int s17 = sizeof(l17) / sizeof(string);
     switch(level) {
         case 1:
             for(i = 0; i < s1; ++i) {
@@ -269,7 +286,6 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("swing") == 0) {
                 for(i = 0; i < s14; ++i) {
                     if(l14[i].compare(word) == 0) {
-                        //add code here to make sure sword is in backpack
                         result = 1;
                     }
                 }
@@ -277,7 +293,20 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("shoot") == 0) {
                 for(i = 0; i < s15; ++i) {
                     if(l15[i].compare(word) == 0) {
-                        //add code here to make sure sword is in backpack
+                        result = 1;
+                    }
+                }
+            }
+            if(parentWord.compare("pour") == 0) {
+                for(i = 0; i < s16; ++i) {
+                    if(l16[i].compare(word) == 0) {
+                        result = 1;
+                    }
+                }
+            }
+            if(parentWord.compare("light") == 0) {
+                for(i = 0; i < s17; ++i) {
+                    if(l17[i].compare(word) == 0) {
                         result = 1;
                     }
                 }
