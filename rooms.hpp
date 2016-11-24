@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: rooms.cpp header file
 * Group: Fandango
-* Last Modified: 11/13/2016
+* Last Modified: 11/23/2016
 */
 #ifndef ROOMS_HPP
 #define ROOMS_HPP
@@ -18,10 +18,14 @@ class Rooms
 	public:
 		//constructor
 		Rooms(std::string array[16]);
+		
+		//action functions
 		std::string talkTo(std::string person, Player& rick);
 		std::string swing(std::string sword, Player& rick);
 		std::string shoot(std::string gun, Player& rick);
 		std::string healDaryl(std::string daryl, Player& rick);
+		std::string pourGas(std::string gas, Player& rick);
+		std::string lightMatch(std::string match, Player& rick);
 		
 		//functions to set object information
 		void setName(std::string name);
