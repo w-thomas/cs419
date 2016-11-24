@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
 * Description: player.cpp header file
 * Group: Fandango
-* Last Modified: 11/16/2016
+* Last Modified: 11/23/2016
 */
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
@@ -26,12 +26,13 @@ class Player
 		std::vector<Item> backpack;
 		
 		
-		//bools for item pickup
+		//bools for item pickup and room movement
 		bool walker4;
 		bool talkToMichonne;
 		bool walker10;
 		bool talkToHershel;
 		bool healDaryl;
+		bool pouredGas;
 };
 
 #endif

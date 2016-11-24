@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
  * Description: function definitions
  * Group: Fandango
- * Last Modified: 11/20/2016
+ * Last Modified: 11/23/2016
  */
 #include <iostream>
 #include "player.hpp"
@@ -157,6 +157,7 @@ void Player::setBools()
 	walker10=false;
 	talkToHershel=false;
 	healDaryl=false;
+	pouredGas=false;
 }
 
 

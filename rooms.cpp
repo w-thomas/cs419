@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
  * Description: function definitions
  * Group: Fandango
- * Last Modified: 11/20/2016
+ * Last Modified: 11/23/2016
  */
 #include <iostream>
 #include <fstream>
@@ -496,3 +496,59 @@ std::string Rooms::healDaryl(std::string daryl, Player& rick)
     return interactionDesc;
 }
 
+std::string Rooms::pourGas(std:: string gas, Player& rick)
+{
+    std::string interactionDesc="Poured gas.";
+    std::string notGas= "You don't have the gas.";
+    std::vector<Item>::iterator Iter;
+
+    //checks if the item is in the pack
+    for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+    {
+        if(Iter->name.compare("gas")==0)
+        {
+            //if in the pack, checks to see if the item is a sword
+            if (gas=="gas")
+            {
+                //sets poured gas bool to true when gas is poured in the correct room
+                if(rick.currentX == 4 && rick.currentY == 0) {
+                    interactionDesc = "You poured the gas on the car!"; 
+                    rick.pouredGas=true;
+                }
+                return interactionDesc;
+            }
+        }
+    }
+    return notGas;
+}
+
+
+std::string Rooms::lightMatch(std:: string match, Player& rick)
+{
+    std::string interactionDesc="Lit match.";
+    std::string notMatches= "You don't have the matches.";
+    std::vector<Item>::iterator Iter;
+
+	//checks if the item is in the pack
+	for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+	{
+		if(Iter->name.compare("matches")==0)
+		{
+			//checks to see if the gas was poured before lighting match
+			if (rick.pouredGas==false)
+			{
+				if(rick.currentX == 4 && rick.currentY == 0) {
+					interactionDesc = "You lit the match and set the car on fire!";
+				}
+				return interactionDesc;
+			}
+			//gas has not yet been poured
+			else{
+				interactionDesc="You need to pour gas first.";
+				return interactionDesc;
+			}
+		}
+	}
+	//matches are not in the pack
+    return notMatches;
+}
