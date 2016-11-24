@@ -507,16 +507,13 @@ std::string Rooms::pourGas(std:: string gas, Player& rick)
     {
         if(Iter->name.compare("gas")==0)
         {
-            //if in the pack, checks to see if the item is a sword
-            if (gas=="gas")
-            {
-                //sets poured gas bool to true when gas is poured in the correct room
-                if(rick.currentX == 4 && rick.currentY == 0) {
-                    interactionDesc = "You poured the gas on the car!"; 
-                    rick.pouredGas=true;
-                }
-                return interactionDesc;
-            }
+			//sets poured gas bool to true when gas is poured in the correct room
+			if(rick.currentX == 4 && rick.currentY == 0) {
+			interactionDesc = "You poured the gas on the car!"; 
+			rick.pouredGas=true;
+			}
+		
+			return interactionDesc;
         }
     }
     return notGas;
@@ -535,7 +532,7 @@ std::string Rooms::lightMatch(std:: string match, Player& rick)
 		if(Iter->name.compare("matches")==0)
 		{
 			//checks to see if the gas was poured before lighting match
-			if (rick.pouredGas==false)
+			if (rick.pouredGas==true)
 			{
 				if(rick.currentX == 4 && rick.currentY == 0) {
 					interactionDesc = "You lit the match and set the car on fire!";
