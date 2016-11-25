@@ -341,7 +341,7 @@ std::string Rooms::talkTo(std:: string person, Player& rick)
     }
     return interactionDesc;
 }
-//josh's function to see if a feature is a person -- could be used elsewhere
+//function to see if a feature is a person -- could be used elsewhere
 int Rooms::personCheck(std:: string person, Player& rick)
 {
     //checks if the feature is in the room

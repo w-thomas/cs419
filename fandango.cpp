@@ -321,10 +321,10 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
                 else { result = 0; }
             }
             if(parentWord.compare("to") == 0) {
-                result = arrayGrid[player->currentX][player->currentY]->personCheck(word, (*player));
-                if(result == 1) { break; }
-                else { result = 0; }
-            }
+                    result = arrayGrid[player->currentX][player->currentY]->personCheck(word, (*player));
+                    if(result == 1) { break; }
+                    else { result = 0; }
+                }
             break;
     }
     return result;
@@ -338,24 +338,43 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
 int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     int level = 1;
     //check if this is an allowed single word command
-    bool singleOK  = true;
-    if(cmd.compare("go") == 0) {
-        singleOK = false;
+    //bool singleOK  = true;
+    bool singleOK  = false;
+    //if(cmd.compare("go") == 0) {
+    if((cmd.compare("look") == 0) || (cmd.compare("heal") == 0)) {
+        //cout << "in single check";
+        singleOK = true;
+        //singleOK = false;
+        return 1;
     }
     istringstream iss(cmd); 
+    istringstream orig(cmd); 
     string word;
+    string next;
+    orig >> next; //get ahead of word by one word
     string parentWord ;
     while(iss >> word) {
+        orig >> next;
+        //cout << "w:" << word;
+        //cout << "n:" << next;
         int result = checkWord(arrayGrid, player, level, word, parentWord);
         if(result == 0) {
             print_feedback("Invalid command: " + cmd);
             return 0;
         }
+        if(next.compare("to") == 0) {
+            if(!(orig >> next))
+            {
+                print_feedback("Invalid command: " + cmd);
+                return 0;
+            }
+        }
         ++level;
         parentWord = word;
     }
     //single word command was not allowed
-    if(level != 1 && singleOK == false) {
+    if(level == 2 && singleOK == false) {
+        //cout << level;
         print_feedback("Invalid command: " + cmd);
         return 0;
     }
@@ -380,7 +399,7 @@ int main(int argc, char** argv) {
 
     scr_restore("/tmp/virtual.dump");
     doupdate();
-    
+
 
 
     //start game
@@ -403,8 +422,8 @@ int main(int argc, char** argv) {
     int result;                 //return value of parse (is entire cmd valid?)
     string cmd;                 //entire command that the user supplies 
 
-    
-    
+
+
 
     do {
         cmd = getInput();
