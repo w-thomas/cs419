@@ -338,13 +338,9 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
 int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     int level = 1;
     //check if this is an allowed single word command
-    //bool singleOK  = true;
     bool singleOK  = false;
-    //if(cmd.compare("go") == 0) {
     if((cmd.compare("look") == 0) || (cmd.compare("heal") == 0)) {
-        //cout << "in single check";
         singleOK = true;
-        //singleOK = false;
         return 1;
     }
     istringstream iss(cmd); 
@@ -355,14 +351,13 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     string parentWord ;
     while(iss >> word) {
         orig >> next;
-        //cout << "w:" << word;
-        //cout << "n:" << next;
         int result = checkWord(arrayGrid, player, level, word, parentWord);
         if(result == 0) {
             print_feedback("Invalid command: " + cmd);
             return 0;
         }
-        if(next.compare("to") == 0) {
+        //validate there is a word following "talk to" and "look at"
+        if((next.compare("to") == 0) || (next.compare("at") == 0)) {
             if(!(orig >> next))
             {
                 print_feedback("Invalid command: " + cmd);
@@ -374,7 +369,6 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     }
     //single word command was not allowed
     if(level == 2 && singleOK == false) {
-        //cout << level;
         print_feedback("Invalid command: " + cmd);
         return 0;
     }
