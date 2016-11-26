@@ -2,7 +2,7 @@ Name:Hallway
 LDesc:I can hear the walkers outside. I need to hurry.
 SDesc:I can still hear them. Need to hurry!
 Feature1:Michonne
-FeatureDesc:A brave woman holding a samaurai sword.
+FeatureDesc:A brave woman with long dreadlocks holding a samaurai sword.
 Person:True
 Interaction:"Hey Rick. You need this?"
 Feature2:jar
