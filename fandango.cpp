@@ -50,8 +50,8 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
     else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
     {
-        //constraint -- entering room 13 from north -- must have keys
-        if(player->currentX == 2 &&  player->currentY == 1) {
+        //constraint -- entering room 13 from north -- must have keys or already unlocked the cell
+        if(player->currentX == 2 &&  player->currentY == 1 && (!(arrayGrid[player->currentX][player->currentY+1]->hasVisited))) {
             int result = player->checkPack("keys");
             if(result == 0) {
                 print_feedback("This cell is locked. You need the keys.");
@@ -215,6 +215,7 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
 //prints message to user if items, features are not in the room or in possesion of the player
 int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string word, string parentWord) {
     int result = 0;
+    string str;
     int i;
     const string l1[] = {"look", "go", "show", "talk", "swing", "shoot", "pour", "light", "grab", "drop", "heal"}; 
     const string l10[] = {"at"}; 
@@ -267,7 +268,10 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
             if(parentWord.compare("grab") == 0) {
                 result = checkRoomItems(arrayGrid, player, word);
                 if(result != 1) {
-                    print_feedback(word + " is not in the room");
+                    str = word;
+                    str = str + " is not in the room";
+                    //cout << str;
+                    printString(str);
                 }
             }
             if(parentWord.compare("drop") == 0) {
