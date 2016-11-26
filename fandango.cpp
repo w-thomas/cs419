@@ -437,7 +437,12 @@ int main(int argc, char** argv) {
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
             result = parseCmd(board, rick, cmd);
-            if(result == 1) { executeCmd(board, rick, cmd); }
+            if(result == 1) { 
+                //keep the last good command and print this somewhere for user navigation
+                string lastCmd = cmd;
+                //debug: print_feedback(cmd);
+                executeCmd(board, rick, cmd); 
+            }
         }
     }
     while((cmd != "q") && (cmd != "quit"));
