@@ -50,7 +50,7 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
     else if ((dir.compare("s") == 0)&&(arrayGrid[x][y]->getSouth()==true))
     {
-        //constraint -- entering room 13 from north -- must have keys or already unlocked the cell
+        //constraint -- entering room 13 from south -- must have keys or already unlocked the cell
         if(player->currentX == 2 &&  player->currentY == 1 && (!(arrayGrid[player->currentX][player->currentY+1]->hasVisited))) {
             int result = player->checkPack("keys");
             if(result == 0) {
@@ -58,11 +58,13 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
                 return;
             }
         }
-        //constraint -- entering room 9 from north -- must have flashlight
+        //constraint -- entering room 9 from north -- must have flashlight or lamp must be in 9
         if(player->currentX == 3 &&  player->currentY == 0) {
-            int result = player->checkPack("flashlight");
-            if(result == 0) {
-                print_feedback("It's too dark. You need the flashlight to enter the hallway.");
+            int light0 = player->checkPack("flashlight");
+            int light1 = player->checkPack("lantern");
+            int light2 = arrayGrid[player->currentX][player->currentY+1]->checkItems("lantern");
+            if(light0 == 0 && light1 == 0 && light2 == 0) {
+                print_feedback("It's too dark. You need light to enter the hallway.");
                 return;
             }
         }
@@ -70,11 +72,14 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
     }
     else if ((dir.compare("e") == 0)&&(arrayGrid[x][y]->getEast()==true))
     {
-        //constraint -- entering room 9 from west -- must have flashlight
+        //constraint -- entering room 9 from west -- must have flashlight or lamp must be in 9
         if(player->currentX == 2 &&  player->currentY == 1) {
-            int result = player->checkPack("flashlight");
-            if(result == 0) {
-                print_feedback("It's too dark. You need the flashlight to continue down the hallway.");
+            int light0 = player->checkPack("flashlight");
+            int light1 = player->checkPack("lantern");
+            int light2 = arrayGrid[player->currentX+1][player->currentY]->checkItems("lantern");
+            //if(result == 0) {
+            if(light0 == 0 && light1 == 0 && light2 == 0) {
+                print_feedback("It's too dark. You need light to continue down the hallway.");
                 return;
             }
         }

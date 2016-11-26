@@ -1,5 +1,5 @@
 Name:Hallway6
-LDesc:Great. Where should I start? Let's start exploring. The end of the hallway is dark. I'll need a flashlight soon.
+LDesc:Great. Where should I start? Let's start exploring. The end of the hallway is dark. I'll need some light soon.
 SDesc:Have I explored the prison enough?
 Feature1:bag
 FeatureDesc:I already have a bag.
