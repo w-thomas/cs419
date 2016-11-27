@@ -121,7 +121,7 @@ void moveRoom(Rooms *arrayGrid[][MAX_Y], Player *player, int &x,int &y, string d
 }
 
 void printIntro() {
-    printString("I am Rick Grimes. When the world was still normal, I was a father, husband, and deputy for the King County Sheriff's department. The world has been turned upside down. We are in the midst of a worldwide zombie apocalypse. The people who die now become zombies. Our group calls them walkers. They can only be stopped with a major injury to the skull. The apocalypse started 14 long months ago. I've lost many friends and family but have also gained a new family. I trust them all with my life and they trust me with theirs - I've become their leader. We need each other to make a life for ourselves in this new world. We have had some good fortune too. We found and took over a state prison off of State Route 178. It has all we need for survival: strong gates both inside and outside, access to a well, and a large yard for raising livestock and growing crops. It was a difficult task but we cleared the walkders from most of the prison. We still find walkers inside the prison from time to time but that is becoming more rare as the days go by. My group is starting to feel safe again but I know we can't get complacent. We are forever one moment away from it all falling apart. The biggest challenge is maintaining the outside perimeter chain link fencing. The walkers are attracked to us and they form large hoards. These hoards lean against the fence. We clear the fence constantly but there are just so many of them. If they breach the outer perimeter, all of our work clearing the perimeter will have been wasted. More of us will die and we will need to clear the prison again or leave quickly and find somewhere else. We must protect this prison. It is our best chance for survival.");
+    printString("I am Rick Grimes. When the world was still normal, I was a father, husband, and deputy for the King County Sheriff's department. The world has been turned upside down. We are in the midst of a worldwide zombie apocalypse. The people who die now become zombies. Our group calls them walkers. They can only be stopped with a major injury to the skull. The apocalypse started 14 long months ago. I've lost many friends and family but have also gained a new family. I trust them all with my life and they trust me with theirs - I've become their leader. We need each other to make a life for ourselves in this new world. We have had some good fortune too. We found and took over a state prison off of State Route 178. It has all we need for survival: strong gates both inside and outside, access to a well, and a large yard for raising livestock and growing crops. It was a difficult task but we cleared the walkers from most of the prison. We still find them inside the prison from time to time but that is becoming more rare as the days go by. My group is starting to feel safe again but I know we can't get complacent. We are forever one moment away from it all falling apart. The biggest challenge is maintaining the outside perimeter chain link fencing. The walkers are attracked to us and they form large hoards. These hoards lean against the fence. We clear the fence constantly but there are just so many of them. If they breach the outer perimeter, all of our work clearing the perimeter will have been wasted. More of us will die and we will need to clear the prison again or leave quickly and find somewhere else. We must protect this prison. It is our best chance for survival.");
 }
 
 //takes the game board instance, player instance, and valid (parsed) command
@@ -165,8 +165,8 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     else if(cmd.compare("pour gas") == 0) {
         printString(arrayGrid[player->currentX][player->currentY]->pourGas("gas", (*player)));
     }
-    else if(cmd.compare("light match") == 0) {
-        printString(arrayGrid[player->currentX][player->currentY]->lightMatch("match", (*player)));
+    else if(cmd.compare("light matches") == 0) {
+        printString(arrayGrid[player->currentX][player->currentY]->lightMatch("matches", (*player)));
     }
 
     //dynamic commands
@@ -230,7 +230,7 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
     const string l14[] = {"sword"}; 
     const string l15[] = {"gun"}; 
     const string l16[] = {"gas"}; 
-    const string l17[] = {"match"}; 
+    const string l17[] = {"matches"}; 
     int s1 = sizeof(l1) / sizeof(string);
     int s10 = sizeof(l10) / sizeof(string);
     int s11 = sizeof(l11) / sizeof(string);
