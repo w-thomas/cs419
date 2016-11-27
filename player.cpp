@@ -123,9 +123,9 @@ void Player::getBackpackContents()
 
         for (size_t n=0; n<backpack.size();n++)
         {
-        	printItems("[");
+        	printItems(" ");
         	printItems(backpack[n].getItemName());
-        	printItems("] ");
+        	printItems(" ");
         }
         	refresh();
     }
