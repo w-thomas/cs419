@@ -520,7 +520,7 @@ std::string Rooms::pourGas(std:: string gas, Player& rick)
 }
 
 
-std::string Rooms::lightMatch(std:: string match, Player& rick)
+std::string Rooms::lightMatch(std:: string matches, Player& rick)
 {
     std::string interactionDesc="Lit match.";
     std::string notMatches= "You don't have the matches.";
