@@ -1,12 +1,12 @@
-Name:Hallway 
-LDesc:I can hear the walkers outside. I need to hurry.
-SDesc:I can still hear them. Need to hurry!
+Name:HallwayB 
+LDesc:Michonne is here standing next to you with her sword in hand. To the west is the western end of the hallway. There's about 15 feet to that end. To the north is your son Carl's cell. To the south is Michonne's cell.  The hallway continues east another 25 feet. It looks darker down there. You can see Glenn and you think you can see Carol's silhouette past Glenn. 
+SDesc:You are in the western side of the hallway. To the north is Carl's cell. To the south is Michonne's cell. To the west is the western end of the hallway. To the east we can see Glenn further down the hallway. 
 Feature1:Michonne
-FeatureDesc:A brave woman with long dreadlocks holding a samaurai sword.
+FeatureDesc:A brave woman with long dreadlocks holding a katana samaurai sword.
 Person:True
-Interaction:"Hey Rick. You need this?"
-Feature2:jar
-FeatureDesc:Nice to know there's still some food left for us.
+Interaction:"Hey Rick. Maybe you should take my sword. Tyreese and I killed a walker inside cell block D yesterday. They are still getting inside somehow."
+Feature2:koshirae
+FeatureDesc:Michonne wears a koshirae on her back for holding here sword. It is made of leather and decorated with several silver and wooden inlays.
 Person:False
 Interaction:
 North:True

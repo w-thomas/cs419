@@ -1,12 +1,12 @@
-Name:Prison Cell B
-LDesc:Empty cell. I'll have a look around. I might find something that can help me.
-SDesc:Not much in here.
+Name:Carl's Cell
+LDesc:Your son sleeps in this cell with his baby sister Judith. All of Carl's favorite things are in here. Carl likes to read his comic books at night so he keeps a book of matches and candle next to his bed. To the south is the hallway.
+SDesc:Carl's Cell. To the south is the hallway.
 Feature1:candle
 FeatureDesc: A green candle is lit to light up the dark cell.
 Person:False
 Interaction:
-Feature2:handle
-FeatureDesc:I see a handle sticking out from a pile of clothes. Someone must've left this.
+Feature2:crib
+FeatureDesc:Judith's crib sits in the corner. She will outgrow it soon. She's growing up so fast. Daryl found it on one of his scavenging trips.
 Person:False
 Interaction:
 North:False

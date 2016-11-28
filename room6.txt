@@ -1,12 +1,12 @@
-Name:Hallway6
-LDesc:Great. Where should I start? Let's start exploring. The end of the hallway is dark. I'll need some light soon.
-SDesc:Have I explored the prison enough?
-Feature1:bag
-FeatureDesc:I already have a bag.
+Name:HallwayA
+LDesc:You are the west end of the cell block hallway. There's a little light through a single skylight above your head. It gets darker as we look to the east.  I'll need some light soon. To the north is your cell.  To the south is Hershel's cell.  To the east and further down the hallway is Michonne with her sword. 
+SDesc:West end of the hallway. To the north is your cell.  To the south is Hershel's cell.  To the east and further down the hallway is Michonne with her sword
+Feature1:skylight
+FeatureDesc:A skylight 15 feet above you provides the only natural light for the entire cell block hallway.
 Person:False
 Interaction:
-Feature2:cans
-FeatureDesc:Kids are playing with the cans. At least they're happy and safe. 
+Feature2:concrete
+FeatureDesc:The concrete slab you are standing on has some major cracks. 
 Person:False
 Interaction:
 North:True

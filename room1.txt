@@ -1,14 +1,14 @@
-Name: Prison Cell A
-LDesc:You awake in your cell to shouting. You hear Carl running in the hallway telling people to wake up. He comes to you to let you know that Rick needs your help. The walkers have increased and is starting to rattle the fences. Carl leaves your cell. Your cell door is south of you.  To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers" (this is the hints/tutorial)
-SDesc:Rick needs your help! Explore the prison. To your left you see a backpack next to a table. On the table is a folder that says "Plan to defeat walkers". Your cell door is south of you.
-Feature1:door
-FeatureDesc:This cell door is very rusty.
+Name: Rick's Cell
+LDesc:You wake up to Carl shaking you. He comes to you to let you know that there may be a problem outside of the main gate. The hoard of walkers has grown and is starting to  push against the fence. Carl leaves your cell to check on his sister, Judith. Your cell door is south of you which leads to the main hallway of the cell block.
+SDesc:You are in your cell. There is a door is to the south. Leaving the cell puts you in the main hallway of the cell block.
+Feature1:mirror
+FeatureDesc:5x8 mirror used for shaving your beard
 Person:False
 Interaction:
-Feature2:Rick
-FeatureDesc:A male dressed as a sheriff.
-Person:True
-Interaction:"Hey you. You need to start your adventure."
+Feature2:photo
+FeatureDesc:A photo of your wife Lori and son Carl a year before Lori died
+Person:False
+Interaction:
 North:False
 South:True
 East:False

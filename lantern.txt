@@ -1,2 +1,2 @@
 name:lantern
-description:an old Coleman with a decent amount of fuel.
+description:An old Coleman with a decent amount of fuel.
