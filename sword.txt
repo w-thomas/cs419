@@ -1,2 +1,2 @@
 Name:sword
-Description:A sharp sword that can cut through anything.
+Description:A sharp katana samurai sword that can cut through anything. It has been used to kill many walkers.

@@ -1,12 +1,12 @@
-Name:Room 12
-LDesc:I really hope there are items in here! Rick needs my help!
-SDesc:I'm ready to take them all on.
-Feature1:hat
-FeatureDesc:What is Carl's hat doing here? He never takes this off.
+Name:Michonne's Cell
+LDesc:Michonne's cell is pretty empty and well kept. She's never been much of a collector. To the north is the hallway. There is a large stone in here for sharpening her sword. 
+SDesc:Michonne's cell. To the north is the hallway.
+Feature1:stone
+FeatureDesc:A sharpening stone that we found in the creek. It took three of us an hour to carry it up here.
 Person:False
 Interaction:
-Feature2:clothes
-FeatureDesc:These clothes are from the prisoners that were here. 
+Feature2:tallies
+FeatureDesc:The last prisoner to occupy this cell drew tally marks on the wall. It looks like he was here for a long time. 
 Person:False
 Interaction:
 North:True
