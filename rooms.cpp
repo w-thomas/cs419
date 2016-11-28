@@ -1,7 +1,7 @@
 /*Author: Jennifer Mendoza
  * Description: function definitions
  * Group: Fandango
- * Last Modified: 11/23/2016
+ * Last Modified: 11/27/2016
  */
 #include <iostream>
 #include <fstream>
@@ -383,10 +383,15 @@ std::string Rooms::swing(std:: string sword, Player& rick)
             {
                 //need code here to see if player a walker is in the room
                 //sets walker to true when walker has been killed
-                if(rick.currentX == 3 && rick.currentY == 0) {
+                if(rick.currentX == 3 && rick.currentY == 0 && rick.walker4==true)
+				{
+					interactionDesc="You have already killed the walker.";
+				}
+				else if(rick.currentX == 3 && rick.currentY == 0) {
                     interactionDesc = "You swung the sword and killed the walker!"; 
                     rick.walker4=true;
                 }
+
                 return interactionDesc;
             }
         }
@@ -398,8 +403,8 @@ std::string Rooms::swing(std:: string sword, Player& rick)
 std::string Rooms::shoot(std:: string gun, Player& rick)
 {
     //std::string interactionDesc="Shot walker!";
-    std::string interactionDesc="Shot gun!";
-    std::string notGun= gun +" can't be used with this action.";
+    std::string interactionDesc;
+    std::string notGun= "You cannot use this action here!";
     std::vector<Item>::iterator Iter;
     std::string missingItem;
     int haveGun=0;
@@ -419,86 +424,99 @@ std::string Rooms::shoot(std:: string gun, Player& rick)
 
         }
     }
-
-    if (gun=="gun")
+    //sets walker to true when walker has been killed
+    if (haveGun==1 && haveBullets==0)
     {
-        //sets walker to true when walker has been killed
-        if (haveGun==1 && haveBullets==0)
-        {
-            missingItem="Need bullets to shoot gun.";
-            return missingItem;
-        }
-        else if(haveGun==0 && haveBullets==1)
-        {
-            missingItem="You have bullets, but you need a gun.";
-            return missingItem;
-        }
-        else if(haveGun==0 && haveBullets==0)
-        {
-            missingItem="You don't have the gun or any bullets.";
-            return missingItem;
-        }
-        else if(rick.currentX == 4 && rick.currentY == 1) 
-        {
-            std::string interactionDesc="Shot gun and killed the group of walkers!";
-            rick.walker10=true;
-            return interactionDesc;
-        }
-        else
-        {
-            return interactionDesc;
-        }
+        missingItem="Need bullets to shoot gun.";
+        return missingItem;
     }
-
+    else if(haveGun==0 && haveBullets==1)
+    {
+        missingItem="You have bullets, but you need a gun.";
+        return missingItem;
+    }
+    else if(haveGun==0 && haveBullets==0)
+    {
+        missingItem="You don't have the gun or any bullets.";
+        return missingItem;
+    }
+	else if (rick.currentX == 4 && rick.currentY == 1 && rick.walker10==true)
+    {
+		interactionDesc="You have shot the walkers already!";
+        return interactionDesc;
+    }
+	else if (rick.walker10==true)
+	{
+		interactionDesc="You don't need this anymore.";
+		return interactionDesc;
+	}
+    else if(rick.currentX == 4 && rick.currentY == 1) 
+    {
+        interactionDesc="Shot gun and killed the group of walkers!";
+        rick.walker10=true;
+        return interactionDesc;
+    }
+	else if (rick.walker10==false)
+	{
+		interactionDesc="You need to save your bullets!";
+		return interactionDesc;
+	}
+	
     return notGun;
-
 }
 
 
-//Needs a check to see if player is in correct room***
+//works as 'heal'
 std::string Rooms::healDaryl(std::string daryl, Player& rick)
 {
     int haveMedkit=0;
     std::string interactionDesc;
     std::vector<Item>::iterator Iter;
 
-    //check to see if string is daryl -- this is hardcoded in executeCmd()
-    if (daryl=="Daryl")
+    //search bag to see if medkit is in bag 
+    for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
     {
-
-        //search bag to see if medkit is in bag 
-        for (Iter = rick.backpack.begin(); Iter != rick.backpack.end(); ++Iter)
+        //if player has medkit
+        if(Iter->name.compare("medkit")==0)
         {
-            //if player has medkit
-            if(Iter->name.compare("medkit")==0)
+            haveMedkit=1;
+            //check to see if player is in the room with Daryl
+			if(rick.currentX == 3 && rick.currentY == 2 && rick.healDaryl==true)
             {
-                haveMedkit=1;
-                //check to see if player is in the room with Daryl
-                if(rick.currentX == 3 && rick.currentY == 2)
-                {
-                    rick.healDaryl=true;
-                    interactionDesc="You have healed Daryl.";
-                    return interactionDesc;
-                }
-                else 
-                {
-                    interactionDesc = "We need to find Daryl.  Can't use medkit here.";
-                }
+                interactionDesc = "You have already healed Daryl.";
+				return interactionDesc;
             }
+			else if(rick.healDaryl==true)
+			{
+				interactionDesc = "You don't need this anymore.";
+				return interactionDesc;
+			}
+            else if(rick.currentX == 3 && rick.currentY == 2)
+            {
+                rick.healDaryl=true;
+                interactionDesc="You have healed Daryl.";
+                return interactionDesc;
+            }
+			else
+			{
+				interactionDesc = "You need to save your medical supplies.";
+				return interactionDesc;
+			}
         }
-        if (haveMedkit==0)
-        {
-            interactionDesc="You do not have the medkit in your pack.";
-            return interactionDesc;
-        }
-
     }
+		
+    if (haveMedkit==0)
+    {
+        interactionDesc="You do not have the medkit in your pack.";
+        return interactionDesc;
+    }
+
     return interactionDesc;
 }
 
 std::string Rooms::pourGas(std:: string gas, Player& rick)
 {
-    std::string interactionDesc="Poured gas.";
+    std::string interactionDesc;
     std::string notGas= "You don't have the gas.";
     std::vector<Item>::iterator Iter;
 
@@ -507,13 +525,30 @@ std::string Rooms::pourGas(std:: string gas, Player& rick)
     {
         if(Iter->name.compare("gas")==0)
         {
-			//sets poured gas bool to true when gas is poured in the correct room
-			if(rick.currentX == 4 && rick.currentY == 0) {
-			interactionDesc = "You poured the gas on the car!"; 
-			rick.pouredGas=true;
+			
+			if(rick.currentX == 4 && rick.currentY == 0 && rick.pouredGas==true)
+			{
+				interactionDesc="You have already poured the gas.";
+				return interactionDesc;
 			}
-		
-			return interactionDesc;
+			else if (rick.pouredGas==true)
+			{
+				interactionDesc = "You don't need this anymore";
+				return interactionDesc;
+			}
+			//sets poured gas bool to true when gas is poured in the correct room
+			else if(rick.currentX == 4 && rick.currentY == 0) 
+			{
+				interactionDesc = "You poured the gas on the car!"; 
+				rick.pouredGas=true;
+				return interactionDesc;
+			}
+			else if(rick.pouredGas==false)
+			{
+				interactionDesc="You need to save the gas.";
+				return interactionDesc;
+			}
+			
         }
     }
     return notGas;
@@ -522,8 +557,8 @@ std::string Rooms::pourGas(std:: string gas, Player& rick)
 
 std::string Rooms::lightMatch(std:: string matches, Player& rick)
 {
-    std::string interactionDesc="Lit match.";
-    std::string notMatches= "You don't have the matches.";
+    std::string interactionDesc;
+    std::string notMatches= "The matches are not in your pack.";
     std::vector<Item>::iterator Iter;
 
 	//checks if the item is in the pack
@@ -532,21 +567,29 @@ std::string Rooms::lightMatch(std:: string matches, Player& rick)
 		if(Iter->name.compare("matches")==0)
 		{
 			//checks to see if the gas was poured before lighting match
-			if (rick.pouredGas==true)
+			if (rick.pouredGas==true && rick.currentX == 4 && rick.currentY == 0)
 			{
-				if(rick.currentX == 4 && rick.currentY == 0) {
-					interactionDesc = "You lit the match and set the car on fire!";
-				}
+				interactionDesc = "You lit the match and set the car on fire!";
 				return interactionDesc;
 			}
-			//gas has not yet been poured
-			else{
+			//gas has not yet been poured in the correct room
+			else if (rick.pouredGas==false && rick.currentX == 4 && rick.currentY == 0){
 				interactionDesc="You need to pour gas first.";
+				return interactionDesc;
+			}
+			else if(rick.pouredGas==true)
+			{
+				interactionDesc="You don't need this anymore.";
+				return interactionDesc;
+			}
+			else
+			{
+				interactionDesc = "You need to save your matches!";
 				return interactionDesc;
 			}
 		}
 	}
-	//matches are not in the pack
+	//user does not have the matches in their pack
     return notMatches;
 }
 
