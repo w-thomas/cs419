@@ -1,12 +1,12 @@
-Name:Prison Cell
-LDesc:A walker is in here! How?!
-SDesc:Do I need to tell someone about this walker?
-Feature1:walker
-FeatureDesc:It's chained. I wonder who did this?
+Name:Maggie's Cell
+LDesc:You are in Maggie's cell. Her cell contains some craft items that she found within the prison. Several paintings are scattered in the room. To the north is the middle of the hallway.
+SDesc:You are in Maggie's cell. To the north is the middle of the hallway.
+Feature1:photo
+FeatureDesc:A family photo of Maggie's family. You can see her step-sister, Beth, her father, Hershel, and her step-brother Shawn. 
 Person:False
 Interaction:
-Feature2:chain 
-FeatureDesc:The chain seems strong enough. Is someone examining this thing?
+Feature2:easel
+FeatureDesc:Made from cherry wood finished with brass fittings. It's about 8 feet tall and 3 feet wide. Her favorite gift from Glenn. Painting helps her relax in a world of chaos.
 Person:False
 Interaction:
 North:True

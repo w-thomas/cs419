@@ -1,2 +1,2 @@
 name:bullets
-description:Bullets enough for a full mag.
+description:A loaded clip of .357 rounds.
