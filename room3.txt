@@ -1,14 +1,14 @@
-Name:Room 3
-LDesc:Hi Beth! Where is your dad? I am in need of some medical supplies.
-SDesc:Beth is still here.
-Feature1:Beth
-FeatureDesc:A young female with some wounds. She has been in battle recently.
-Person:True
-Interaction:"Hey Rick! Good luck!"
-Feature2:Carl
-FeatureDesc:Carl seems busy with Judith. Ill let him be.
-Person:True
-Interaction:"Hey dad. I'm trying to get Judith to sleep." 
+Name:Glenn's Cell
+LDesc:You are in Glenn's cell. His cell is simple with only his necessary items. He has painted a yin and yang symbol on the wall. To the south is the middle of the hallway. There are also several photos of loved ones in his cell. His favorite is a photo of Maggie sleeping peacefully.
+SDesc:You are in Glenn's cell. To the south is the middle of the hallway.
+Feature1:books
+FeatureDesc:A stack of comic books that Glenn has read multiple times. He shares these with Carl who has never read them before.
+Person:False
+Interaction:
+Feature2:symbol
+FeatureDesc:A yin-yang symbol representing balance of good and bad. The lower blue section represents negative forces. The upper red section represents the opposing forces. Together they symbolize the principle of movement and harmony. 
+Person:False
+Interaction:
 North:False
 South:True
 East:False
