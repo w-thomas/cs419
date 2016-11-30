@@ -184,7 +184,7 @@ void titleAnimation() {
 
 	//curs_set(0);
 	curs_set(0);
-	attron(COLOR_PAIR(1));
+	attron(COLOR_PAIR(2));
 	mvprintw(LINES - 6, COLS/2 - titlesize/2, "  ___________.__              __      __       .__   __   .__                 ________                    .___ ");
 	mvprintw(LINES - 5, COLS/2 - titlesize/2, "  \\__    ___/|  |__   ____   /  \\    /  \\____  |  | |  | _|__| ____    ____   \\______ \\   ____ _____    __| _/ ");
 	mvprintw(LINES - 4, COLS/2 - titlesize/2, "    |    |   |  |  \\_/ __ \\  \\   \\/ /   |__  \\ |  | |  |/ /  |/    \\  / __ \\   |    |  \\_/ __  \\__  \\  / __ |  ");
@@ -265,7 +265,6 @@ void fireAnimation() {
 		mvprintw(height - 1+i, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 
-		attroff(COLOR_PAIR(1));
 		refresh();
 		usleep(265000);
 	}
@@ -316,8 +315,6 @@ void fireAnimation() {
 		mvprintw(height - 2, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
 		mvprintw(height - 1, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-
-		attroff(COLOR_PAIR(1));
 		refresh();
 		usleep(265000);
 	}
@@ -397,6 +394,7 @@ void explosion(){
 
   curs_set(0); /* hide text cursor (supposedly) */
   for (i=0; i<NUM_FRAMES; i++) {
+  	attron(COLOR_PAIR(2));
     erase();
     mvaddstr(0,0,frames[i]);
     refresh();
