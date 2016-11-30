@@ -5,8 +5,8 @@ Feature1:Glenn
 FeatureDesc:A young man wearing a baseball cap. He was a delivery boy and now one of your most trusted allies. He saved your life in downtown Atlanta. You'd be dead without him.
 Person:True
 Interaction:"Hey Rick. There is a car outside the fence surrounded by a natural ditch. If you cause a large explosion, that should draw the walkers toward the car. They may fall into the ditch."
-Feature2:
-FeatureDesc:
+Feature2:bench
+FeatureDesc:A short wooden bench bolted to the ground. This was used by security guards probably when the prison was still in use.
 Person:False
 Interaction:
 North:True

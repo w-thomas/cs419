@@ -5,7 +5,7 @@ Feature1:crops
 FeatureDesc:The survivors have started to grow sorghum. Sorghum is a grain producing grass originating from Africa. It is an important crop used for ethanol production, livestock food, and sometimes human consumption.
 Person:False
 Interaction:
-Feature2:fence 
+Feature2:fence
 FeatureDesc:A low wooden fence seperating the crops from the rest of the field. It's about 7 x 6 feet.
 Person:False
 Interaction:
