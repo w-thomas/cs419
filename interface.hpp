@@ -1,12 +1,17 @@
 #ifndef INTERFACE_HPP
 #define INTERFACE_HPP
 
+#define NUM_FRAMES 150
+
 #include <ncurses.h>
 #include <stdio.h>
 #include <string>
 #include <string.h>
 #include <unistd.h>
 #include <cstdlib>
+#include <curses.h>
+#include <math.h>
+#include <stdlib.h>
 
 
 /**
@@ -60,6 +65,10 @@ std::string getInput();
 void printHelp();
 
 void titleAnimation();
+
+void fireAnimation();
+
+void explosion();
 
 #endif
 

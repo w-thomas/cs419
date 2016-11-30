@@ -20,7 +20,7 @@ void start_interface() {
 	start_color();
 	init_pair (0, COLOR_WHITE, COLOR_BLACK);
 	init_pair (1, COLOR_CYAN, COLOR_BLACK);
-  	init_pair (2, COLOR_WHITE, COLOR_BLUE);
+  	init_pair (2, COLOR_RED, COLOR_BLACK);
   	init_pair (3, COLOR_WHITE, COLOR_BLACK);
   	init_pair (4, COLOR_WHITE, COLOR_RED);
   	init_pair (5, COLOR_BLACK, COLOR_GREEN);
@@ -198,7 +198,7 @@ void titleAnimation() {
 	{
 		scroll(stdscr);
 		refresh();
-		usleep(175000);
+		usleep(150000);
 	}
 	
 	mvprintw(LINES - 20, COLS/2 - 11, "PRESS ANY KEY TO START");
@@ -209,7 +209,201 @@ void titleAnimation() {
 }
 
 
+void fireAnimation() {
+	
+	int height = LINES;
+	int width = COLS;
+	int length = 102;
 
+	curs_set(0);
+	scrollok(stdscr, TRUE);
+	
+	for(int i = 10; i > 0; i--)
+	{
+		clear();
+		attron(COLOR_PAIR(2));
+		mvprintw(height - 10+i, width/2 - length/2, "      x    X      x              X                           X      X                                 ");
+		mvprintw(height - 9+i, width/2 - length/2,  "                          x                 X               XXX                 X                     ");
+		mvprintw(height - 8+i, width/2 - length/2,  " x   x       x          xX                                XXXXX    X                  X               ");
+		mvprintw(height - 7+i, width/2 - length/2,  "   X                     X       X              X       XXXXXX          X              X              ");
+		mvprintw(height - 6+i, width/2 - length/2,  "    X      XX     X   x  xX     X      XX       XX    XXXXXX             XX  X    X    XX     XX      ");
+		mvprintw(height - 5+i, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX             XXX         XXX     XXX      ");
+		mvprintw(height - 4+i, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX  XXXXXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3+i, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX    XXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2+i, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1+i, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+		refresh();
+		usleep(265000);
+		clear();
+
+		mvprintw(height - 10+i, width/2 - length/2, "          X                X                 X              X                                         ");
+		mvprintw(height - 9+i, width/2 - length/2,  "X   X         X                                            XXX      X           X                     ");
+		mvprintw(height - 8+i, width/2 - length/2,  "                        X                                XXXXX                          X             ");
+		mvprintw(height - 7+i, width/2 - length/2,  "   X       X         X   X      X      X         X      XXXXXX            X   X    X    X     X   X   ");
+		mvprintw(height - 6+i, width/2 - length/2,  "    X      XX      X     xX     X   X  XX      XXX    XXXXXX              XX           XX     XX      ");
+		mvprintw(height - 5+i, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX     X       XXX         XXX     XXX      ");
+		mvprintw(height - 4+i, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX    XXXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3+i, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX    XXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2+i, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1+i, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+
+		refresh();
+		usleep(265000);
+		clear();
+
+		mvprintw(height - 10+i, width/2 - length/2, " x    x   X                X                 X                X                  X                    ");
+		mvprintw(height - 9+i, width/2 - length/2,  "X             X                                             XXX     X                             X   ");
+		mvprintw(height - 8+i, width/2 - length/2,  "                    X            X                       XXXXX                          X             ");
+		mvprintw(height - 7+i, width/2 - length/2,  "   X        X             X             X         X     XXXXXX              X      X           X      ");
+		mvprintw(height - 6+i, width/2 - length/2,  "    X      XX     X      xX     X      XX      XXX    XXXXXX        X      XX          XX     XX      ");
+		mvprintw(height - 5+i, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX       XX    XXX         XXX     XXX      ");
+		mvprintw(height - 4+i, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX     XXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3+i, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX  XXXXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2+i, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1+i, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+
+		attroff(COLOR_PAIR(1));
+		refresh();
+		usleep(265000);
+	}
+
+		for(int i = 10; i > 0; i--)
+	{
+		clear();
+		attron(COLOR_PAIR(2));
+		mvprintw(height - 10, width/2 - length/2, "      x    X      x              X                           X      X                                 ");
+		mvprintw(height - 9, width/2 - length/2,  "                          x                 X               XXX                 X                     ");
+		mvprintw(height - 8, width/2 - length/2,  " x   x       x          xX                                XXXXX    X                  X               ");
+		mvprintw(height - 7, width/2 - length/2,  "   X                     X       X              X       XXXXXX          X              X              ");
+		mvprintw(height - 6, width/2 - length/2,  "    X      XX     X   x  xX     X      XX       XX    XXXXXX             XX  X    X    XX     XX      ");
+		mvprintw(height - 5, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX             XXX         XXX     XXX      ");
+		mvprintw(height - 4, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX  XXXXXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX    XXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+		refresh();
+		usleep(265000);
+		clear();
+
+		mvprintw(height - 10, width/2 - length/2, "          X                X                 X              X                                         ");
+		mvprintw(height - 9, width/2 - length/2,  "X   X         X                                            XXX      X           X                     ");
+		mvprintw(height - 8, width/2 - length/2,  "                        X                                XXXXX                          X             ");
+		mvprintw(height - 7, width/2 - length/2,  "   X       X         X   X      X      X         X      XXXXXX            X   X    X    X     X   X   ");
+		mvprintw(height - 6, width/2 - length/2,  "    X      XX      X     xX     X   X  XX      XXX    XXXXXX              XX           XX     XX      ");
+		mvprintw(height - 5, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX     X       XXX         XXX     XXX      ");
+		mvprintw(height - 4, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX    XXXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX    XXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+
+		refresh();
+		usleep(265000);
+		clear();
+
+		mvprintw(height - 10, width/2 - length/2, " x    x   X                X                 X                X                  X                    ");
+		mvprintw(height - 9, width/2 - length/2,  "X             X                                             XXX     X                             X   ");
+		mvprintw(height - 8, width/2 - length/2,  "                    X            X                       XXXXX                          X             ");
+		mvprintw(height - 7, width/2 - length/2,  "   X        X             X             X         X     XXXXXX              X      X           X      ");
+		mvprintw(height - 6, width/2 - length/2,  "    X      XX     X      xX     X      XX      XXX    XXXXXX        X      XX          XX     XX      ");
+		mvprintw(height - 5, width/2 - length/2,  "   XX      XXX    XX    XXXX    XX    XXX      XXX    XXXXXX       XX    XXX         XXX     XXX      ");
+		mvprintw(height - 4, width/2 - length/2,  "  XXXX   XXXXXX  XXX   XXXXXX  XXXX  XXXXX   XXXXX   XXXXXXXXX     XXX  XXXXX     X XXXXX   XXXX      ");
+		mvprintw(height - 3, width/2 - length/2,  "  XXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXX XXXXXXX XXXXXXXXXX XX  XXXXXXXXXX    XXXXXXXXX  XXXXXX    ");
+		mvprintw(height - 2, width/2 - length/2,  " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+		mvprintw(height - 1, width/2 - length/2,  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+
+		attroff(COLOR_PAIR(1));
+		refresh();
+		usleep(265000);
+	}
+
+	explosion();
+
+}
+
+void explosion(){
+  char *frames[NUM_FRAMES], *p;
+  int i,x,y,v,rows,cols;
+  int maxx,minx,maxy,miny,delay=1E6;
+  double r;
+
+  //Make starting coordinates the middle of the screen.
+  getmaxyx(stdscr,rows,cols);
+  minx = -cols / 2;
+  maxx = cols+minx-1;
+  miny = -rows / 2;
+  maxy = rows+miny-1;
+
+    /* Generate animation frames */
+  for (i=0; i<NUM_FRAMES; i++) {
+    p = frames[i] = (char*)malloc(cols * rows + 1);
+
+    for (y=miny; y<=maxy; y++) {
+
+      for (x=minx; x<=maxx; x++) {
+
+        
+        if (i==0) {
+          
+          if (x==0 && y==0) {
+          	*p++ = '*';
+          }
+
+          else {
+          	*p++ = ' ';
+          }
+          continue;
+        }
+
+        //Expanding explosion for 7 frames
+        if (i<8) {
+          r = sqrt(x*x + 4*y*y);
+          *p++ = (r < i*2) ? '@' : ' ';
+          continue;
+        }
+
+        //Explosion
+        //Credit for explosion shape calculation = Will's engineer coworker.
+        r = sqrt(x*x + 4*y*y) * (0.5 + cos(16*atan2(y*2+0.01,x+0.01))*.3);
+      
+        v = i - r - 7;
+        if (v<0) { 
+        	if (i<19) {
+        		*p++ = "%@W#H=+~-:."[i-8];
+        	} 
+        	else {
+        		*p++ = ' ';
+        	}
+        }
+
+        else if (v<20) {
+        	*p++ = " .:[HIOMW#%$&@08O=+-"[v];
+        }
+
+        else {
+        	*p++=' ';	
+        } 
+      }
+    }
+
+    /* Terminate the text string for this frame */
+    *p = '\0';
+  }
+
+  curs_set(0); /* hide text cursor (supposedly) */
+  for (i=0; i<NUM_FRAMES; i++) {
+    erase();
+    mvaddstr(0,0,frames[i]);
+    refresh();
+    usleep(delay);
+    delay=33333; /* Change to 30fps after first frame */
+  }
+}
 
 
 

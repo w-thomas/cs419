@@ -166,6 +166,17 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
         printString(arrayGrid[player->currentX][player->currentY]->pourGas("gas", (*player)));
     }
     else if(cmd.compare("light matches") == 0) {
+
+        scr_dump("/tmp/virtual.dump");
+        clear();
+        refresh();
+
+        fireAnimation();
+
+
+        scr_restore("/tmp/virtual.dump");
+        doupdate();
+
         printString(arrayGrid[player->currentX][player->currentY]->lightMatch("matches", (*player)));
     }
 
@@ -432,7 +443,7 @@ int main(int argc, char** argv) {
         cmd = getInput();
 
 
-        print_feedback("                                                                      ");
+        print_feedback("                                                                                                                                                   ");
         if(cmd == "quit" || cmd == "q") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
