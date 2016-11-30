@@ -1,12 +1,12 @@
-Name:Room 5
-LDesc:Rick! I'm here to help. There's walkers everywhere! We need to find gas and light the car on fire to drive them away! 
-SDesc:I need to find the gas and get to the car! Rick is struggling to keep the perimeter from collapsing!
+Name:Prison Perimeter
+LDesc:You are outside the prison perimeter. You see that the prison is surrounded by a 20 ft high metal fence with barbed wire on top. Near you, you see a broken down car and a natural ditch around 15 feet deep and 30 feet wide. Past the ditch are about 30 walkers standing. They have not seen you yet. To the south is the open field. 
+SDesc:You are outside the prison perimeter. Near you is a broken down car. To the south is the open field.
 Feature1:car
-FeatureDesc:A car behind a ditch. Could be easily lit up.
+FeatureDesc:A broken down car with all the windows shattered. Difficult to tell what model it is. A dead walker is inside pinned in the drivers seat.
 Person:False
 Interaction:
-Feature2:walkers
-FeatureDesc:The walkers are leaning against the gate!
+Feature2:spikes
+FeatureDesc:Past the idle walkers, you see another opening. These are spikes that were put in the ground by Michonne as an extra layer of defense. Some walkers have walked into it.
 Person:False
 Interaction:
 North:False
