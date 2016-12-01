@@ -198,13 +198,15 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
             result = arrayGrid[player->currentX][player->currentY]->checkFeature(word);
             if(result) {
                 string str = arrayGrid[player->currentX][player->currentY]->getFeatureDesc(word);
-                print_feedback(str);
+                //print_feedback(str);
+                printString(str);
             }
             else {
                 //is an item not a feature
                 //string str = "is an item not a feature";
                 string str = arrayGrid[player->currentX][player->currentY]->getItemDesc(word);
-                print_feedback(str);
+                //print_feedback(str);
+                printString(str);
             }
         }
     }
@@ -276,7 +278,6 @@ int checkWord(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, int level, string 
                 if(result != 1) {
                     str = word;
                     str = str + " is not in the room";
-                    //cout << str;
                     printString(str);
                 }
             }
