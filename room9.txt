@@ -1,6 +1,6 @@
 Name:HallwayD
-LDesc:You are in the eastern end of the cell block hallway. Carol is here. She tells you that something has happended to Daryl. He is injured outside the exterior door to the south. Even with the light, it is pretty dim in here. To the north is Daryl's cell. The rest of the cell block hallway runs to the west.  
-SDesc:You are in the eastern end of the cell block hallway. To the north is Daryl's cell. To the south is a doorway that leads outside. The remainder of the hallway follows to the west.
+LDesc:You are in the eastern end of the cell block hallway. Carol is here. She tells you that something has happened to Daryl. He is injured outside the exterior door to the south. Even with the light, it is pretty dim in here. To the north is Daryl's cell. The rest of the cell block hallway runs to the west.  
+SDesc:You are in the eastern end of the cell block hallway. Even with the light, it is still pretty dim at this end of the hallway. To the north is Daryl's cell. To the south is a doorway that leads outside. The remainder of the hallway follows to the west.
 Feature1:Carol
 FeatureDesc:Carol Peletier is a middle-aged woman with short gray hair. Once a daisy, now she's a Pit Bull. Carol is never afraid to do the dirty work.
 Person:True

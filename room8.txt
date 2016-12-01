@@ -1,6 +1,6 @@
 Name:HallwayC 
-LDesc:You are in the middle of the hallway. You see Glenn coming out of his cell to talk to you. It's pretty dark further east at the end of the hallway. To your west is the western part of the hallway with light from the skylight. To the north is Glenn's cell. You look in and see a flashlight on his table. To the south is Maggie's cell. For some reason, her cell is locked. Looking in, you can see a box of .357 ammo.
-SDesc:You are in the middle of hallway. To the east is the end of the hallway. To your west is the western part of the hallway with light from the skylight. To the north is Glenn's cell. To the south is Maggie's cell.
+LDesc:You are in the middle of the hallway. You see Glenn coming out of his cell to talk to you. It's pretty dark further east at that end of the hallway. To your west is the most brightly lit portion of the hallway from the overhead skylight. To the north is Glenn's cell. You look in and see a flashlight on his table. To the south is Maggie's cell. For some reason, her cell is locked. Looking in, you can see a box of .357 ammo.
+SDesc:You are in the middle of hallway. To the east is the darker end of the hallway. To your west is the most brightly lit portion of the hallway from the overhead skylight. To the north is Glenn's cell. To the south is Maggie's cell.
 Feature1:Glenn
 FeatureDesc:Glenn Rhee is a young man wearing a baseball cap. He was a delivery boy and now one of your most trusted allies. He saved your life in downtown Atlanta. You'd be dead without him.
 Person:True
