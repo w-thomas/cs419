@@ -569,7 +569,19 @@ std::string Rooms::lightMatch(std:: string matches, Player& rick)
 			//checks to see if the gas was poured before lighting match
 			if (rick.pouredGas==true && rick.currentX == 4 && rick.currentY == 0)
 			{
+
+                scr_dump("virtual.dump");
+                clear();
+                refresh();
+
+                fireAnimation();
+
+
+                scr_restore("virtual.dump");
+                doupdate();
+
 				interactionDesc = "You lit the match and set the car on fire!";
+                
 				return interactionDesc;
 			}
 			//gas has not yet been poured in the correct room

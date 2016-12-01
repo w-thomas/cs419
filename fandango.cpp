@@ -167,16 +167,6 @@ void executeCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     }
     else if(cmd.compare("light matches") == 0) {
 
-        scr_dump("virtual.dump");
-        clear();
-        refresh();
-
-        fireAnimation();
-
-
-        scr_restore("virtual.dump");
-        doupdate();
-
         printString(arrayGrid[player->currentX][player->currentY]->lightMatch("matches", (*player)));
     }
 

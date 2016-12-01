@@ -325,12 +325,13 @@ void fireAnimation() {
 
 void explosion(){
   char *frames[NUM_FRAMES], *p;
-  int i,x,y,v,rows,cols;
-  int maxx,minx,maxy,miny,delay=1E6;
+  int i, x, y, v, rows, cols;
+  int maxx, minx, maxy, miny, delay=1E6;
   double r;
 
   //Make starting coordinates the middle of the screen.
-  getmaxyx(stdscr,rows,cols);
+  getmaxyx(stdscr, rows, cols);
+
   minx = -cols / 2;
   maxx = cols+minx-1;
   miny = -rows / 2;
@@ -344,7 +345,7 @@ void explosion(){
 
       for (x=minx; x<=maxx; x++) {
 
-        
+        //Prints a single * at the center and nothing else at any other coordinate
         if (i==0) {
           
           if (x==0 && y==0) {
@@ -371,7 +372,7 @@ void explosion(){
         v = i - r - 7;
         if (v<0) { 
         	if (i<19) {
-        		*p++ = "%@W#H=+~-:."[i-8];
+        		*p++ = "%@$&H=+~-:."[i-8];
         	} 
         	else {
         		*p++ = ' ';
