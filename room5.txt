@@ -1,6 +1,6 @@
-Name:Prison Perimeter
-LDesc:You are outside the prison perimeter. You see that the prison is surrounded by a 20 ft high metal fence with barbed wire on top. Near you, you see a broken down car and a natural ditch around 15 feet deep and 30 feet wide. Past the ditch are about 30 walkers standing. They have not seen you yet. To the south is the open field. 
-SDesc:You are outside the prison perimeter. Near you is a broken down car. To the south is the open field.
+Name:Main Gate
+LDesc:You are at the main gate. You see that the prison is surrounded by a 20 ft high metal fence with barbed wire on top. Outside the fence, you see a broken down car and a natural ditch around 15 feet deep and 30 feet wide. Past the ditch are about 30 walkers standing. They have not seen you yet. To the south is the open field. 
+SDesc:You are at the main gate. Near you is a broken down car. To the south is the open field.
 Feature1:car
 FeatureDesc:A broken down car with all the windows shattered. Difficult to tell what model it is. A dead walker is inside pinned in the drivers seat.
 Person:False

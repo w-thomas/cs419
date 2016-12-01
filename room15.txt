@@ -1,12 +1,12 @@
 Name:Storage Facility
-LDesc:I need to light this car on fire to create an explosion!
-SDesc:Can I light this on fire now?
-Feature1:car
-FeatureDesc:I can definitely light this on fire.
+LDesc:You are in the storage facility. The room is mostly empty since people have been using up the supplies. We are running low. There are a few empty boxes on the ground near the steel shelves. In the corner you see what looks like a gasoline container. To the west is a space that leads to the door of cell block C. To the north is a gate to get to the main yard. Past the gate, you see walkers heading towards the prison!
+SDesc:You are in the storage facility. To the east is a space that connects to the prison. To the north is a gate to get to the main yard. 
+Feature1:box
+FeatureDesc:A big cardboard box with metal scraps inside. It's way too heavy to carry.
 Person:False
 Interaction:
-Feature2:lock
-FeatureDesc:I'll need to unlock this fence once I have the gas and match.
+Feature2:shelf
+FeatureDesc:A sturdy steel shelf bolted to the ground. There is nothing on this shelf anymore. It is very dusty.
 Person:False
 Interaction:
 North:True
