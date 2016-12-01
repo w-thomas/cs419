@@ -6,7 +6,7 @@ FeatureDesc:A brave woman with long dreadlocks holding a katana samaurai sword.
 Person:True
 Interaction:"Hey Rick. Maybe you should take my sword. Tyreese and I killed a walker inside cell block D yesterday. They are still getting inside somehow."
 Feature2:koshirae
-FeatureDesc:Michonne wears a koshirae on her back for holding here sword. It is made of leather and decorated with several silver and wooden inlays.
+FeatureDesc:Michonne wears a koshirae on her back for holding her sword. It is made of leather and decorated with several silver and wooden inlays.
 Person:False
 Interaction:
 North:True
