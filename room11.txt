@@ -2,7 +2,7 @@ Name:Hershel's Cell
 LDesc:Hershel has created infirmary in his cell. He has most of his medical supplies in here and uses the bunk beds for patients. To the north is hallway of the cell block.
 SDesc:Hershel's cell and infirmary. To the north is the hallway of the cell block.
 Feature1:Hershel
-FeatureDesc:An older man with an impressive white beard. He needs a cane to get around.  Trained as a veterinarian, he's become our doctor and surgeon and has saved many lives. 
+FeatureDesc:Hershel Greene is an older man with an impressive white beard. He needs a cane to get around.  Trained as a veterinarian, he's become our doctor and surgeon and has saved many lives.
 Person:True
 Interaction:"I have a medkit here, Rick. You should take it just in case."
 Feature2:crutches

@@ -1,2 +1,2 @@
 Name:keys
-Description:A ring with 3 silver keys attached.
+Description:A large ring with three silver keys attached.
