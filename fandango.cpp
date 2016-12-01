@@ -1,7 +1,7 @@
 /*
  * fandango.cpp -- base engine for Fandango Group's project (CMD1)
- * Last Modified -- 11/11/2016
- * Last Modified By -- Jen Mendoza - changed line 132 
+ * Last Modified -- 11/30/2016
+ * Last Modified By -- Josh Gonzalez 
  * Known Issues  --
  */
 
@@ -434,7 +434,7 @@ int main(int argc, char** argv) {
 
 
         print_feedback("                                                                                                                                                   ");
-        if(cmd == "quit" || cmd == "q") { continue; }
+        if(cmd == "quit" || cmd == "q" || cmd == "") { continue; }
         if(cmd == "help" || cmd == "h") { printHelp(); } 
         else {
             result = parseCmd(board, rick, cmd);

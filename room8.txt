@@ -2,11 +2,14 @@ Name:HallwayC
 LDesc:You are in the middle of the hallway. You see Glenn coming out of his cell to talk to you. It's pretty dark further east at the end of the hallway. To your west is the western part of the hallway with light from the skylight. To the north is Glenn's cell. You look in and see a flashlight on his table. To the south is Maggie's cell. For some reason, her cell is locked. Looking in, you can see a box of .357 ammo.
 SDesc:You are in the middle of hallway. To the east is the end of the hallway. To your west is the western part of the hallway with light from the skylight. To the north is Glenn's cell. To the south is Maggie's cell.
 Feature1:Glenn
-FeatureDesc:A young man wearing a baseball cap. He was a delivery boy and now one of your most trusted allies. He saved your life in downtown Atlanta. You'd be dead without him.
+FeatureDesc:Glenn Rhee is a young man wearing a baseball cap. He was a delivery boy and now one of your most trusted allies. He saved your life in downtown Atlanta. You'd be dead without him.
 Person:True
-Interaction:"Hey Rick. There is a car outside the fence surrounded by a natural ditch. If you cause a large explosion, that should draw the walkers toward the car. They may fall into the ditch."
+Interaction:"Hey Rick. There is a car outside the fence surrounded by a natural ditch. If you cause a large explosion, that should draw the walkers toward the car. They may fall into the ditch. If they do, they won't be able to crawl out."
 Feature2:
 FeatureDesc:
+Interaction:"Hey Rick. There is a car outside the fence surrounded by a natural ditch. If you cause a large explosion, that should draw the walkers toward the car. They may fall into the ditch."
+Feature2:bench
+FeatureDesc:A short wooden bench bolted to the ground. This was used by security guards probably when the prison was still in use.
 Person:False
 Interaction:
 North:True

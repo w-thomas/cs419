@@ -1,2 +1,2 @@
 name:gas
-description:A can of gasoline. I can light this on fire to create a distraction.
+description:A full 5 gallon can of gasoline.  
