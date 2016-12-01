@@ -1,7 +1,7 @@
 /*
  * fandango.cpp -- base engine for Fandango Group's project (CMD1)
- * Last Modified -- 11/11/2016
- * Last Modified By -- Jen Mendoza - changed line 132 
+ * Last Modified -- 12/01/2016
+ * Last Modified By -- Josh Gonzalez
  * Known Issues  --
  */
 
@@ -386,6 +386,16 @@ int parseCmd(Rooms *arrayGrid[MAX_X][MAX_Y], Player *player, string cmd) {
     return 1; 
 }
 
+int confirmQuit() {
+	print_feedback("Are you sure that you want to quit? Your game state will not be saved. Enter \"y\" [ENTER] to confirm.");
+	string response;
+	cin >> response;
+	if(response == "y") {
+		return 1;
+	}
+	return 0;
+}
+
 int main(int argc, char** argv) {
     //instantiate game state
     Rooms *board[MAX_X][MAX_Y]; //create a playing surface
@@ -430,13 +440,22 @@ int main(int argc, char** argv) {
 
 
 
+	int q = 0;
     do {
         cmd = getInput();
 
 
         print_feedback("                                                                                                                                                   ");
-        if(cmd == "quit" || cmd == "q") { continue; }
+        //if(cmd == "quit" || cmd == "q") { continue; }
+        if(cmd == "quit" || cmd == "q") { 
+			q = confirmQuit(); 
+			if(q == 0) {
+				print_feedback("");
+				continue;
+			}
+		}
         if(cmd == "help" || cmd == "h") { printHelp(); } 
+        if(cmd == "") { continue; } 
         else {
             result = parseCmd(board, rick, cmd);
             if(result == 1) { 
@@ -444,10 +463,12 @@ int main(int argc, char** argv) {
                 string lastCmd = cmd;
                 //debug: print_feedback(cmd);
                 executeCmd(board, rick, cmd); 
+
             }
         }
     }
-    while((cmd != "q") && (cmd != "quit"));
+    //while((cmd != "q") && (cmd != "quit"));
+    while(q == 0);
 
     end_interface();
 
