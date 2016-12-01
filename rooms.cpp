@@ -388,7 +388,7 @@ std::string Rooms::swing(std:: string sword, Player& rick)
 					interactionDesc="You have already killed the walker.";
 				}
 				else if(rick.currentX == 3 && rick.currentY == 0) {
-                    interactionDesc = "You swung the sword and killed the walker!"; 
+                    interactionDesc = "You swing your sword and aim for the head. You slice through the walker's head! You have killed the walker."; 
                     rick.walker4=true;
                 }
 
@@ -452,7 +452,7 @@ std::string Rooms::shoot(std:: string gun, Player& rick)
 	}
     else if(rick.currentX == 4 && rick.currentY == 1) 
     {
-        interactionDesc="Shot gun and killed the group of walkers!";
+        interactionDesc="You walk towards the walkers and aim your Colt Python .357 Magnum Revolver at a walker's head. You shoot and one by one they fall until you have 1 bullet left. You see one more walker. You shoot the last one, but missed its head. It falls to the ground and starts to crawl towards you. You walk up to it and use all your force to stomp on its head. The walkers are all dead!";
         rick.walker10=true;
         return interactionDesc;
     }
@@ -494,7 +494,7 @@ std::string Rooms::healDaryl(std::string daryl, Player& rick)
             else if(rick.currentX == 3 && rick.currentY == 2)
             {
                 rick.healDaryl=true;
-                interactionDesc="You have healed Daryl.";
+                interactionDesc="You take out the medkit and see a large bandage. You use this to apply a tourniquet on Daryl's left leg above his laceration. You wrap his leg with more bandages to stop the bleeding. After a few minutes, Daryl's blood loss has decreased. You help him up and head back towards the door to cell block C. Hershel is there and takes Daryl from you. You saved Daryl.";
                 return interactionDesc;
             }
 			else
@@ -539,7 +539,7 @@ std::string Rooms::pourGas(std:: string gas, Player& rick)
 			//sets poured gas bool to true when gas is poured in the correct room
 			else if(rick.currentX == 4 && rick.currentY == 0) 
 			{
-				interactionDesc = "You poured the gas on the car!"; 
+				interactionDesc = "You open the container and walk around the car. You pour all 5 gallons on it!"; 
 				rick.pouredGas=true;
 				return interactionDesc;
 			}
@@ -580,7 +580,7 @@ std::string Rooms::lightMatch(std:: string matches, Player& rick)
                 scr_restore("virtual.dump");
                 doupdate();
 
-				interactionDesc = "You lit the match and set the car on fire!";
+				interactionDesc = "You take out a match and light it. You throw the lit match on the car. The fire spread fast and you run back inside the gate! After a few minutes, you see a large explosion! It's working! The walkers are heading towards the car! One by one, the walkers fall into the ditch. You'll need to clean that up, but that'll be for another day.\n \n Congratulations!!! You have completed The Walking Dead Game! You have saved your community from the walkers that were still left at the prison. The prison is now a safe place for everyone! You are now free to roam around the prison as you wish!";
                 
 				return interactionDesc;
 			}

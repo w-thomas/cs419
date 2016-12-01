@@ -1,6 +1,6 @@
 Name:Open Field 
 LDesc:You are in the open field. This is where you grow crops for the survivors. You see some vegetables inside a small fenced in area. Past the crops, you see 3 walkers. Walkers are heading towards you! They are are about 20 feet away! Two look like females and the other is difficult to determine. To the south is the storage facility. To the north is the prison perimeter. You look past the walkers and see a car. 
-SDesc:You are in the open field. To the south is the storage facility. To the north is the prison perimeter.
+SDesc:You are in the open field. You see walkers past the crops. To the south is the storage facility. To the north is the prison perimeter.
 Feature1:crops
 FeatureDesc:The survivors have started to grow sorghum. Sorghum is a grain producing grass originating from Africa. It is an important crop used for ethanol production, livestock food, and sometimes human consumption.
 Person:False
