@@ -6,7 +6,7 @@ FeatureDesc:A stack of comic books that Glenn has read multiple times. He shares
 Person:False
 Interaction:
 Feature2:symbol
-FeatureDesc:A yin-yang symbol representing balance of good and bad. The lower blue section represents negative forces. The upper red section represents the opposing forces. Together they symbolize the principle of movement and harmony. 
+FeatureDesc:A yin-yang symbol representing balance of good and evil. The lower blue section represents negative forces. The upper red section represents the opposing positive forces. Together they symbolize the principle of movement and harmony. 
 Person:False
 Interaction:
 North:False

@@ -1,14 +1,12 @@
 Name:Daryl's Cell
-LDesc:You are in Daryl's cell. A walker with no legs is trying to drag itself on the floor! Her tattered dress is hooked onto the sink plumbing so she is clawing at the concrete flow and not making any progress.  She's trying to get to you. If she is able to bite you, you will die and become a walker. How in the hell did she get in the cell block? No time for worrying about that now.  You notice the cell block keys on Daryl's cot to the left of the walker. He must have accidentally left them here. You try to reach for
-them but the walker is too close, snapping her jaw and clawing at the air just inches from your right thigh. To the south is the eastern
-end of the hallway. It is poorly lit.  
+LDesc:You are in Daryl's cell. A walker with no legs is trying to drag itself on the floor! Her tattered dress is hooked onto the sink plumbing so she is clawing at the concrete floor stuck in place. She's trying to get to you. If she is able to bite you, you will die and become a walker. How in the hell did she get in the cell block? No time for worrying about that now. You notice the cell block keys on Daryl's cot to the left of the walker. He must have accidentally left them here. You try to reach for them but the walker is too close, snapping her jaw and clawing at the air just inches from your right thigh. To the south is the eastern end of the hallway. It is poorly lit.  
 SDesc:You are in Daryl's cell. To the south is the eastern end of the cell block hallway. It is poorly lit.
 Feature1:walker
 FeatureDesc:The walker has no legs. She looks like she was probably attrative when she died and no more than 25 years old. You wonder if she worked in the prison or came here when all hell broke lose looking for food, water, and shelter. She is wearing a filthy, tattered dress.
 Person:False
 Interaction:Walker has been killed! You should grab the keys.
 Feature2:cabinet
-FeatureDesc:Dary'l has spent a lot of time building this cabinet. You open the drawers quickly looking for anything that may help you ... Nope. Nothing in here.
+FeatureDesc:Daryl has spent a lot of time building this cabinet. You open the drawers quickly looking for anything that may help you ... Nope. Nothing in here.
 Person:False
 Interaction:
 North:False
