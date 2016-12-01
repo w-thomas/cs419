@@ -1,6 +1,6 @@
 Name:Storage Facility
 LDesc:You are in the storage facility. The room is mostly empty since people have been using up the supplies. We are running low. There are a few empty boxes on the ground near the steel shelves. In the corner you see what looks like a gasoline container. To the west is a space that leads to the door of cell block C. To the north is a gate to get to the main yard. Past the gate, you see walkers heading towards the prison!
-SDesc:You are in the storage facility. To the east is a space that connects to the prison. To the north is a gate to get to the main yard. 
+SDesc:You are in the storage facility. To the west is a space that leads to the door of cell block C. To the north is a gate to get to the main yard. 
 Feature1:box
 FeatureDesc:A big cardboard box with metal scraps inside. It's way too heavy to carry.
 Person:False
