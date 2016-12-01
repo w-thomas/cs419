@@ -384,7 +384,7 @@ void explosion() {
       	//This fills the screen with the initial "flash" you see during the first 20 frames which fill every area of screen. except the inner 
       	//Expanding explosion from the first frames.
         variation = i - radius - 7;
-        if (v < 0) { 
+        if (variation < 0) { 
         	if (i < 19) {
         		*p++ = "%@W#H=+~-:."[i-8];
         	} 
@@ -393,9 +393,9 @@ void explosion() {
         		*p++ = ' ';
         	}
         }
-
+        
         else if (variation < 20) {
-        	*p++ = " .:[HIOMW#%$&@08O=+-"[v];
+        	*p++ = " .:[HIOMW#%$&@08O=+-"[variation];
         }
 
         else {
