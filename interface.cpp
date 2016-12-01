@@ -11,7 +11,8 @@ void start_interface() {
 
 //Testing for color Capabilities
 	if(has_colors() == FALSE)
-	{	endwin();
+	{	
+		endwin();
 		printf("Your terminal does not support color\n");
 		exit(1);
 	}
@@ -91,8 +92,8 @@ void print_feedback(std::string feedback){
 	char * cstr = new char[feedback.length()+1];
 	strcpy (cstr, feedback.c_str());
 
-	mvprintw(LINES - 5, 0, "                                                                     ");
-	mvprintw(LINES - 4, 0, "                                                                     ");
+	mvprintw(LINES - 5, 0, "                                                                                                                       ");
+	mvprintw(LINES - 4, 0, "                                                                                                                       ");
 	mvprintw(LINES - 4, 0, cstr);
 	refresh();
 
@@ -218,8 +219,7 @@ void fireAnimation() {
 	curs_set(0);
 	scrollok(stdscr, TRUE);
 	
-	for(int i = 10; i > 0; i--)
-	{
+	for(int i = 10; i > 0; i--) {
 		clear();
 		attron(COLOR_PAIR(2));
 		mvprintw(height - 10+i, width/2 - length/2, "      x    X      x              X                           X      X                                 ");
@@ -269,8 +269,7 @@ void fireAnimation() {
 		usleep(265000);
 	}
 
-		for(int i = 10; i > 0; i--)
-	{
+		for(int i = 10; i > 0; i--) {
 		clear();
 		attron(COLOR_PAIR(2));
 		mvprintw(height - 10, width/2 - length/2, "      x    X      x              X                           X      X                                 ");
@@ -323,68 +322,84 @@ void fireAnimation() {
 
 }
 
-void explosion(){
-  char *frames[NUM_FRAMES], *p;
-  int i, x, y, v, rows, cols;
+void explosion() {
+  char *screens[NUM_FRAMES], *p;
+  int i, x, y, variation, rows, cols;
   int maxx, minx, maxy, miny, delay=1E6;
-  double r;
+  double radius;
 
   //Make starting coordinates the middle of the screen.
   getmaxyx(stdscr, rows, cols);
-
   minx = -cols / 2;
-  maxx = cols+minx-1;
+  maxx = cols + minx - 1;
   miny = -rows / 2;
-  maxy = rows+miny-1;
+  maxy = rows + miny - 1;
 
     /* Generate animation frames */
-  for (i=0; i<NUM_FRAMES; i++) {
-    p = frames[i] = (char*)malloc(cols * rows + 1);
+  for (i = 0; i < NUM_FRAMES; i++) {
+    p = screens[i] = (char*)malloc(cols * rows + 1);
 
-    for (y=miny; y<=maxy; y++) {
+    for (y = miny; y <= maxy; y++) {
 
-      for (x=minx; x<=maxx; x++) {
+      for (x = minx; x <= maxx; x++) {
 
-        //Prints a single * at the center and nothing else at any other coordinate
-        if (i==0) {
+        
+        if (i == 0) {
           
-          if (x==0 && y==0) {
+          if (x == 0 && y == 0) {
           	*p++ = '*';
           }
 
           else {
           	*p++ = ' ';
           }
+
           continue;
         }
 
         //Expanding explosion for 7 frames
         if (i<8) {
-          r = sqrt(x*x + 4*y*y);
-          *p++ = (r < i*2) ? '@' : ' ';
+
+          radius = sqrt(x*x + 4*y*y);
+
+          if (radius < i*2) {
+
+          	*p++ = '@';
+
+          } else {
+
+          	*p++ = ' ';
+          }
+          
           continue;
         }
 
         //Explosion
         //Credit for explosion shape calculation = Will's engineer coworker.
-        r = sqrt(x*x + 4*y*y) * (0.5 + cos(16*atan2(y*2+0.01,x+0.01))*.3);
+        //The idea is to use the cosine of the arctangent to create the angles in each quadrant
+        //of the screen for the star shape.
+        radius = sqrt(x*x + 4*y*y) * (0.5 + cos(16*atan2(y*2+0.01,x+0.01))*.3);
       
-        v = i - r - 7;
-        if (v<0) { 
-        	if (i<19) {
-        		*p++ = "%@$&H=+~-:."[i-8];
+      	//-7 to exclude the inner area from the first 7 frames.
+      	//This fills the screen with the initial "flash" you see during the first 20 frames which fill every area of screen. except the inner 
+      	//Expanding explosion from the first frames.
+        variation = i - radius - 7;
+        if (v < 0) { 
+        	if (i < 19) {
+        		*p++ = "%@W#H=+~-:."[i-8];
         	} 
+
         	else {
         		*p++ = ' ';
         	}
         }
 
-        else if (v<20) {
+        else if (variation < 20) {
         	*p++ = " .:[HIOMW#%$&@08O=+-"[v];
         }
 
         else {
-        	*p++=' ';	
+        	*p++ = ' ';	
         } 
       }
     }
@@ -393,14 +408,14 @@ void explosion(){
     *p = '\0';
   }
 
-  curs_set(0); /* hide text cursor (supposedly) */
+  curs_set(0); 
   for (i=0; i<NUM_FRAMES; i++) {
   	attron(COLOR_PAIR(2));
     erase();
-    mvaddstr(0,0,frames[i]);
+    mvaddstr(0,0,screens[i]);
     refresh();
     usleep(delay);
-    delay=33333; /* Change to 30fps after first frame */
+    delay=33333; 
   }
 }
 
