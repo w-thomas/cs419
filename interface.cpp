@@ -113,7 +113,7 @@ void printLastGoodCommand(std::string message){
 
 	char * cstr = new char[message.length()+1];
 	strcpy (cstr, message.c_str());
-	wprintw(local_win, "Last valid command: %s", cstr);
+	wprintw(local_win, "Last command: %s", cstr);
 
 	wrefresh(local_win);
 
@@ -204,25 +204,50 @@ void printDescLong(){
 void printHelp() {
 	//TODO:
 	//convert and print help text
+
+
+	scr_dump("virtual.dump");
 	WINDOW *local_win;
 
-	local_win = create_newwin(LINES/2, (COLS*78)/100, 2, 2, false);
+	local_win = create_newwin(LINES, COLS, 0, 0, true);
+    clear();
+    refresh();
 
-	wbkgd(local_win, COLOR_PAIR(5));
+    wbkgd(local_win, COLOR_PAIR(5));
+    noecho();
 
-	mvwprintw(local_win, 2, 30, "Help");
-	mvwprintw(local_win, 4, 4, "look : verbose description of current location");
-	mvwprintw(local_win, 6, 4, "look at <feature || item> : description of feature or item");
-	mvwprintw(local_win, 8, 4, "show pack : show contents of player's backpack");
-	mvwprintw(local_win, 10, 4, "grab <item> : grab a room item and put it in backpack");
-	mvwprintw(local_win, 12, 4, "go <direction> : navigate with directions n, s, e, and w");
-	mvwprintw(local_win, 14, 4, "drop <item> : take item from the backback and leave it in the room");
-	mvwprintw(local_win, 16, 4, "quit or q : quit the game");
-	mvwprintw(local_win, 18, 4, "help or h : print this menu");
-	wrefresh(local_win);
+    wattron(local_win, A_UNDERLINE);
+   	mvwprintw(local_win, 2, COLS/2-5, "Help!");
+   	wrefresh(local_win);
+   	wattroff(local_win, A_UNDERLINE);
+   	mvwprintw(local_win, 4, 4, "This is a game of exploration. As Rick it is your job to protect the prison from the threat of walkers trying to get in. Talk to everyone and");
+   	mvwprintw(local_win, 6, 4, "keep an eye out for anything that might help you.");
+   	mvwprintw(local_win, 8, 4, "Utilize these commands to explore the prison:");
+	mvwprintw(local_win, 10, 4, "1. look : verbose description of current location");
+	mvwprintw(local_win, 12, 4, "2. look at <feature || item> : description of feature or item");
+	mvwprintw(local_win, 14, 4, "3. show pack : show contents of player's backpack");
+	mvwprintw(local_win, 16, 4, "4. grab <item> : grab a room item and put it in backpack");
+	mvwprintw(local_win, 18, 4, "5. go <direction> : navigate with directions n, s, e, and w");
+	mvwprintw(local_win, 20, 4, "6. drop <item> : take item from the backback and leave it in the room");
+	mvwprintw(local_win, 22, 4, "7. swing <item> : There's a useful item you can swing. Can you find it?");
+	mvwprintw(local_win, 24, 4, "8. talk to <person> : talk to your friends, Rick. It's good for you.");
+	mvwprintw(local_win, 26, 4, "9. shoot gun : shoot your gun. You might need something to shoot, first.");
+	mvwprintw(local_win, 28, 4, "10. heal : activate and start using a medkit.");
+	mvwprintw(local_win, 30, 4, "11. pour <item> : You can pour liquids.");
+	mvwprintw(local_win, 32, 4, "12. light <item> : a certain item can be lit on fire.");
+	mvwprintw(local_win, 34, 4, "13. quit or q : quit the game");
+	mvwprintw(local_win, 36, 4, "14. help or h : print this menu");
+	mvwprintw(local_win, 40, COLS/2-28, "Press any key to continue.");
 
+	wrefresh(local_win); 
+   
+    getch();
+    echo();
 
-	destroy_win(local_win);
+    scr_restore("virtual.dump");
+    doupdate();
+
+	
 }
 
 void titleAnimation() {
