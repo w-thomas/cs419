@@ -29,6 +29,8 @@ void createDialogueWin();
 
 void createDetailsWin();
 
+void createLastCommandwin();
+
 void print_feedback(std::string feedback);
 
 void clearFeedback();
@@ -42,6 +44,8 @@ void clearFeedback();
 void printString(std::string message);
 
 void printItems(std::string item);
+
+void printLastGoodCommand(std::string message);
 
 /**
 * Creates an ncurses window at specified location and size

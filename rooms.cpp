@@ -174,9 +174,11 @@ void Rooms::getFeatures()
     //Create ncurses window to print dialogue to:
     WINDOW *item_win;
 
-    item_win = create_newwin(3, ((COLS * 80)/100)-2, (LINES/2)+5, 2, false);
+    item_win = create_newwin(4, COLS-4, (LINES/2)-2, 2, false);
     wbkgd(item_win, COLOR_PAIR(6));
     wprintw(item_win, "The following features are in the room: ");
+
+    int vecSize = roomFeature.size();
 
     for (Iter = roomFeature.begin(); Iter != roomFeature.end(); ++Iter)
     {
@@ -184,7 +186,16 @@ void Rooms::getFeatures()
         strcpy (cstr, Iter->name.c_str());
         // cout <<Iter->name<<endl;
         wprintw(item_win, cstr);
-        wprintw(item_win, " "); 
+
+        if (Iter - roomFeature.begin() == vecSize - 1)
+        {
+            delete(cstr);
+            wrefresh(item_win);
+            destroy_win(item_win);
+            return;
+        }
+
+        wprintw(item_win, ", "); 
         delete(cstr);
     }
 
@@ -249,12 +260,13 @@ void Rooms::getItem()
     //Create ncurses window to print dialogue to:
     WINDOW *item_win;
 
-    item_win = create_newwin(3, ((COLS * 80)/100)-2, (LINES/2)+8, 2, false);
+    item_win = create_newwin(3, COLS-4, (LINES/2)+2, 2, false);
     wbkgd(item_win, COLOR_PAIR(6));
 
     if (roomItem.size()!=0)
     {	
         wprintw(item_win, "The following items are in the room: ");
+
         // cout<<"Items in this room"<<endl;
         for (size_t n=0; n<roomItem.size();n++)
         {
@@ -262,7 +274,16 @@ void Rooms::getItem()
             strcpy (cstr, roomItem[n].getItemName().c_str());
             // cout <<Iter->name<<endl;
             wprintw(item_win, cstr);
-            wprintw(item_win, " "); 
+
+            if (n == roomItem.size()-1)
+            {
+                delete(cstr);
+                wrefresh(item_win);
+                destroy_win(item_win);
+                return;
+            }
+
+            wprintw(item_win, ", "); 
             delete(cstr);
             // cout<<n+1<<": "<<roomItem[n].getItemName()<<endl;
         }

@@ -442,6 +442,10 @@ int main(int argc, char** argv) {
 
 	int q = 0;
     do {
+
+            board[rick->currentX][rick->currentY]->getFeatures();
+             //print items in the starting room
+            board[rick->currentX][rick->currentY]->getItem();
         cmd = getInput();
 
 
@@ -461,6 +465,7 @@ int main(int argc, char** argv) {
             if(result == 1) { 
                 //keep the last good command and print this somewhere for user navigation
                 string lastCmd = cmd;
+                printLastGoodCommand(lastCmd);
                 //debug: print_feedback(cmd);
                 executeCmd(board, rick, cmd); 
 

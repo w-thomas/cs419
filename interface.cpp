@@ -32,6 +32,8 @@ void start_interface() {
 	refresh();
 	createDialogueWin();
 	createDetailsWin();
+	createLastCommandwin();
+	printLastGoodCommand(" ");
 	//noecho();
 }
 
@@ -42,7 +44,10 @@ void end_interface() {
 void createDialogueWin(){
 	WINDOW *local_win;
 
-	local_win = create_newwin((LINES/2)+2, (COLS * 80)/100, 1, 1, true);
+	// local_win = create_newwin((LINES/2)+2, (COLS * 80)/100, 1, 1, true);
+
+	local_win = create_newwin((LINES/2)-5, COLS-2, 1, 1, true);
+
 
 	wbkgd(local_win, COLOR_PAIR(4));
 
@@ -52,18 +57,37 @@ void createDialogueWin(){
 void  createDetailsWin(){
 	WINDOW *local_win;
 
-	local_win = create_newwin((LINES/4), (COLS * 80)/100, (LINES/2)+4, 1, true);
+	// local_win = create_newwin((LINES/4), (COLS * 80)/100, (LINES/2)+4, 1, true);
+
+	local_win = create_newwin((LINES/4)-3, COLS-2, (LINES/2)-3, 1, true);
+
 
 	wbkgd(local_win, COLOR_PAIR(4));
 
 	wrefresh(local_win);
 }
 
+void createLastCommandwin(){
+	WINDOW *local_win;
+
+	// local_win = create_newwin((LINES/4), (COLS * 80)/100, (LINES/2)+4, 1, true);
+
+	local_win = create_newwin(4, COLS-2, (((LINES/2)-3) + ((LINES/4)-3)+2), 1, true);
+
+
+	wbkgd(local_win, COLOR_PAIR(4));
+
+	wrefresh(local_win);
+
+}
+
 void printString(std::string message) {
 
 	WINDOW *local_win;
 
-	local_win = create_newwin(LINES/2, ((COLS * 80)/100)-2, 2, 2, false);
+	// local_win = create_newwin(LINES/2, ((COLS * 80)/100)-2, 2, 2, false);
+
+	local_win = create_newwin((LINES/2)-7, COLS-4, 2, 2, false);
 
 	wbkgd(local_win, COLOR_PAIR(6));
 
@@ -78,6 +102,27 @@ void printString(std::string message) {
 	delete(cstr);
 }
 
+void printLastGoodCommand(std::string message){
+	WINDOW *local_win;
+
+	// local_win = create_newwin(LINES/2, ((COLS * 80)/100)-2, 2, 2, false);
+
+	local_win = create_newwin(2, COLS-4, (((LINES/2)-3) + ((LINES/4)-3)+3), 2, false);
+
+	wbkgd(local_win, COLOR_PAIR(6));
+
+	char * cstr = new char[message.length()+1];
+	strcpy (cstr, message.c_str());
+	wprintw(local_win, "Last valid command: %s", cstr);
+
+	wrefresh(local_win);
+
+	destroy_win(local_win);
+
+	delete(cstr);
+	
+}
+
 void printItems(std::string item) {
 
 	char * cstr = new char[item.length()+1];
@@ -88,13 +133,14 @@ void printItems(std::string item) {
 	delete(cstr);
 }
 
+
 void print_feedback(std::string feedback){
 	char * cstr = new char[feedback.length()+1];
 	strcpy (cstr, feedback.c_str());
 
-	mvprintw(LINES - 5, 0, "                                                                                                                       ");
-	mvprintw(LINES - 4, 0, "                                                                                                                       ");
-	mvprintw(LINES - 4, 0, cstr);
+	mvprintw(LINES - 5, 2, "                                                                                                                                                      ");
+	mvprintw(LINES - 4, 2, "                                                                                                                                                      ");
+	mvprintw(LINES - 4, 2, cstr);
 	refresh();
 
 	delete(cstr);
@@ -393,7 +439,7 @@ void explosion() {
         		*p++ = ' ';
         	}
         }
-        
+
         else if (variation < 20) {
         	*p++ = " .:[HIOMW#%$&@08O=+-"[variation];
         }
