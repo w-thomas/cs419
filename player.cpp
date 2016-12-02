@@ -117,9 +117,9 @@ void Player::getBackpackContents()
     	//Hacky but gets around text not going away. Temp fix for now
     	print_feedback("                                                                      ");
 
-    	mvprintw(LINES-5, 0, "Your backpack contains:");
+    	mvprintw(LINES-5, 2, "Your backpack contains:");
     	//Move cursor to output position
-    	move(LINES-4, 0);
+    	move(LINES-4, 2);
 
         for (size_t n=0; n<backpack.size();n++)
         {
