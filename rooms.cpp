@@ -515,7 +515,7 @@ std::string Rooms::healDaryl(std::string daryl, Player& rick)
             else if(rick.currentX == 3 && rick.currentY == 2)
             {
                 rick.healDaryl=true;
-                interactionDesc="You take out the medkit and see a large bandage. You use this to apply a tourniquet on Daryl's left leg above his laceration. You wrap his leg with more bandages to stop the bleeding. After a few minutes, Daryl's blood loss has decreased. You help him up and head back towards the door to cell block C. Hershel is there and takes Daryl from you. You saved Daryl.";
+                interactionDesc="You take out the medkit and see a large bandage. You use this to apply a tourniquet on Daryl's left leg above his laceration. You wrap his leg with more bandages to stop the bleeding. After a few minutes, Daryl's blood loss has decreased. You help him up and head back towards the door to cell block C. Hershel is on his way. You rest Daryl on a chair near the door. You saved Daryl.";
                 return interactionDesc;
             }
 			else
