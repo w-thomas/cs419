@@ -458,7 +458,11 @@ int main(int argc, char** argv) {
 				continue;
 			}
 		}
-        if(cmd == "help" || cmd == "h") { printHelp(); } 
+        if(cmd == "help" || cmd == "h") 
+		{ 
+			printHelp(); 
+			continue;
+		} 
         if(cmd == "") { continue; } 
         else {
             result = parseCmd(board, rick, cmd);
